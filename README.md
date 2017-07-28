@@ -1,5 +1,5 @@
-# TabOut
 [![CircleCI](https://circleci.com/gh/jameswmoody/tab-out.svg?style=shield)](https://circleci.com/gh/jameswmoody/tab-out)
+# TabOut
 App to track and close your bar tab, without the risk of leaving your credit card at your favorite bar
 
 ## TabOut Development Team
