@@ -11,6 +11,8 @@ class TextMessageService
 
   def send_text
     client_setup
+    p ENV['TWILIO_ACCOUNT_SID']
+    p ENV['TWILIO_ACCOUNT_AUTH_TOKEN']
     @client.messages.create({
       :from => twilio_number,
       :to => text_number,
