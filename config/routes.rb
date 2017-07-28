@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  root 'twilio#index'
-  get '/twilio', to: 'twilio#text'
+
+  root 'pages#index'
+
+  get  '/twilio' to: 'twilio#index'
+  get '/twilio/text', to: 'twilio#text'
 
   get '/transactions/new', to: 'transactions#new'
   post '/transactions/new', to: 'transactions#create'
