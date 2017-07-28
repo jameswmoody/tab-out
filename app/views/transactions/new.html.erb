@@ -1,0 +1,32 @@
+<h1>Transaction</h1>
+
+ <%= form_for :transaction do |f| %>
+    <%= f.hidden_field :nonce %><br />
+    <%= f.submit 'Pay Up!' %><br />
+  <% end %>
+
+<div id="dropin-container"></div>
+
+  <button id="submit-button">Request payment method</button>
+
+  <script src="https://js.braintreegateway.com/web/dropin/1.4.0/js/dropin.min.js"></script>
+  <script>
+    var button = document.querySelector("input[type='submit']");
+    var form = document.querySelector('form');
+
+    console.log(button)
+
+    braintree.dropin.create({
+      authorization: '<%= @client_token %>',
+      container: '#dropin-container'
+    }, function (createErr, instance) {
+      button.addEventListener('click', function (event) {
+        event.preventDefault();
+        instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
+          var nonce = form.querySelector('input[name="transaction[nonce]"]')
+          form.querySelector('input[name="transaction[nonce]"]').value = payload.nonce;
+          form.submit();
+        });
+      });
+    });
+  </script>
