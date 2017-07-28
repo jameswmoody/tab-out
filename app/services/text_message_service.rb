@@ -11,6 +11,7 @@ class TextMessageService
 
   def send_text
     client_setup
+
     @client.messages.create({
       :from => twilio_number,
       :to => text_number,
