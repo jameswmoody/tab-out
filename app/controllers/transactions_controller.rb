@@ -3,12 +3,12 @@ class TransactionsController < ApplicationController
   end
 
   def new
-    @customer = Customer.new({username: 'nico', first_name:'nico', last_name: 'glennon', email: 'n@n.com', phone_number: '1234567', :password_digest => '12345', vault_id: '123456'})
+    @customer = Customer.new({username: 'nico', first_name:'nico', last_name: 'glennon', email: 'n@n.com', phone: '1234567', :password_digest => '12345', vault_id: '123456'})
     @client_token = CreditCardService.new({customer: @customer}).generate_token
   end
 
   def create
-    @customer = Customer.new({username: 'nico', first_name:'nico', last_name: 'glennon', email: 'n@n.com', phone_number: '1234567', password_digest: '123456', vault_id: '123456'})
+    @customer = Customer.new({username: 'nico', first_name:'nico', last_name: 'glennon', email: 'n@n.com', phone: '1234567', password_digest: '123456', vault_id: '123456'})
 
     p @customer
 
