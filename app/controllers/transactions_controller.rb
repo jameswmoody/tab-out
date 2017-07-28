@@ -16,6 +16,6 @@ class TransactionsController < ApplicationController
         :submit_for_settlement => true
       }
     )
-    redirect_to 'transactions/new'
+    redirect_to '/transactions/new'
   end
 end
