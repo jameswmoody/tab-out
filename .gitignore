@@ -17,3 +17,9 @@
 /yarn-error.log
 
 .byebug_history
+.env
+.DS_Store
+
+# twilio-password = dbcrockdovestapout
+# twilio-number = +13124719776
+
