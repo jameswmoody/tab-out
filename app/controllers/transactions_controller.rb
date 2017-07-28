@@ -3,7 +3,6 @@ class TransactionsController < ApplicationController
   end
 
   def new
-    p ENV['TWILIO_ACCOUNT_SID']
     @client_token = Braintree::ClientToken.generate()
   end
 
