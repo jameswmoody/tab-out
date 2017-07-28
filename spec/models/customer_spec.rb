@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Customer, type: :model do
   before(:all) do
-    Customer.create(username: 'tomtom', password: 'tomtom', vault_id:'braintreesecret', first_name: 'tom', last_name:'tom', phone_number: '+13128675309', email:'tom@tom.com')
+    Customer.create(username: 'tomtom', password: 'tomtom', vault_id:'braintreesecret', first_name: 'tom', last_name:'tom', phone: '+13128675309', email:'tom@tom.com')
   end
   after(:all) do
     Customer.destroy_all
@@ -21,6 +21,9 @@ RSpec.describe Customer, type: :model do
     end
     it "a last name" do
       expect(valid_customer.last_name).to eq 'tom'
+    end
+    it "a phone number" do
+      expect(valid_customer.phone).to eq '+13128675309'
     end
     it "a password" do
       expect(valid_customer.authenticate('tomtom')).to be_truthy
