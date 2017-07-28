@@ -1,0 +1,12 @@
+<h3>Your open tab:</h3>
+    <p> <%= @bar %></p>
+    <p> Item 1: $0.00</p>
+    <p> Item 2: $0.00</p><br><br>
+
+<h3>Recent Tabs</h3>
+    <p> Dugans............$57.00</p>
+    <p> Not Dugans......$12.00</p>
+
+<%= form_tag('/tab/new', method: 'get') do %>
+  <%= submit_tag("Open Tab") %>
+<% end %>
