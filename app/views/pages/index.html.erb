@@ -1,3 +1,5 @@
 <h1>Landing</h1>
 
-<%= current_user %>
+<% if logged_in? %>
+    <%= current_user %><br>
+<% end %>

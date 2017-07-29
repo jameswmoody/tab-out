@@ -3,13 +3,17 @@ class SessionsController < ApplicationController
   end
 
   def create
+    # Checks if user is Customer or Business
+    @user = Customer.find_by(username: params[:session][:username])
+    if @user.nil?
+      @user = Business.find_by(username: params[:session][:username])
+    end
 
-    @customer = Customer.find_by(username: params[:session][:username])
-    if @customer && @customer.authenticate(params[:session][:password])
-      login @customer
+    if @user && @user.authenticate(params[:session][:password])
+      login @user
       redirect_to root_url
     else
-      @customer = nil
+      @user = nil
       @errors = ['Username and password combination do not match']
       render :new
     end
@@ -17,6 +21,6 @@ class SessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to root_url
+    redirect_to login_path
   end
 end
