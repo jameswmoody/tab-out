@@ -1,4 +1,5 @@
 class Customer < ApplicationRecord
+  has_many :tabs
   has_secure_password
 
   has_many :tabs
