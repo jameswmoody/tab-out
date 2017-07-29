@@ -1,0 +1,13 @@
+<h2>Login</h2>
+
+<%= form_for :session do |f| %>
+  <%= render 'layouts/errors' %>
+
+  <%= f.label :username %><br>
+  <%= f.text_field :username %><br>
+
+  <%= f.label :password %><br>
+  <%= f.text_field :password %><br>
+  <br>
+  <%= f.submit 'Login', :class => 'form_submit_button' %>
+<% end %>

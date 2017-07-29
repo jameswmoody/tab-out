@@ -4,13 +4,14 @@ class CustomersController < ApplicationController
   end
 
   def create
-    p customer_params
     @customer = Customer.new(customer_params)
 
     if @customer.save
-      redirect_to new_card_path
+      login @customer
+      redirect_to cards_new_path
     else
-      p 'error'
+      @errors = @customer.errors.full_messages
+      render :new
     end
   end
 
