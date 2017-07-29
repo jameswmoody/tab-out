@@ -4,7 +4,6 @@ class TabsController < ApplicationController
   end
 
   def create
-    p params
     @business = Business.find_by(username: params[:username])
     if @business
       @tab = Tab.new(business_id: @business.id, customer_id: 1)
