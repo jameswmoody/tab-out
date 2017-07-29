@@ -1,6 +1,10 @@
 <h2>Hi, <%= @customer.username %>!</h2>
-<h3>Your open tab:</h3>
-<%= render @open_tab %>
+<% if @open_tab %>
+  <h3>Your open tab:</h3>
+  <%= render @open_tab %>
+<% else %>
+  <h3>You don't have any open tabs</h3>
+<% end %>
 
 <h3>Recent Tabs</h3>
 <%= render @recent_tabs %>
