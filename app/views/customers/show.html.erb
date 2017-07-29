@@ -1,11 +1,15 @@
 <h3>Your open tab:</h3>
-    <p> <%= @bar %></p>
-    <p> <%= @open_tab %> </p>
+    <h4> <%=  @open_tab.business.dba %></h4>
+      <% @open_tab.items.each do |item| %>
+        <p><%= item.drink_type %>.....<%= item.price_in_dollars %></p>
+      <% end %>
 
 <h3>Recent Tabs</h3>
-    <p> Dugans............$57.00</p>
-    <p> Not Dugans......$12.00</p>
+    <%  @recent_tabs.each do |tab| %>
+        <p><%= tab.business.dba %>.....<%= tab.total_price %></p>
+      <% end %>
 
-<%= form_tag('/tab/new', method: 'get') do %>
+
+<%= form_tag(new_tab_path, method:'get') do %>
   <%= submit_tag("Open Tab") %>
 <% end %>

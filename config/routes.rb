@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   post '/transactions/new', to: 'transactions#create'
 
   resources :customers
+  resources :tabs
 end

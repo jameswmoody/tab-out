@@ -1,0 +1,7 @@
+
+<p>Enter the username for the bar you are in:</p>
+<%= form_tag('/tabs', method:'post') do %>
+  <%= label_tag(:username, 'Bar Name:') %>
+  <%= text_field_tag(:username) %>
+  <%= submit_tag("Open Tab") %>
+<% end %>

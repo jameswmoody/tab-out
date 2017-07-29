@@ -13,6 +13,11 @@
       <a href=''>Login</a>
       <a href=''><%= @user %></a>
     </nav>
+    <% if @errors %>
+      <% @errors.each do |error| %>
+        <p><%= error %></p>
+      <% end %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
