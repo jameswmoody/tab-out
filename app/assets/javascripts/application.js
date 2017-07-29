@@ -11,4 +11,20 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery
+//= require jquery_ujs
 //= require_tree .
+
+$( document ).ready(function() {
+  var subtotalStr = $('#total-price-checkout').text().substring(1);
+  var subtotalInt = parseInt(subtotalStr)
+  $("input[name='tip']").click(function() {
+      var tipPercentageStr = this.value;
+      var tipPercentageInt = parseInt(tipPercentageStr);
+      var tipAmountInt = subtotalInt * tipPercentageInt / 100;
+      var totalInt = subtotalInt + tipAmountInt
+
+      $('#total-price-checkout').text('$'+ totalInt);
+  });
+
+})
