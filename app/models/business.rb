@@ -8,6 +8,6 @@ class Business < ApplicationRecord
     self.doing_business_as
   end
   def search(search_term)
-    self.tabs.select{ |tab| tab.customer.username == search_term}
+    self.tabs.select{ |tab| tab.customer.last_name.downcase == search_term.downcase || tab.customer.username.downcase == search_term.downcase || tab.customer.first_name.downcase == search.downcase }
   end
 end
