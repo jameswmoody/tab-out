@@ -39,6 +39,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails', require: 'dotenv/rails-now'
   gem 'rspec-rails'
+  gem 'rails-controller-testing'
   gem 'awesome_print'
 end
 

@@ -6,7 +6,5 @@ class Tab < ApplicationRecord
 
   def total_price
     cents = self.items.reduce(0) { |total, item| total + item.price }
-    dollars = cents/100
-    "$#{dollars.to_s}"
   end
 end

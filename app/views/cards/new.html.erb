@@ -1,0 +1,28 @@
+<h2>Add a card</h2>
+
+<div id="dropin-container"></div>
+
+<%= form_for :card do |f| %>
+   <%= f.hidden_field :nonce %><br />
+   <%= f.submit 'Add Card' %><br />
+ <% end %>
+
+<script src="https://js.braintreegateway.com/web/dropin/1.4.0/js/dropin.min.js"></script>
+<script>
+  var button = document.querySelector("input[type='submit']");
+  var form = document.querySelector('form');
+
+  braintree.dropin.create({
+    authorization: '<%= @client_token %>',
+    container: '#dropin-container'
+  }, function (createErr, instance) {
+    button.addEventListener('click', function (event) {
+      event.preventDefault();
+      instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
+        var nonce = form.querySelector('input[name="card[nonce]"]')
+        form.querySelector('input[name="card[nonce]"]').value = payload.nonce;
+        form.submit();
+      });
+    });
+  });
+</script>
