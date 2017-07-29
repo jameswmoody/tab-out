@@ -1,5 +1,6 @@
+<<<<<<< HEAD
 <% if session[:user_type] == 'Customer' %>
-  <h1>You're at @<%= @tab.business.username %></h1>
+  <h1>You're at <%= name(@tab.business) %></h1>
 <% elsif session[:user_type] == 'Business' %>
   <h1>This is @<%= @tab.customer.username %>'s tab</h1>
 <% end %>

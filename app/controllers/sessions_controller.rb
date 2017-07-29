@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 
     if @user && @user.authenticate(params[:session][:password])
       login @user
-      redirect_to root_url
+      redirect_to @user
     else
       @user = nil
       @errors = ['Username and password combination do not match']
