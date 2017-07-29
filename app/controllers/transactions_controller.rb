@@ -13,7 +13,7 @@ class TransactionsController < ApplicationController
     payment_params = params[:transaction]
 
     result = CreditCardService.new({customer: @customer}).create_transaction('57.12')
-
+    p result.transaction.customer_details.id
     redirect_to '/transactions/new'
   end
 end
