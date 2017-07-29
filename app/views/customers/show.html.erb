@@ -1,11 +1,9 @@
 <h2>Hi, <%= @customer.username %>!</h2>
 <h3>Your open tab:</h3>
-<h4><a href="/tabs/<%= @open_tab.id %>"><%=  @open_tab.business.dba %></a>  -  <%= @open_tab.total_price %></h4>
+<%= render @open_tab %>
 
 <h3>Recent Tabs</h3>
-<%  @recent_tabs.each do |tab| %>
-    <p> <a href="/tabs/<%= tab.id %>"><%= tab.business.dba %></a>.....<%= tab.total_price %></p>
-<% end %>
+<%= render @recent_tabs %>
 
 <%= form_tag(new_tab_path, method:'get') do %>
   <%= submit_tag("Open Tab") %>
