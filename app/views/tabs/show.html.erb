@@ -6,7 +6,7 @@
 
 <% if session[:user_type] == 'Business' %>
   <%= form_for [@tab, @item] do |f| %>
-  
+
   <%= f.label :drink_type, 'Drink' %> <br>
   <%= f.select(:drink_type) do %>
     <% [['-select-', ''],['Beer', 'Beer'], ['Wine', 'Wine'], ['Cocktail', 'Cocktail'], ['Shot/Liquor', 'Shot/Liquor'],].each do |c| %>
@@ -25,11 +25,16 @@
     <tr>
       <th>Item</th>
       <th>Price</th>
+      <th>Action</th>
     </tr>
     <% @tab.items.each do |item| %>
       <tr>
         <td><%= item.drink_type %></td>
         <td><%= price_in_dollars(item.price) %></td>
+        <td><%= link_to 'Delete',
+             tab_item_path(@tab, item),
+                         method: :delete,
+                         data: { confirm: 'Are you sure you want to delete this drink?' } %> </td>
       </tr>
     <% end %>
     <tr>

@@ -19,6 +19,20 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    @item = Item.find_by_id(params[:id])
+    if @item
+      @tab = @item.tab
+      @item.destroy!
+      redirect_to tab_path(@tab)
+    else
+      @errors = ["This item was deleted already - Please refresh your page to update the tab!"]
+      @tab = Tab.find(params[:tab_id])
+      @item = Item.new
+      render '/tabs/show'
+    end
+  end
+
   private
 
   def convert_to_cents(price_in_dollars)
