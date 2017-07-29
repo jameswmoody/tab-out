@@ -5,6 +5,6 @@ class Tab < ApplicationRecord
   validates :customer_id, :business_id, presence: true
 
   def total_price
-    self.items.reduce(0) { |total, item| total + item.price }
+    cents = self.items.reduce(0) { |total, item| total + item.price }
   end
 end

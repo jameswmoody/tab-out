@@ -1,0 +1,13 @@
+<h2><%= @customer.username %></h2>
+<h3>Your open tab:</h3>
+<h4> <%=  @open_tab.business.dba %></h4>
+
+  <%= render @open_tab.items %>
+
+<h3>Recent Tabs</h3>
+  <%= render @recent_tabs %>
+
+
+<%= form_tag(new_tab_path, method:'get') do %>
+  <%= submit_tag("Open Tab") %>
+<% end %>

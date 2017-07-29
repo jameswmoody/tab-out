@@ -16,4 +16,7 @@ Rails.application.routes.draw do
 
   get '/transactions/new', to: 'transactions#new'
   post '/transactions/new', to: 'transactions#create'
+
+  resources :customers
+  resources :tabs
 end
