@@ -4,6 +4,7 @@ class TabsController < ApplicationController
   end
 
   def create
+    p params
     @business = Business.find_by(username: params[:username])
     if @business
       @tab = Tab.new(business_id: @business.id, customer_id: 1)
@@ -18,4 +19,19 @@ class TabsController < ApplicationController
       render 'new'
     end
   end
+
+  def show
+    @tab = Tab.find(params[:id])
+    render 'show'
+  end
+
+  def checkout
+    @tab = Tab.find(params[:id])
+    p "We made it to checkout"
+    render 'checkout'
+  end
+
+  def close
+  end
+
 end
