@@ -6,7 +6,7 @@ class CustomersController < ApplicationController
   def create
     @customer = Customer.new(customer_params)
 
-    if @customer.save
+    if @customer.save && params[:customer][:password] == params[:customer][:password_confirmation]
       login @customer
       redirect_to cards_new_path
     else
