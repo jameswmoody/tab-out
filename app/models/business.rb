@@ -7,4 +7,7 @@ class Business < ApplicationRecord
   def dba # For ease of access to the business' name
     self.doing_business_as
   end
+  def search(search_term)
+    self.tabs.select{ |tab| tab.customer.username == search_term}
+  end
 end
