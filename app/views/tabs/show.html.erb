@@ -1,4 +1,24 @@
-<h1>You're at <%= name(@tab.business) %></h1>
+<% if session[:user_type] == 'Customer' %>
+  <h1>You're at <%= name(@tab.business) %></h1>
+<% elsif session[:user_type] == 'Business' %>
+  <h1>This is @<%= @tab.customer.username %>'s tab</h1>
+<% end %>
+
+<% if session[:user_type] == 'Business' %>
+  <%= form_for [@tab, @item] do |f| %>
+  
+  <%= f.label :drink_type, 'Drink' %> <br>
+  <%= f.select(:drink_type) do %>
+    <% [['-select-', ''],['Beer', 'Beer'], ['Wine', 'Wine'], ['Cocktail', 'Cocktail'], ['Shot/Liquor', 'Shot/Liquor'],].each do |c| %>
+      <%= content_tag(:option, c.first, value: c.last) %>
+    <% end %>
+  <% end %>
+  <br>
+    <%= f.label 'Price ($)' %> <br>
+    <%= f.text_field :price %><br>
+    <%= f.submit 'Add' %>
+  <% end %>
+<% end %>
 
 <table>
   <tbody>
@@ -19,4 +39,6 @@
   </tbody>
 </table>
 
-<%= button_to "Checkout", checkout_tab_path, method: :get %>
+<% if session[:user_type] == 'Customer' %>
+  <%= button_to "Checkout", checkout_tab_path, method: :get %>
+<% end %>

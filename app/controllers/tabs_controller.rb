@@ -7,7 +7,7 @@ class TabsController < ApplicationController
     p params
     @business = Business.find_by(username: params[:username])
     if @business
-      @tab = Tab.new(business_id: @business.id, customer_id: 1)
+      @tab = Tab.new(business_id: @business.id, customer_id: current_user.id)
       if @tab.save
         redirect_to tab_path(@tab)
       else
@@ -22,6 +22,7 @@ class TabsController < ApplicationController
 
   def show
     @tab = Tab.find(params[:id])
+    @item = Item.new
     render 'show'
   end
 

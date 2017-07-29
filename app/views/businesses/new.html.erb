@@ -1,0 +1,29 @@
+<h2>Sign Up for TabOut! (as a business)</h2>
+
+<%= form_for @business do |f| %>
+  <%= render 'layouts/errors' %>
+
+  <%= f.label :username %><br>
+  <%= f.text_field :username %><br>
+
+  <%= f.label :password %><br>
+  <%= f.password_field :password %><br>
+
+  <%= f.label :password_confirmation, "Confirm Password" %><br>
+  <%= f.password_field :password_confirmation %><br>
+
+  <%= f.label :first_name %><br>
+  <%= f.text_field :first_name %><br>
+
+  <%= f.label :last_name %><br>
+  <%= f.text_field :last_name %><br>
+
+  <%= f.label :phone %><br>
+  <%= f.text_field :phone %><br>
+
+  <%= f.label :email %><br>
+  <%= f.text_field :email %><br>
+  <br>
+  <%= f.submit 'Sign Up'%>
+<% end %>
+<p>Already have an account? <%= link_to "Login", login_path %> </p>
