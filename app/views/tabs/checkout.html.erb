@@ -4,12 +4,12 @@
   <tbody>
     <tr>
       <td>Subtotal</td>
-      <td><%= @tab.total_price %></td>
+      <td><%= price_in_dollars(@tab.total_price) %></td>
     </tr>
 
     <tr>
       <th>Total</th>
-      <th id="total-price-checkout"><%= @tab.total_price %></th>
+      <th id="total-price-checkout"><%= price_in_dollars(@tab.total_price) %></th>
     </tr>
 
   </tbody>

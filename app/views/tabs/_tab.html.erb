@@ -1,1 +1,5 @@
-<p><%= tab.business.dba %>.....<%=price_in_dollars(tab.total_price) %></p>
+<% if @business %>
+<p><%= link_to(tab.customer.first_name, tab_path) %>....<%= price_in_dollars(tab.total_price) %></p>
+<% else %>
+<p><%= link_to(tab.business.dba, tab_path) %>....<%= price_in_dollars(tab.total_price) %></p>
+<% end %>

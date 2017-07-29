@@ -9,12 +9,12 @@
     <% @tab.items.each do |item| %>
       <tr>
         <td><%= item.drink_type %></td>
-        <td><%= item.price_in_dollars %></td>
+        <td><%= price_in_dollars(item.price) %></td>
       </tr>
     <% end %>
     <tr>
       <td>Total</td>
-      <td><%= @tab.total_price %></td>
+      <td><%= price_in_dollars(@tab.total_price) %></td>
     </tr>
   </tbody>
 </table>
