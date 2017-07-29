@@ -10,4 +10,8 @@ Rails.application.routes.draw do
 
   resources :customers
   resources :tabs
+  get '/tabs/:id/checkout', to: 'tabs#checkout', as: 'checkout_tab'
+  post '/tabs/:id/close', to: 'tabs#close', as: 'close_tab'
+
+
 end

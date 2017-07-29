@@ -19,4 +19,19 @@ class TabsController < ApplicationController
       render 'new'
     end
   end
+
+  def show
+    @tab = Tab.find(params[:id])
+    render 'show'
+  end
+
+  def checkout
+    @tab = Tab.find(params[:id])
+    p "We made it to checkout"
+    render 'checkout'
+  end
+
+  def close
+  end
+
 end
