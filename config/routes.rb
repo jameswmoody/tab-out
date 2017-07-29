@@ -19,4 +19,5 @@ Rails.application.routes.draw do
 
   resources :customers
   resources :tabs
+  resources :businesses, only: [:show]
 end
