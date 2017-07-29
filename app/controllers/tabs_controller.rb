@@ -22,6 +22,7 @@ class TabsController < ApplicationController
 
   def show
     @tab = Tab.find(params[:id])
+    @item = Item.new
     render 'show'
   end
 

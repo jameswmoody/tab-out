@@ -18,7 +18,11 @@ Rails.application.routes.draw do
   post '/transactions/new', to: 'transactions#create'
 
   resources :customers
-  resources :tabs
+
+  resources :tabs do
+    resources :items
+  end
+  
   resources :businesses, only: [:show]
 
   get '/tabs/:id/checkout', to: 'tabs#checkout', as: 'checkout_tab'
