@@ -11,8 +11,7 @@ Rails.application.routes.draw do
   get '/cards/new', to: 'cards#new'
   post '/cards/new', to: 'cards#create'
 
-  get  '/twilio', to: 'twilio#index'
-  get '/twilio/text', to: 'twilio#text'
+  post '/twilio', to: 'twilio#text'
 
   get '/transactions/new', to: 'transactions#new'
   post '/transactions/new', to: 'transactions#create'
@@ -22,7 +21,7 @@ Rails.application.routes.draw do
   resources :tabs do
     resources :items
   end
-  
+
   resources :businesses, only: [:show]
 
   get '/tabs/:id/checkout', to: 'tabs#checkout', as: 'checkout_tab'

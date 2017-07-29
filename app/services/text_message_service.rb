@@ -16,7 +16,7 @@ class TextMessageService
       :from => twilio_number,
       :to => text_number,
       :body => text_body,
-      :media_url => 'https://cdn.pixabay.com/photo/2013/07/12/19/19/martini-154548_960_720.png'
+      # :media_url => 'https://cdn.pixabay.com/photo/2013/07/12/19/19/martini-154548_960_720.png'
     })
   end
 
