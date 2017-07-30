@@ -20,8 +20,8 @@ html {
 
 body {
   background-color: #F7F7F7;
-  font-family: 'Poppins', sans-serif;
-  font-weight: lighter;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
   height: 98vh;
 }
 
@@ -86,4 +86,17 @@ body {
 
 .braintree-method__check-container:before {
   background: none;
+}
+
+.row-darker {
+  font-weight: 900;
+  background-color: #eaeaea !important;
+}
+
+.full-width {
+  width: 100%;
+}
+
+#bar-lookup {
+  margin-bottom: 10px;
 }
