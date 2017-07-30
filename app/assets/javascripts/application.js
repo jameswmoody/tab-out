@@ -24,7 +24,10 @@ $( document ).ready(function() {
       var tipAmountInt = subtotalInt * tipPercentageInt / 100;
       var totalInt = subtotalInt + tipAmountInt
 
-      $('#total-price-checkout').text('$'+ totalInt);
+    $('#total-price-checkout').text('$'+ totalInt);
+    $('#open-tab').on('click', function() {
+      navigator.geolocation.getCurrentPosition(storePosition)
+    })
   });
 
 // When app is bookmarked, prevents links from opening new browser on mobile
@@ -36,5 +39,12 @@ $( document ).ready(function() {
     }
   }
 
-
 });
+
+function storePosition(position) {
+    target = {
+      latitude : position.coords.latitude,
+      longitude: position.coords.longitude
+    };
+    console.log(target)
+}
