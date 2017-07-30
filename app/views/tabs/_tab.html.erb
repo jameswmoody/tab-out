@@ -1,5 +1,5 @@
 <% if @business %>
-<p><%= link_to("@#{tab.customer.username}", tab) %>....$<%= price_in_dollars(tab.total_price) %></p>
+<li class="list-group-item justify-content-between"><%= link_to("@#{tab.customer.username}", tab) %><span class="label label-danger">$<%= price_in_dollars(tab.total_price) %></span></li>
 <% else %>
-<p><%= link_to(tab.business.dba, tab) %>....$<%= price_in_dollars(tab.total_price) %></p>
+<li class="list-group-item justify-content-between"><%= link_to(tab.business.dba, tab) %> <span class="badge">$<%= price_in_dollars(tab.total_price) %></span></li>
 <% end %>
