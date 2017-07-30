@@ -52,11 +52,6 @@
   </tbody>
 </table>
 
-<<<<<<< HEAD
-<% if session[:user_type] == 'Customer' %>
-  <%= button_to "Checkout", checkout_tab_path, method: :get, class: "btn btn-primary full-width" %>
-=======
 <% if session[:user_type] == 'Customer' && @tab.transaction_id == nil %>
-  <%= button_to "Checkout", checkout_tab_path, method: :get %>
->>>>>>> master
+  <%= button_to "Checkout", checkout_tab_path, method: :get, class: "btn btn-primary full-width" %>
 <% end %>
