@@ -20,11 +20,13 @@ html {
 
 body {
   background-color: #F7F7F7;
+  height: 98vh;
 }
 
-main {
+
+/*main {
   height: 100vh;
-}
+}*/
 
 .navbar, .navbar-default {
   background-image: none;
