@@ -1,24 +1,19 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid navbar-fill">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="/">TabOut</a>
+      <span class="nav-open" style="font-size:30px;cursor:pointer">&#9776;</span>
+      <a class="brand" href="/">TabOut</a>
     </div>
-    <div class="collapse navbar-collapse" id="navbar-collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to 'My Tabs', root_path %></li>
-        <li><%= link_to 'Settings', '/' %></li>
+    <div id="navbar" class="sidenav">
+      <a href="javascript:void(0)" class="nav-close">&times;</a>
+        <%= link_to 'My Tabs', root_path %>
+        <%= link_to 'Settings', '/' %>
+        <%= link_to 'History', '/' %>
       <% if logged_in? %>
-        <li><%= link_to 'Logout', logout_path %></li>
+        <%= link_to 'Logout', logout_path %>
       <% else %>
-        <li><%= link_to 'Login', login_path %></li>
+        <%= link_to 'Login', login_path %>
       <% end %>
-      </ul>
     </div>
   </div>
 </nav>

@@ -16,6 +16,14 @@
 //= require_tree .
 
 $( document ).ready(function() {
+    $('.nav-open').click(function() {
+      document.getElementById("navbar").style.width = "250px";
+    })
+
+    $('.nav-close').click(function() {
+      document.getElementById("navbar").style.width = "0";
+    })
+
   var subtotalStr = $('#total-price-checkout').text().substring(1);
   var subtotalInt = parseInt(subtotalStr)
   $("input[name='close[tip]']").click(function() {
@@ -35,6 +43,4 @@ $( document ).ready(function() {
         return false
     }
   }
-
-
 });
