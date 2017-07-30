@@ -50,6 +50,10 @@ main {
   text-shadow: none;
 }
 
+.navbar-default .navbar-toggle {
+  border: none;
+}
+
 .navbar-brand {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 2em;
