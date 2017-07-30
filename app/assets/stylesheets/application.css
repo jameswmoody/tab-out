@@ -97,6 +97,14 @@
     font-size: 18px;
   }
 
+  .tabs-list {
+    margin-top: 0px;
+  }
+
+  .center_div {
+    margin: 0 auto;
+  }
+
   @media screen and (max-height: 450px) {
     .sidenav {
       padding-top: 15px;

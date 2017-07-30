@@ -15,8 +15,10 @@ module SessionsHelper
   def current_user
     if session[:user_type] == 'Customer'
       Customer.find(session[:user_id])
-    else
+    elsif session[:user_type] == 'Business'
       Business.find(session[:user_id])
+    else
+      nil
     end
   end
 
