@@ -14,15 +14,31 @@
  *= require_self
  */
 
-html, body {
-  background-color: #F7F7F7;
+html {
+  background-color: #292B2C;
 }
 
-.navbar-default {
+body {
+  background-color: #F7F7F7;
+  height: 98vh;
+}
+
+
+/* Nav Bar */
+
+.navbar, .navbar-default {
   background-image: none;
   background-color: #292B2C;
-  border: none;
-  padding-top: 14px;
+  border: 1px #292B2C solid;
+  margin-top: 14px;
+}
+
+.navbar-default .navbar-collapse {
+  border: 1px #292B2C solid;
+}
+
+.navbar-fill {
+  background-color: #292B2C;
 }
 
 .navbar {
@@ -34,6 +50,10 @@ html, body {
   text-shadow: none;
 }
 
+.navbar-default .navbar-toggle {
+  border: none;
+}
+
 .navbar-brand {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 2em;
@@ -43,13 +63,20 @@ html, body {
   font-family: 'Open Sans', sans-serif;
 }
 
-.navbar-default .navbar-collapse, .navbar-header {
-  border: none;
-}
-
 table, th, td {
   padding: 2px 10px;
   border-collapse: collapse;
   border: 1px solid black;
   margin: 0 auto;
+}
+
+
+/* Braintree Drop-In*/
+
+.braintree-show-methods [data-braintree-id=methods-label] {
+  visibility: hidden;
+}
+
+.braintree-method__check-container:before {
+  background: none;
 }
