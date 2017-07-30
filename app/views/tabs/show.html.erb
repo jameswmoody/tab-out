@@ -25,7 +25,9 @@
     <tr>
       <th>Item</th>
       <th>Price</th>
-      <th>Action</th>
+      <% if session[:user_type] == 'Business' %>
+        <th>Action</th>
+      <% end %>
     </tr>
     <% @tab.items.each do |item| %>
       <tr>
