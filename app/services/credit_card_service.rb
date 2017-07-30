@@ -7,7 +7,8 @@ class CreditCardService
   end
 
   def create_transaction(amount)
-    result = Braintree::Transaction.sale(
+    amount = price_in_dollars(amount)
+    Braintree::Transaction.sale(
       :amount => amount,
       :customer_id => @customer.vault_id,
       :options => {
@@ -25,7 +26,7 @@ class CreditCardService
   end
 
   def create_customer(payment_params)
-    result = Braintree::Customer.create(
+    Braintree::Customer.create(
       :first_name => @customer.first_name,
       :last_name => @customer.last_name,
       :email => @customer.email,
@@ -48,13 +49,24 @@ class CreditCardService
   end
 
   def add_payment_method(nonce)
-    result = Braintree::PaymentMethod.create(
+    Braintree::PaymentMethod.create(
       :customer_id => @customer.vault_id,
       :payment_method_nonce => nonce,
       :options => {
         :verify_card => true
       }
     )
+  end
+
+  private
+
+  def price_in_dollars(price)
+    dollars = price/100
+    cents = price%100
+    if cents < 10
+      cents = "0#{cents}"
+    end
+    "#{dollars}.#{cents}"
   end
 
 end

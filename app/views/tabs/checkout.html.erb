@@ -1,30 +1,32 @@
-<h2>Checkout from <%= @tab.business.username %></h2>
+<h2>Checkout from <%= name(@tab.business) %></h2>
 
 <table>
   <tbody>
     <tr>
       <td>Subtotal</td>
-      <td><%= price_in_dollars(@tab.total_price) %></td>
+      <td>$<%= price_in_dollars(@tab.total_price) %></td>
     </tr>
 
     <tr>
       <th>Total</th>
-      <th id="total-price-checkout"><%= price_in_dollars(@tab.total_price) %></th>
+      <th id="total-price-checkout">$<%= price_in_dollars(@tab.total_price) %></th>
     </tr>
 
   </tbody>
 </table>
 
 <h3>Choose your tip:</h3>
-<form>
-  <input class="checkout-tip-button" type="radio" name="tip" value="10"> 10%
-  <input class="checkout-tip-button" type="radio" name="tip" value="15"> 15%
-  <input class="checkout-tip-button" type="radio" name="tip" value="20"> 20%<br>
-  <input class="checkout-tip-button" type="submit" value="Tab Out">
-</form>
-
-<p> * this is where Braintree dropin will go* </p>
-<div id="dropin-container"></div>
+<%= form_for :close, url: close_tab_path do |f| %>
+  <%= f.hidden_field :nonce %>
+  <%= f.radio_button :tip, '10', checked: true %>
+  <%= label :close_tip, '10', '10%' %>
+  <%= f.radio_button :tip, '15' %>
+  <%= label :close_tip, '15', '15%' %>
+  <%= f.radio_button :tip, '20' %>
+  <%= label :close_tip, '20', '20%' %>
+  <div id="dropin-container"></div>
+  <%= f.submit 'Tab Out' %>
+<% end %>
 
 <script src="https://js.braintreegateway.com/web/dropin/1.4.0/js/dropin.min.js"></script>
 <script>
@@ -40,8 +42,8 @@
     button.addEventListener('click', function (event) {
       event.preventDefault();
       instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
-        var nonce = form.querySelector('input[name="transaction[nonce]"]')
-        form.querySelector('input[name="transaction[nonce]"]').value = payload.nonce;
+        var nonce = form.querySelector('input[name="close[nonce]"]')
+        form.querySelector('input[name="close[nonce]"]').value = payload.nonce;
         form.submit();
       });
     });
