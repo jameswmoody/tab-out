@@ -15,14 +15,13 @@
  */
 
   html {
-    background-color: #292B2C;
+    background-color: #F7F7F7;
   }
 
   body {
     background-color: #F7F7F7;
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
-    height: 98vh;
   }
   /* Nav Bar */
 
