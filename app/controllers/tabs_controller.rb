@@ -40,7 +40,6 @@ class TabsController < ApplicationController
     @tab.transaction_id = result.transaction.id
     @tab.save
     redirect_to @tab.customer
-    p 'hey'
   end
 
 end
