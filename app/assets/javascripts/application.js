@@ -66,7 +66,8 @@ function success(pos) {
   // crd.longitude = crd.longitude.toFixed(4);
 
   if (target.latitude.toFixed(3) != crd.latitude.toFixed(3) || target.longitude.toFixed(3) != crd.longitude.toFixed(3)) {
-    alert('You left the location');
+    $.post('/twilio')
+
     navigator.geolocation.clearWatch(id);
   }
 }
