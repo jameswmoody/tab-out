@@ -5,6 +5,6 @@ module TabsHelper
     if cents < 10
       cents = "0#{cents}"
     end
-    "$#{dollars}.#{cents}"
+    "#{dollars}.#{cents}"
   end
 end

@@ -18,7 +18,7 @@
 $( document ).ready(function() {
   var subtotalStr = $('#total-price-checkout').text().substring(1);
   var subtotalInt = parseInt(subtotalStr)
-  $("input[name='tip']").click(function() {
+  $("input[name='close[tip]']").click(function() {
       var tipPercentageStr = this.value;
       var tipPercentageInt = parseInt(tipPercentageStr);
       var tipAmountInt = subtotalInt * tipPercentageInt / 100;

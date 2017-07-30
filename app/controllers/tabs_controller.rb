@@ -4,7 +4,6 @@ class TabsController < ApplicationController
   end
 
   def create
-    p params
     @business = Business.find_by(username: params[:username])
     if @business
       @tab = Tab.new(business_id: @business.id, customer_id: current_user.id)
@@ -28,11 +27,17 @@ class TabsController < ApplicationController
 
   def checkout
     @tab = Tab.find(params[:id])
-    p "We made it to checkout"
+    @client_token = CreditCardService.new(customer: @tab.customer).generate_token(vault_id: @tab.customer.vault_id)
     render 'checkout'
   end
 
   def close
+    @tab = Tab.find(params[:id])
+    sub_total = @tab.total_price
+    tip_percentage = params[:close][:tip].to_i
+    total = sub_total * tip_percentage / 100 + sub_total
+    result = CreditCardService.new(customer: @tab.customer).create_transaction(total)
+    redirect_to @tab.customer
   end
 
 end
