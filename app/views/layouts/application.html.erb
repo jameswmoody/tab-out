@@ -3,29 +3,26 @@
   <head>
     <title>TabOut</title>
     <%= csrf_meta_tags %>
-
+    <!-- Adds proper mobile rendering and prevents page zoom -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <!-- When bookmarked, removes browser frame -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro:900" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-
   </head>
-
   <body>
-    <nav>
-      <ul>
-        <li><%= link_to 'Home', root_path %></li>
-        <% if logged_in? %>
-        <li><%= link_to 'Logout', logout_path %></li>
-        <% else %>
-        <li><%= link_to 'Login', login_path %></li>
-        <% end %>
-      </ul>
-      <% if logged_in? %>
-      <h1><%= name(current_user) %></h1>
-      <% else %>
-      <h1>TabOut</h1>
-      <% end %>
-    </nav>
-    <%= render 'layouts/errors' %>
-    <%= yield %>
+    <main class="container-wide">
+
+      <header>
+        <%= render 'layouts/nav' %>
+      </header>
+
+      <section class="container content text-center">
+        <%= render 'layouts/errors' %>
+        <%= yield %>
+      </section>
+
+    </main>
   </body>
 </html>
