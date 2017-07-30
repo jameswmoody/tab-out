@@ -38,7 +38,6 @@ class TabsController < ApplicationController
     total = sub_total * tip_percentage / 100 + sub_total
     result = CreditCardService.new(customer: @tab.customer).create_transaction(total)
     redirect_to @tab.customer
-    p 'hey'
   end
 
 end
