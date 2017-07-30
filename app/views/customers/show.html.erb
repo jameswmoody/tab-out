@@ -1,7 +1,7 @@
 <h2>Hi, <%= @customer.username %>!</h2>
-<% if @open_tab %>
+<% if @open_tabs %>
   <h3>Your open tab:</h3>
-  <%= render @open_tab %>
+  <%= render @open_tabs %>
 <% else %>
   <h3>You don't have any open tabs</h3>
 <% end %>
