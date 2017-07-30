@@ -50,6 +50,6 @@
   </tbody>
 </table>
 
-<% if session[:user_type] == 'Customer' %>
+<% if session[:user_type] == 'Customer' && @tab.transaction_id == nil %>
   <%= button_to "Checkout", checkout_tab_path, method: :get %>
 <% end %>
