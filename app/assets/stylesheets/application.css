@@ -14,11 +14,8 @@
  *= require_self
  */
 
-  html {
-    background-color: #F7F7F7;
-  }
-
   body {
+    min-height: 97vh;
     background-color: #F7F7F7;
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
@@ -26,10 +23,8 @@
   /* Nav Bar */
 
   .navbar, .navbar-default {
-    background-image: none;
-    background-color: #292B2C;
     border: 1px #292B2C solid;
-    margin-top: 14px;
+    border-top: 14px #292B2C solid;
   }
 
   .navbar-default .navbar-collapse {
