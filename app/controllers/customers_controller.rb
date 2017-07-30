@@ -3,8 +3,7 @@ class CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
     @recent_tabs = @customer.tabs.order("updated_at DESC").limit(3)
-    @open_tabs = @customer.tabs.where(transaction_id: nil)
-    p @open_tabs
+    @open_tab = @customer.tabs.last
   end
 
   def new
