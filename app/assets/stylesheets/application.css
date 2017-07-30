@@ -14,15 +14,31 @@
  *= require_self
  */
 
-html, body {
+html {
+  background-color: #292B2C;
+}
+
+body {
   background-color: #F7F7F7;
 }
 
-.navbar-default {
+main {
+  height: 100vh;
+}
+
+.navbar, .navbar-default {
   background-image: none;
   background-color: #292B2C;
-  border: none;
-  padding-top: 14px;
+  border: 1px #292B2C solid;
+  margin-top: 14px;
+}
+
+.navbar-default .navbar-collapse {
+  border: 1px #292B2C solid;
+}
+
+.navbar-fill {
+  background-color: #292B2C;
 }
 
 .navbar {
@@ -41,10 +57,6 @@ html, body {
 
 .navbar-default .navbar-nav>li>a {
   font-family: 'Open Sans', sans-serif;
-}
-
-.navbar-default .navbar-collapse, .navbar-header {
-  border: none;
 }
 
 table, th, td {
