@@ -24,9 +24,7 @@ body {
 }
 
 
-/*main {
-  height: 100vh;
-}*/
+/* Nav Bar */
 
 .navbar, .navbar-default {
   background-image: none;
@@ -70,4 +68,15 @@ table, th, td {
   border-collapse: collapse;
   border: 1px solid black;
   margin: 0 auto;
+}
+
+
+/* Braintree Drop-In*/
+
+.braintree-show-methods [data-braintree-id=methods-label] {
+  visibility: hidden;
+}
+
+.braintree-method__check-container:before {
+  background: none;
 }
