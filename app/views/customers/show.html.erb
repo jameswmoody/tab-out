@@ -1,15 +1,17 @@
 <h2>Hi, <%= @customer.first_name %>!</h2>
-<% if @open_tabs %>
+<% if @open_tabs.any? %>
   <h3>Your open tab:</h3>
   <%= render @open_tabs %>
 <% else %>
-  <h3>You don't have any open tabs</h3>
+  <h4>You have no open tabs.</h4>
 <% end %>
 
-<h3>Recent Tabs</h3>
-<ul class="list-group">
-  <%= render @recent_tabs %>
-</ul>
+<% if @recent_tabs.any? %>
+  <h3>Recent Tabs</h3>
+  <ul class="list-group">
+    <%= render @recent_tabs %>
+  </ul>
+<% end %>
 
 <%= form_tag(new_tab_path, method:'get') do %>
   <%= submit_tag("Open Tab", class: 'btn btn-primary full-width')%>
