@@ -10,11 +10,6 @@ class ItemsController < ApplicationController
     @item = Item.new(price: price, drink_type: drink_type)
     @tab = Tab.find(params[:tab_id])
 
-    p @tab.total_price
-    p @tab.limit
-    p @tab.total_price >= @tab.limit
-    p "%%%%%%%%%%%%%%%%%%%%"
-
     if @tab.total_price >= @tab.limit
       @already_past_limit = true
     else
