@@ -63,6 +63,7 @@ $( document ).ready(function() {
 });
 
 function storePosition(position) {
+  p position
     target = {
       latitude : position.coords.latitude,
       longitude: position.coords.longitude
@@ -76,7 +77,7 @@ function success(pos) {
 
   if (target.latitude.toFixed(3) != crd.latitude.toFixed(3) || target.longitude.toFixed(3) != crd.longitude.toFixed(3)) {
       alert('you arrived')
-    $.post('/twilio')
+    // $.post('/twilio')
 
     navigator.geolocation.clearWatch(id);
   }
