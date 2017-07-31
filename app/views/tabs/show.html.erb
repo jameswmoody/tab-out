@@ -16,6 +16,7 @@
   <p class="tab-timestamp">Closed <%= time_ago_in_words(@tab.updated_at) %> ago</p>
 <% end %>
 
+<hr>
 <% if session[:user_type] == 'Business' && @tab.is_open? %>
   <%= form_for [@tab, @item], class: "form-inline" do |f| %>
 
