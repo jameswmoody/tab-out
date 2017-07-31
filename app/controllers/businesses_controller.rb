@@ -5,7 +5,7 @@ class BusinessesController < ApplicationController
     if params[:search]
       @tabs = @business.search(params[:search])
     else
-      @tabs = @business.tabs
+      @tabs = @business.open_tabs
     end
   end
 end
