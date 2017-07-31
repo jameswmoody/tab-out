@@ -26,6 +26,7 @@
   .navbar, .navbar-default {
     border: 1px #292B2C solid;
     border-top: 14px #292B2C solid;
+    position: fixed;
   }
 
   .navbar-default .navbar-collapse {
@@ -76,7 +77,7 @@
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 1000;
     top: 0;
     left: 0;
     background-color: #292B2C;
@@ -97,6 +98,11 @@
     color: #fff;
     font-size: 18px;
   }
+
+  .content {
+    padding-top: 70px;
+  }
+
 
   .tabs-list {
     margin-top: 0px;
