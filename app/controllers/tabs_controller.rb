@@ -1,4 +1,11 @@
 class TabsController < ApplicationController
+  def index
+    if session[:user_type] == 'Business'
+      @business = current_user
+    end
+    @tabs = current_user.closed_tabs
+  end
+
   def new
     @tab = Tab.new
   end
