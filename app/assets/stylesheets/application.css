@@ -225,3 +225,16 @@
   h1.business-title {
     margin: 3px;
   }
+
+  div.fix-width {
+    max-width: 400px;
+    margin: auto;
+  }
+
+  @media only screen and (max-width: 767px) {
+    /* For mobile phones: */
+    div.fix-width {
+      max-width: none;
+    }
+  }
+}

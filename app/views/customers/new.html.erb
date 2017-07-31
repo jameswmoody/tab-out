@@ -1,8 +1,8 @@
-<h2>Sign Up for TabOut!</h2>
 
-<hr>
-
-<%= form_for @customer do |f| %>
+<div class="fix-width">
+  <h2>Sign Up for TabOut!</h2>
+  <hr>
+  <%= form_for @customer do |f| %>
   <%= render 'layouts/errors' %>
 
   <%= f.label :username %><br>
@@ -29,5 +29,7 @@
   <%= f.text_field :email, class: "full-width form-control" %>
   <br>
   <%= f.submit 'Sign Up', class: "form_submit_button btn btn-success full-width"%>
-<% end %>
-<p>Already have an account? <%= link_to "Log in.", login_path %> </p>
+  <% end %>
+  <p>Already have an account? <%= link_to "Log in.", login_path %> </p>
+
+</div>
