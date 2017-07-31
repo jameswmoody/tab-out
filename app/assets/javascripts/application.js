@@ -37,7 +37,14 @@ $( document ).ready(function() {
 
     $('#total-price-checkout').text('$'+ totalInt);
 
-  });
+
+  })
+    $('#open-tab').on('click', function() {
+      navigator.geolocation.getCurrentPosition(storePosition)
+      id = navigator.geolocation.watchPosition(success, error, options);
+});
+
+
 
   // Floating Geo Stuff
   $('#open-tab').on('click', function() {
@@ -60,7 +67,6 @@ function storePosition(position) {
       latitude : position.coords.latitude,
       longitude: position.coords.longitude
     };
-    console.log(target)
 }
 
 function success(pos) {
@@ -68,7 +74,7 @@ function success(pos) {
   // crd.latitude = crd.latitude.toFixed(4);
   // crd.longitude = crd.longitude.toFixed(4);
 
-  if (target.latitude.toFixed(3) == crd.latitude.toFixed(3) && target.longitude.toFixed(3) == crd.longitude.toFixed(3)) {
+  if (target.latitude.toFixed(3) != crd.latitude.toFixed(3) || target.longitude.toFixed(3) != crd.longitude.toFixed(3)) {
       alert('you arrived')
     $.post('/twilio')
 
