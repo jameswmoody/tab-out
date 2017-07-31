@@ -1,5 +1,5 @@
 <% if @business %>
-<li class="list-group-item justify-content-between"><%= link_to("@#{tab.customer.username}", tab) %>              <span class="label label-danger">$<%= price_in_dollars(tab.total_price + tab.tip) %></span></li>
+<li class="list-group-item justify-content-between"><%= link_to("@#{tab.customer.username}", tab, class: "tab-title") %><br><span class="faded"> <%= if tab.is_open? then "Opened " + time_ago_in_words(tab.created_at) + " ago" else "Closed " + time_ago_in_words(tab.updated_at) + " ago" end %></span><span class="badge <%= "open-tab" if tab.is_open? %>">$<%= price_in_dollars(tab.total_price + @tab.tip) %></span></li>
 <% else %>
-<li class="list-group-item justify-content-between"><%= link_to(tab.business.dba, tab) %>              <span class="badge">$<%= price_in_dollars(tab.total_price + tab.tip) %></span></li>
+<li class="list-group-item justify-content-between"><%= link_to(tab.business.dba, tab, class: "tab-title") %>  <br><span class="faded"> <%= if tab.is_open? then "Opened " + time_ago_in_words(tab.created_at) + " ago" else "Closed " + time_ago_in_words(tab.updated_at) + " ago" end %></span> <span class="badge <%= "open-tab" if tab.is_open? %>">$<%= price_in_dollars(tab.total_price + @tab.tip) %></span></li>
 <% end %>

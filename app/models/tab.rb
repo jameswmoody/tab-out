@@ -7,4 +7,8 @@ class Tab < ApplicationRecord
   def total_price
     sub = self.items.reduce(0) { |total, item| total + item.price }
   end
+
+  def is_open?
+    self.transaction_id == nil
+  end
 end
