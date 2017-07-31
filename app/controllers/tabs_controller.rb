@@ -40,7 +40,6 @@ class TabsController < ApplicationController
     @tab.transaction_id = result.transaction.id
     @tab.tip = sub_total * tip_percentage / 100
     @tab.save
-    p @tab.tip
     redirect_to @tab.customer
   end
 
