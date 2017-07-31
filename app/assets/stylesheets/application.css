@@ -98,6 +98,16 @@
     font-size: 18px;
   }
 
+  .tabs-list {
+    margin-top: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
+  }
+
+  .center_div {
+    margin: 0 auto;
+  }
+
   @media screen and (max-height: 450px) {
     .sidenav {
       padding-top: 15px;
@@ -210,4 +220,8 @@
     border-radius: 0px;
     font-size: 1.4em;
     background-color: lightgray;
+  }
+
+  h1.business-title {
+    margin: 3px;
   }

@@ -1,3 +1,7 @@
+
+<h1 class="business-title"><%= name(current_user) %></h1>
+
+<hr>
 <form action='' role="search" id="customer-lookup">
   <div class="input-group">
     <input type='search' class="form-control" name='search' placeholder='username, first name, or last name'>
@@ -12,10 +16,11 @@
 </div>
 
 <% if params[:search] %>
-  <p><%= link_to 'Show all tabs', @business %></p>
+  <li class="list-group-item justify-content-between"><%= link_to 'Show all tabs', @business %></li>
 <% end %>
 <% if params[:search] && @tabs.empty? %>
-    <p>No open tabs under <%= params[:search] %>.</p>
+  <li class="list-group-item justify-content-between">No open tabs under '<%= params[:search] %>'.</li>
 <% else %>
   <%= render @tabs %>
 <% end %>
+</ul>
