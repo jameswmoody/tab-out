@@ -67,7 +67,7 @@
         <td>$<%= price_in_dollars(@tab.total_price) %></td
         >
       </tr>
-      
+
       <% if !@tab.is_open? %>
       <tr>
         <td>-</td>
@@ -86,7 +86,7 @@
     </tbody>
   </table>
 <% else %>
-  <li id='no-items-error' class='btn btn-default full-width'>You haven't ordered anything yet.</li>
+  <li id='no-items-error' class='btn btn-default full-width'>No items have been ordered.</li>
 <% end %>
 
 <% if session[:user_type] == 'Customer'%>
