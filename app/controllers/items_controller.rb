@@ -7,11 +7,31 @@ class ItemsController < ApplicationController
   def create
     price = convert_to_cents(item_params[:price])
     drink_type = item_params[:drink_type]
-
     @item = Item.new(price: price, drink_type: drink_type)
-    @item.tab = Tab.find(params[:tab_id])
-    p @item
+    @tab = Tab.find(params[:tab_id])
+
+    if @tab.total_price >= @tab.limit
+      @already_past_limit = true
+    else
+      @already_past_limit = false
+    end
+
+    @item.tab = @tab
+
     if @item.save
+      # send twilio text if you hit your limits
+      if @item.tab.limit <= 10
+        if @item.tab.limit == @item.tab.items.length && @item.tab.limit != 0
+          TextMessageService.new({text_number: current_user.phone, text_body: 'Friendly reminder from TabOut - you are past your amount limit!'}).send_text
+        end
+      else
+        if Tab.find(params[:tab_id]).total_price >= @item.tab.limit && !@already_past_limit
+          p @item.tab.limit
+          TextMessageService.new({text_number: current_user.phone , text_body: 'Friendly reminder - you are past your cost limit!'}).send_text
+        end
+      end
+      p @already_past_limit
+
       redirect_to tab_path(@item.tab)
     else
       @errors = @item.errors.full_messages

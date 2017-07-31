@@ -247,3 +247,11 @@
 #no-items-error {
   margin-bottom: 10px
 }
+
+select.limit-dropdown {
+  margin-bottom: 20px;
+}
+
+li.limit-tabs {
+  padding: 0px;
+}
