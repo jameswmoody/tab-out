@@ -36,18 +36,7 @@ $( document ).ready(function() {
       $(this).siblings().removeClass('active')
       $(this).addClass('active')
     $('#total-price-checkout').text('$'+ totalInt.toFixed(2));
-
-
   })
-    $('#open-tab').on('click', function() {
-      event.preventDefault()
-      navigator.geolocation.getCurrentPosition(storePosition)
-      id = navigator.geolocation.watchPosition(success, error, options);
-});
-
-
-
-  // Floating Geo Stuff
 
 // When app is bookmarked, prevents links from opening new browser on mobile
   var a=document.getElementsByTagName("a");
@@ -57,6 +46,13 @@ $( document ).ready(function() {
         return false
     }
   }
+
+//geolocation
+  $('#open-tab').on('click', function() {
+    event.preventDefault()
+    navigator.geolocation.getCurrentPosition(storePosition)
+    id = navigator.geolocation.watchPosition(success, error, options);
+  });
 });
 
 function storePosition(position) {
@@ -64,19 +60,15 @@ function storePosition(position) {
       latitude: position.coords.latitude,
       longitude: position.coords.longitude
     };
-    console.log(target)
 }
 
 function success(pos) {
   var crd = pos.coords;
-  // crd.latitude = crd.latitude.toFixed(4);
-  // crd.longitude = crd.longitude.toFixed(4);
 
-  if (target.latitude.toFixed(3) != crd.latitude.toFixed(3) || target.longitude.toFixed(3) != crd.longitude.toFixed(3)) {
+  if (target.latitude != crd.latitude || target.longitude != crd.longitude) {
 
-      alert('you moved')
     // $.post('/twilio')
-
+    alert("It looks like you left the bar. Don't forget to tab out")
     navigator.geolocation.clearWatch(id);
   }
 };
