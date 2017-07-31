@@ -231,3 +231,7 @@
   h1.business-title {
     margin: 3px;
   }
+
+#no-items-error {
+  margin-bottom: 10px
+}
