@@ -51,7 +51,7 @@
         <td>$<%= price_in_dollars(item.price) %></td>
 
         <% if session[:user_type] == 'Business' && @tab.is_open? %>
-          <td><%= button_to 'Delete',
+          <td><%= link_to 'Delete',
                tab_item_path(@tab, item),
                            method: :delete,
                            data: { confirm: 'Are you sure you want to delete this drink?' },
