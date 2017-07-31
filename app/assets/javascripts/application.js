@@ -27,22 +27,15 @@ $( document ).ready(function() {
 
 
   var subtotalStr = $('#total-price-checkout').text().substring(1);
-  var subtotalInt = parseInt(subtotalStr)
+  var subtotalInt = parseInt(subtotalStr);
   $("label.label-click").click(function() {
-      console.log(this);
       var tipPercentageStr = $(this).text();
       var tipPercentageInt = parseInt(tipPercentageStr);
       var tipAmountInt = subtotalInt * tipPercentageInt / 100;
-      var totalInt = subtotalInt + tipAmountInt
-
-    $('#total-price-checkout').text('$'+ totalInt);
-
-  });
-
-  // Floating Geo Stuff
-  $('#open-tab').on('click', function() {
-    navigator.geolocation.getCurrentPosition(storePosition)
-    id = navigator.geolocation.watchPosition(success, error, options);
+      var totalInt = subtotalInt + tipAmountInt;
+      $(this).siblings().removeClass('active')
+      $(this).addClass('active')
+    $('#total-price-checkout').text('$'+ totalInt.toFixed(2));
   })
 
 // When app is bookmarked, prevents links from opening new browser on mobile
@@ -53,28 +46,32 @@ $( document ).ready(function() {
         return false
     }
   }
+
+//geolocation
+  $('#open-tab').on('click', function() {
+    event.preventDefault()
+    navigator.geolocation.getCurrentPosition(storePosition)
+    id = navigator.geolocation.watchPosition(success, error, options);
+  });
 });
 
 function storePosition(position) {
     target = {
-      latitude : position.coords.latitude,
+      latitude: position.coords.latitude,
       longitude: position.coords.longitude
     };
-    console.log(target)
 }
 
 function success(pos) {
   var crd = pos.coords;
-  // crd.latitude = crd.latitude.toFixed(4);
-  // crd.longitude = crd.longitude.toFixed(4);
 
-  if (target.latitude.toFixed(3) == crd.latitude.toFixed(3) && target.longitude.toFixed(3) == crd.longitude.toFixed(3)) {
-      alert('you arrived')
-    $.post('/twilio')
+  if (target.latitude != crd.latitude || target.longitude != crd.longitude) {
 
+    // $.post('/twilio')
+    alert("It looks like you left the bar. Don't forget to tab out")
     navigator.geolocation.clearWatch(id);
   }
-}
+};
 
 function error(err) {
   console.warn('ERROR(' + err.code + '): ' + err.message);
