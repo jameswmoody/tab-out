@@ -1,3 +1,5 @@
+<%= link_to '', root_path, class: "glyphicon glyphicon-triangle-left" %>
+
 <% if session[:user_type] == 'Customer' %>
   <% if @tab.is_open? %>
     <div class="alert alert-info alert-dismissible" role="alert">
