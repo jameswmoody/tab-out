@@ -64,9 +64,10 @@ $( document ).ready(function() {
 
 function storePosition(position) {
     target = {
-      latitude : position.coords.latitude,
+      latitude: position.coords.latitude,
       longitude: position.coords.longitude
     };
+    alert(target.coords.latitude)
 }
 
 function success(pos) {
