@@ -41,13 +41,21 @@ class TabsController < ApplicationController
     @tab.transaction_id = result.transaction.id
     @tab.tip = sub_total * tip_percentage / 100
     if @tab.save
-      @transaction = true
-      @recent_tabs = @customer.tabs.order("updated_at DESC").limit(3)
-      @open_tabs = @customer.tabs.where(transaction_id: nil)
-      render '/customers/show'
+      if session[:user_type] == 'Customer'
+        @transaction = true
+        @recent_tabs = @customer.tabs.order("updated_at DESC").limit(3)
+        @open_tabs = @customer.tabs.where(transaction_id: nil)
+        render '/customers/show'
+      else
+        redirect_to @tab.business
+      end
     else
-      @transaction = false
-      render 'show'
+      if session[:user_type] == 'Customer'
+        @transaction = false
+        render 'show'
+      else
+        redirect_to @tab.business
+      end
     end
   end
 
