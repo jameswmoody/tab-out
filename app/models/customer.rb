@@ -7,7 +7,7 @@ class Customer < ApplicationRecord
   validates :username, :phone, :email, uniqueness: true
 
   def open_tabs
-    self.tabs.select{ |tab| tab.is_open? }
+    self.tabs.order("updated_at DESC").select{ |tab| tab.is_open? }
   end
 
   def closed_tabs
