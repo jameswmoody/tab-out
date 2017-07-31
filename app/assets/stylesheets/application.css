@@ -123,3 +123,12 @@ p.tab-timestamp {
 .tab-title {
   font-size: 1.3em;
 }
+
+#new_item {
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+.submit-new-drink {
+  margin: 10px 0px;
+}

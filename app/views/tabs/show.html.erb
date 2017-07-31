@@ -16,18 +16,18 @@
   <p class="tab-timestamp">Closed <%= time_ago_in_words(@tab.updated_at) %> ago</p>
 <% end %>
 
-<% if session[:user_type] == 'Business' %>
-  <%= form_for [@tab, @item] do |f| %>
+<% if session[:user_type] == 'Business' && @tab.is_open? %>
+  <%= form_for [@tab, @item], class: "form-inline" do |f| %>
 
   <%= f.label :drink_type, 'Drink' %>
-  <%= f.select(:drink_type) do %>
+  <%= f.select(:drink_type, {}, {}, class: "form-control") do %>
     <% [['-select-', ''],['Beer', 'Beer'], ['Wine', 'Wine'], ['Cocktail', 'Cocktail'], ['Shot/Liquor', 'Shot/Liquor'],].each do |c| %>
       <%= content_tag(:option, c.first, value: c.last) %>
     <% end %>
   <% end %>
     <%= f.label 'Price ($)' %>
-    <%= f.text_field :price %>
-    <%= f.submit 'Add', class: "btn btn-primary" %>
+    <%= f.text_field :price, class: "form-control" %>
+    <%= f.submit 'Add', class: "btn btn-primary submit-new-drink" %>
   <% end %>
 <% end %>
 
@@ -36,7 +36,7 @@
     <tr class='row-darker'>
       <th>Item</th>
       <th>Price</th>
-      <% if session[:user_type] == 'Business' %>
+      <% if session[:user_type] == 'Business' && @tab.is_open? %>
         <th>Action</th>
       <% end %>
     </tr>
@@ -47,7 +47,7 @@
         <td><%= item.drink_type %></td>
         <td>$<%= price_in_dollars(item.price) %></td>
 
-        <% if session[:user_type] == 'Business' %>
+        <% if session[:user_type] == 'Business' && @tab.is_open? %>
           <td><%= link_to 'Delete',
                tab_item_path(@tab, item),
                            method: :delete,
@@ -59,7 +59,7 @@
     <tr class='row-darker'>
       <td>Total</td>
       <td>$<%= price_in_dollars(@tab.total_price) %></td>
-      <% if session[:user_type] == 'Business' %>
+      <% if session[:user_type] == 'Business' && @tab.is_open? %>
         <td> </td>
       <% end %>
     </tr>
