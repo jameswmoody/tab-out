@@ -15,4 +15,8 @@ class Business < ApplicationRecord
   def open_tabs
     self.tabs.select{ |tab| tab.is_open? }
   end
+
+  def closed_tabs
+    self.tabs.order("updated_at DESC").select{ |tab| !tab.is_open? }
+  end
 end

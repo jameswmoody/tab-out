@@ -1,4 +1,6 @@
 class TabsController < ApplicationController
+
+
   def new
     @tab = Tab.new
   end
