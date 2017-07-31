@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
           TextMessageService.new({text_number: @tab.customer.phone, text_body: 'Friendly reminder from TabOut - you are past your amount limit!'}).send_text
         end
       else
-        if Tab.find(params[:tab_id]).total_price >= @item.tab.limit && !@already_past_limit
+        if Tab.find(params[:tab_id]).total_price >= @item.tab.limit && !@already_past_limit && @item.tab.limit != 0
           TextMessageService.new({text_number: @tab.customer.phone, text_body: 'Friendly reminder - you are past your cost limit!'}).send_text
         end
       end

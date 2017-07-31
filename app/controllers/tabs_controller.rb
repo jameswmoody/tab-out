@@ -15,6 +15,8 @@ class TabsController < ApplicationController
       limit = params[:limit_amount]
     elsif params[:limit_cost] != ''
       limit = params[:limit_cost]
+    else
+      limit = 0
     end
 
     @business = Business.find_by(username: params[:username])
