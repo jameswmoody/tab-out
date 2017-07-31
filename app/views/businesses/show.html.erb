@@ -1,14 +1,26 @@
-<form action='' role="search" class="navbar-form navbar-left">
-  <div class="form-group">
-    <input type='search' class="form-control" name='search' placeholder='@username'>
+
+<h1 class="business-title"><%= name(current_user) %></h1>
+
+<hr>
+<form action='' role="search" id="customer-lookup">
+  <div class="input-group">
+    <input type='search' class="form-control" name='search' placeholder='username, first name, or last name'>
+    <span class="input-group-btn">
+      <input type='submit' value='Search' class="btn btn-info">
+    </span>
   </div>
-  <input type='submit' value='Search' class="btn btn-default">
 </form>
+<div class="alert alert-info alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  Look up customers by their <strong>@username</strong>, <strong>first name</strong>, or <strong>last name</strong>.
+</div>
+
 <% if params[:search] %>
-  <p><%= link_to 'Show all tabs', @business %></p>
+  <li class="list-group-item justify-content-between"><%= link_to 'Show all tabs', @business %></li>
 <% end %>
 <% if params[:search] && @tabs.empty? %>
-  <p>No open tabs under <%= params[:search] %></p>
+  <li class="list-group-item justify-content-between">No open tabs under '<%= params[:search] %>'.</li>
 <% else %>
   <%= render @tabs %>
 <% end %>
+</ul>

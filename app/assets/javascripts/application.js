@@ -28,8 +28,9 @@ $( document ).ready(function() {
 
   var subtotalStr = $('#total-price-checkout').text().substring(1);
   var subtotalInt = parseInt(subtotalStr)
-  $("input[name='close[tip]']").click(function() {
-      var tipPercentageStr = this.value;
+  $("label.label-click").click(function() {
+      console.log(this);
+      var tipPercentageStr = $(this).text();
       var tipPercentageInt = parseInt(tipPercentageStr);
       var tipAmountInt = subtotalInt * tipPercentageInt / 100;
       var totalInt = subtotalInt + tipAmountInt
@@ -42,6 +43,14 @@ $( document ).ready(function() {
       navigator.geolocation.getCurrentPosition(storePosition)
       id = navigator.geolocation.watchPosition(success, error, options);
 });
+
+
+
+  // Floating Geo Stuff
+  $('#open-tab').on('click', function() {
+    navigator.geolocation.getCurrentPosition(storePosition)
+    id = navigator.geolocation.watchPosition(success, error, options);
+  })
 
 // When app is bookmarked, prevents links from opening new browser on mobile
   var a=document.getElementsByTagName("a");
@@ -67,7 +76,8 @@ function success(pos) {
   // crd.latitude = crd.latitude.toFixed(4);
   // crd.longitude = crd.longitude.toFixed(4);
 
-  if (target.latitude.toFixed(3) != crd.latitude.toFixed(3) || target.longitude.toFixed(3) != crd.longitude.toFixed(3)) {
+  if (target.latitude.toFixed(3) == crd.latitude.toFixed(3) && target.longitude.toFixed(3) == crd.longitude.toFixed(3)) {
+      alert('you arrived')
     $.post('/twilio')
 
     navigator.geolocation.clearWatch(id);
