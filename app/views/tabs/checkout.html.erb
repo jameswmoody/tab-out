@@ -18,18 +18,15 @@
 <h3>Choose your tip:</h3>
 <%= form_for :close, url: close_tab_path, class: "radio-buttons-checkout full-width container" do |f| %>
   <%= f.hidden_field :nonce %>
-
-    <div class="row">
-      <div class="btn-group full-width container" data-toggle="buttons-radio">
-        <%= f.radio_button :tip, '10', :style=>"display:none;" %>
-        <%= label :close_tip, '10', '10%', class: "btn btn-default col-xs-4 label-click", checked: true %>
-        <%= f.radio_button :tip, '15', :style=>"display:none;" %>
-        <%= label :close_tip, '15', '15%', class: "btn btn-default col-xs-4 label-click"%>
-        <%= f.radio_button :tip, '20', :style=>"display:none;" %>
-        <%= label :close_tip, '20', '20%', class: "btn btn-default col-xs-4 label-click" %>
-      </div>
-    </div>
-
+  <%= f.radio_button :tip, '10', style: 'display:none' %>
+  <%= f.radio_button :tip, '15', style: 'display:none' %>
+  <%= f.radio_button :tip, '20', style: 'display:none' %>
+  <div class="row">
+  <div class="btn-group full-width container">
+    <%= label :close_tip, '10', '10%', class: "btn btn-default col-xs-4 label-click" %>
+    <%= label :close_tip, '15', '15%', class: "btn btn-default col-xs-4 label-click"%>
+    <%= label :close_tip, '20', '20%', class: "btn btn-default col-xs-4 label-click" %>
+  </div>
   </div>
   <div id="dropin-container"></div>
   <%= f.submit 'Tab Out', class: "full-width btn btn-primary margin-top" %>
