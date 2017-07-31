@@ -60,7 +60,6 @@ $( document ).ready(function() {
 });
 
 function storePosition(position) {
-  p position
     target = {
       latitude: position.coords.latitude,
       longitude: position.coords.longitude
