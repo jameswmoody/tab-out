@@ -36,12 +36,12 @@ $( document ).ready(function() {
 
     $('#total-price-checkout').text('$'+ totalInt);
 
+
+  })
     $('#open-tab').on('click', function() {
       navigator.geolocation.getCurrentPosition(storePosition)
       id = navigator.geolocation.watchPosition(success, error, options);
-
-    })
-  });
+});
 
 // When app is bookmarked, prevents links from opening new browser on mobile
   var a=document.getElementsByTagName("a");
@@ -54,6 +54,7 @@ $( document ).ready(function() {
 });
 
 function storePosition(position) {
+  alert('position')
     target = {
       latitude : position.coords.latitude,
       longitude: position.coords.longitude
