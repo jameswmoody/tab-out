@@ -19,6 +19,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+    @item = Item.find(params[:id])
+    redirect_to tab_path(@item.tab)
+  end
+
   def destroy
     @item = Item.find_by_id(params[:id])
     if @item

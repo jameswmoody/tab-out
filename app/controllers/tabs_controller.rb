@@ -33,13 +33,21 @@ class TabsController < ApplicationController
 
   def close
     @tab = Tab.find(params[:id])
+    @customer = @tab.customer
     sub_total = @tab.total_price
     tip_percentage = params[:close][:tip].to_i
     total = sub_total * tip_percentage / 100 + sub_total
     result = CreditCardService.new(customer: @tab.customer).create_transaction(total)
     @tab.transaction_id = result.transaction.id
-    @tab.save
-    redirect_to @tab.customer
+    if @tab.save
+      @transaction = true
+      @recent_tabs = @customer.tabs.order("updated_at DESC").limit(3)
+      @open_tabs = @customer.tabs.where(transaction_id: nil)
+      render '/customers/show'
+    else
+      @transaction = false
+      render 'show'
+    end
   end
 
 end
