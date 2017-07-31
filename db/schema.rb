@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20170731144815) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "transaction_id"
-    t.integer "tip"
+    t.integer "tip", default: 0
     t.index ["business_id"], name: "index_tabs_on_business_id"
     t.index ["customer_id"], name: "index_tabs_on_customer_id"
   end
