@@ -1,22 +1,33 @@
 <% if session[:user_type] == 'Customer' %>
+  <% if @tab.is_open? %>
+    <div class="alert alert-info alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    Use <strong>@<%= @tab.customer.username %></strong> at the bar to add items to your tab.
+    </div>
+  <% end %>
   <h1><%= name(@tab.business) %></h1>
 <% elsif session[:user_type] == 'Business' %>
-  <h1>This is @<%= @tab.customer.username %>'s tab</h1>
+  <h1>@<%= @tab.customer.username %></h1>
+<% end %>
+
+<% if @tab.is_open? %>
+  <p class="tab-timestamp">Opened <%= time_ago_in_words(@tab.created_at) %> ago</p>
+<% else %>
+  <p class="tab-timestamp">Closed <%= time_ago_in_words(@tab.updated_at) %> ago</p>
 <% end %>
 
 <% if session[:user_type] == 'Business' %>
   <%= form_for [@tab, @item] do |f| %>
 
-  <%= f.label :drink_type, 'Drink' %> <br>
+  <%= f.label :drink_type, 'Drink' %>
   <%= f.select(:drink_type) do %>
     <% [['-select-', ''],['Beer', 'Beer'], ['Wine', 'Wine'], ['Cocktail', 'Cocktail'], ['Shot/Liquor', 'Shot/Liquor'],].each do |c| %>
       <%= content_tag(:option, c.first, value: c.last) %>
     <% end %>
   <% end %>
-  <br>
-    <%= f.label 'Price ($)' %> <br>
-    <%= f.text_field :price %><br>
-    <%= f.submit 'Add' %>
+    <%= f.label 'Price ($)' %>
+    <%= f.text_field :price %>
+    <%= f.submit 'Add', class: "btn btn-primary" %>
   <% end %>
 <% end %>
 
@@ -48,10 +59,21 @@
     <tr class='row-darker'>
       <td>Total</td>
       <td>$<%= price_in_dollars(@tab.total_price) %></td>
+      <% if session[:user_type] == 'Business' %>
+        <td> </td>
+      <% end %>
     </tr>
   </tbody>
 </table>
 
-<% if session[:user_type] == 'Customer' && @tab.transaction_id == nil %>
-  <%= button_to "Checkout", checkout_tab_path, method: :get, class: "btn btn-primary full-width" %>
+<% if session[:user_type] == 'Customer'%>
+  <% if @tab.is_open? %>
+    <% if @tab.items.empty? %>
+      <button class="btn full-width btn-disabled">Checkout</button>
+    <% else %>
+      <%= button_to "Checkout", checkout_tab_path, method: :get, class: "btn btn-primary full-width" %>
+    <% end %>
+  <% else %>
+  <button class="btn btn-inactive full-width">Tab Closed</button>
+  <% end %>
 <% end %>

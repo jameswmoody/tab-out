@@ -57,7 +57,7 @@ body {
 }
 
 .navbar-brand {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   font-size: 1.8em;
   font-weight: 900;
 }
@@ -99,4 +99,27 @@ body {
 
 #bar-lookup {
   margin-bottom: 10px;
+}
+
+#customer-lookup {
+  vertical-align: middle;
+  margin-bottom: 20px;
+}
+
+p.tab-timestamp {
+  margin-left: 5px;
+  opacity: 0.5;
+}
+
+.open-tab {
+  background-color: #00BFFF;
+}
+
+.faded {
+  opacity: 0.5;
+  font-size: 0.8em;
+}
+
+.tab-title {
+  font-size: 1.3em;
 }

@@ -1,17 +1,17 @@
 <h2>Checkout from <%= name(@tab.business) %></h2>
 
-<table>
-  <tbody>
+<table class="table table-striped table-hover">
+  <thead>
     <tr>
       <td>Subtotal</td>
       <td>$<%= price_in_dollars(@tab.total_price) %></td>
     </tr>
-
-    <tr>
+  </thead>
+  <tbody>
+    <tr class='row-darker'>
       <th>Total</th>
       <th id="total-price-checkout">$<%= price_in_dollars(@tab.total_price) %></th>
     </tr>
-
   </tbody>
 </table>
 
