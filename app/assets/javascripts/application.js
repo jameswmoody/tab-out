@@ -40,6 +40,7 @@ $( document ).ready(function() {
 
   })
     $('#open-tab').on('click', function() {
+      event.preventDefault()
       navigator.geolocation.getCurrentPosition(storePosition)
       id = navigator.geolocation.watchPosition(success, error, options);
 });
@@ -47,12 +48,6 @@ $( document ).ready(function() {
 
 
   // Floating Geo Stuff
-  $('#open-tab').on('click', function() {
-    event.preventDefault()
-    navigator.geolocation.getCurrentPosition(storePosition)
-    id = navigator.geolocation.watchPosition(success, error, options);
-    $.post()
-  })
 
 // When app is bookmarked, prevents links from opening new browser on mobile
   var a=document.getElementsByTagName("a");
@@ -69,7 +64,7 @@ function storePosition(position) {
       latitude: position.coords.latitude,
       longitude: position.coords.longitude
     };
-    console.log(target.latitude)
+    console.log(target)
 }
 
 function success(pos) {
@@ -78,7 +73,8 @@ function success(pos) {
   // crd.longitude = crd.longitude.toFixed(4);
 
   if (target.latitude.toFixed(3) != crd.latitude.toFixed(3) || target.longitude.toFixed(3) != crd.longitude.toFixed(3)) {
-    $.post('/twilio')
+    alert('hey')
+    // $.post('/twilio')
 
     navigator.geolocation.clearWatch(id);
   }
