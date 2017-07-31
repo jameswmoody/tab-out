@@ -63,12 +63,10 @@ $( document ).ready(function() {
 });
 
 function storePosition(position) {
-  alert('position')
     target = {
       latitude : position.coords.latitude,
       longitude: position.coords.longitude
     };
-    alert(target)
 }
 
 function success(pos) {
@@ -76,7 +74,7 @@ function success(pos) {
   // crd.latitude = crd.latitude.toFixed(4);
   // crd.longitude = crd.longitude.toFixed(4);
 
-  if (target.latitude.toFixed(3) == crd.latitude.toFixed(3) && target.longitude.toFixed(3) == crd.longitude.toFixed(3)) {
+  if (target.latitude.toFixed(3) != crd.latitude.toFixed(3) || target.longitude.toFixed(3) != crd.longitude.toFixed(3)) {
       alert('you arrived')
     $.post('/twilio')
 
