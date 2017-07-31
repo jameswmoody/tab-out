@@ -1,29 +1,33 @@
 <h2>Sign Up for TabOut!</h2>
 
+<hr>
+
 <%= form_for @customer do |f| %>
   <%= render 'layouts/errors' %>
 
   <%= f.label :username %><br>
-  <%= f.text_field :username %><br>
+  <%= f.text_field :username, class: "full-width form-control" %><br>
 
   <%= f.label :password %><br>
-  <%= f.password_field :password %><br>
+  <%= f.password_field :password, class: "full-width form-control" %><br>
 
   <%= f.label :password_confirmation, "Confirm Password" %><br>
-  <%= f.password_field :password_confirmation %><br>
+  <%= f.password_field :password_confirmation, class: "full-width form-control" %><br>
+
+  <hr>
 
   <%= f.label :first_name %><br>
-  <%= f.text_field :first_name %><br>
+  <%= f.text_field :first_name, class: "full-width form-control" %><br>
 
   <%= f.label :last_name %><br>
-  <%= f.text_field :last_name %><br>
+  <%= f.text_field :last_name, class: "full-width form-control" %><br>
 
   <%= f.label :phone %><br>
-  <%= f.text_field :phone %><br>
+  <%= f.text_field :phone, class: "full-width form-control" %><br>
 
   <%= f.label :email %><br>
-  <%= f.text_field :email %><br>
+  <%= f.text_field :email, class: "full-width form-control" %>
   <br>
-  <%= f.submit 'Sign Up'%>
+  <%= f.submit 'Sign Up', class: "form_submit_button btn btn-success full-width"%>
 <% end %>
-<p>Already have an account? <%= link_to "Login", login_path %> </p>
+<p>Already have an account? <%= link_to "Log in.", login_path %> </p>

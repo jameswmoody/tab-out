@@ -1,14 +1,27 @@
-<h2>Hi, <%= @customer.username %>!</h2>
-<% if @open_tab %>
-  <h3>Your open tab:</h3>
-  <%= render @open_tab %>
-<% else %>
-  <h3>You don't have any open tabs</h3>
+<% if @transaction && @transaction == true %>
+  <div class="alert alert-success alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    Congrats! your transaction was processed correctly. You have successfully closed your tab at <strong>@<%= @tab.business.username %></strong>.
+  </div>
 <% end %>
 
-<h3>Recent Tabs</h3>
-<%= render @recent_tabs %>
+<h2>Hi, <%= @customer.first_name %>!</h2>
+<hr>
+<% if @open_tabs.any? %>
+  <h3>Your open tabs:</h3>
+  <%= render @open_tabs %>
+<% else %>
+  <h4>You have no open tabs.</h4>
+<% end %>
+
+<hr>
+<% if @recent_tabs.any? %>
+  <h3>Recent Tabs</h3>
+  <ul class="list-group">
+    <%= render @recent_tabs %>
+  </ul>
+<% end %>
 
 <%= form_tag(new_tab_path, method:'get') do %>
-  <%= submit_tag("Open Tab") %>
+  <%= submit_tag("Open Tab", class: 'btn btn-primary full-width')%>
 <% end %>

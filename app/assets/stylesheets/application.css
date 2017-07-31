@@ -1,4 +1,4 @@
-/*
+  /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -14,12 +14,214 @@
  *= require_self
  */
 
-nav {
-  border: 1px solid black;
-}
+  body {
+    min-height: 97vh;
+    background-color: #F7F7F7;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    margin-bottom: 4%;
+  }
+  /* Nav Bar */
 
-table, th, td {
-  padding: 2px 10px;
-  border-collapse: collapse;
-  border: 1px solid black;
-}
+  .navbar, .navbar-default {
+    border: 1px #292B2C solid;
+    border-top: 14px #292B2C solid;
+  }
+
+  .navbar-default .navbar-collapse {
+    border: 1px #292B2C solid;
+  }
+
+  .navbar-fill {
+    background-color: #292B2C;
+  }
+
+  .navbar {
+    border-radius: 0;
+    font-family: 'Poppins', sans-serif;
+    white-space: nowrap;
+  }
+
+  .navbar-default .brand, .navbar-default .brand:hover, .nav-links:hover {
+    color: #fff;
+    text-shadow: none;
+  }
+
+  .navbar-header {
+    float: left;
+    text-align: center;
+    width: 100%;
+  }
+
+  .brand {
+    font-family: 'Source Sans Pro', sans-serif;
+    line-height: 180%;
+    font-size: 1.8em;
+    font-weight: 900;
+    float: none;
+  }
+
+  .nav-open {
+    padding: 0 10px;
+    color: #999999;
+    float: left;
+  }
+
+  .nav-close {
+    font-size: 25px !important;
+    padding: 18px 8px 8px 18px !important;
+  }
+
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #292B2C;
+    overflow-x: hidden;
+    transition: 0.3s;
+  }
+
+  .sidenav a {
+    padding: 8px 8px 8px 18px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+  }
+
+  .sidenav a:hover, .offcanvas a:focus {
+    color: #fff;
+    font-size: 18px;
+  }
+
+  .tabs-list {
+    margin-top: 0px;
+    margin-left: 0px;
+    padding-left: 0px;
+  }
+
+  .center_div {
+    margin: 0 auto;
+  }
+
+  @media screen and (max-height: 450px) {
+    .sidenav {
+      padding-top: 15px;
+    }
+    .sidenav a {
+      font-size: 18px;
+    }
+  }
+  /* Forms */
+
+  .btn, .btn-primary {
+    border: none;
+  }
+  /* Braintree Drop-In*/
+
+  .braintree-show-methods [data-braintree-id=methods-label] {
+    visibility: hidden;
+  }
+
+  .braintree-method__check-container:before {
+    background: none;
+  }
+
+  .row-darker {
+    font-weight: 900;
+    background-color: #eaeaea !important;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+
+  #bar-lookup {
+    margin-bottom: 10px;
+    font-size: 1.5em !important;
+  }
+
+  #customer-lookup {
+    vertical-align: middle;
+    margin-bottom: 20px;
+  }
+
+  p.tab-timestamp {
+    margin-left: 5px;
+    opacity: 0.5;
+  }
+
+  .open-tab {
+    background-color: #00BFFF;
+  }
+
+  .faded {
+    opacity: 0.5;
+    font-size: 0.8em;
+  }
+
+  .tab-title {
+    font-size: 1.3em;
+  }
+
+  #new_item {
+    margin-bottom: 15px;
+    display: inline-block;
+  }
+
+  .margin-top {
+    margin-top: 10px;
+  }
+
+  .delete-item {
+    text-decoration: none;
+    background-color: #F08080;
+    border: none;
+    color: white;
+    padding: 1% 10%;]
+  }
+
+  .submit-new-drink {
+    margin: 10px 0px;
+  }
+
+  span.badge {
+    font-size: 1.1em;
+  }
+
+  .radio-buttons-checkout {
+    padding: 0px 10px;
+  }
+
+  .btn-primary {
+    height: 60px;
+    border: none;
+    border-radius: 0px;
+    font-size: 1.4em;
+    background-color: #00BFFF;
+  }
+
+  .btn-success {
+    margin: 10px 0px;
+    border: none;
+    border-radius: 0px;
+    font-size: 1.1em;
+    padding: 3% 42%;
+    background-color: #green;
+  }
+
+  .btn-inactive, .btn-disabled {
+    height: 60px;
+    border: none;
+    border-radius: 0px;
+    font-size: 1.4em;
+    background-color: lightgray;
+  }
+
+  h1.business-title {
+    margin: 3px;
+  }
