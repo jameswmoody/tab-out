@@ -1,8 +1,8 @@
 <% if session[:user_type] == 'Customer' %>
   <% if @tab.is_open? %>
     <div class="alert alert-info alert-dismissible" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    Use <strong>@<%= @tab.customer.username %></strong> at the bar to add items to your tab.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      Use <strong>@<%= @tab.customer.username %></strong> at the bar to add items to your tab.
     </div>
   <% end %>
   <h1><%= name(@tab.business) %></h1>
@@ -27,13 +27,14 @@
   <% end %>
     <%= f.label 'Price ($)' %>
     <%= f.text_field :price, class: "form-control" %>
-    <%= f.submit 'Add', class: "btn btn-primary submit-new-drink" %>
+    <%= f.submit 'Add', class: "btn btn-success submit-new-drink" %>
   <% end %>
 <% end %>
 
 <table class="table table-striped table-hover">
   <thead>
     <tr class='row-darker'>
+      <th>#</th>
       <th>Item</th>
       <th>Price</th>
       <% if session[:user_type] == 'Business' && @tab.is_open? %>
@@ -42,21 +43,24 @@
     </tr>
   </thead>
   <tbody>
-    <% @tab.items.each do |item| %>
+    <% @tab.items.each_with_index do |item, index| %>
       <tr>
+        <td><%= index + 1 %></td>
         <td><%= item.drink_type %></td>
         <td>$<%= price_in_dollars(item.price) %></td>
 
         <% if session[:user_type] == 'Business' && @tab.is_open? %>
-          <td><%= link_to 'Delete',
+          <td><%= button_to 'Delete',
                tab_item_path(@tab, item),
                            method: :delete,
-                           data: { confirm: 'Are you sure you want to delete this drink?' } %>
+                           data: { confirm: 'Are you sure you want to delete this drink?' },
+                           class: "delete-item" %>
           </td>
         <% end %>
       </tr>
     <% end %>
     <tr class='row-darker'>
+      <td></td>
       <td>Total</td>
       <td>$<%= price_in_dollars(@tab.total_price) %></td>
       <% if session[:user_type] == 'Business' && @tab.is_open? %>

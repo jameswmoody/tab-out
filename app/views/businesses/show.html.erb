@@ -1,11 +1,16 @@
 <form action='' role="search" id="customer-lookup">
   <div class="input-group">
-    <input type='search' class="form-control" name='search' placeholder='@username'>
+    <input type='search' class="form-control" name='search' placeholder='username, first name, or last name'>
     <span class="input-group-btn">
       <input type='submit' value='Search' class="btn btn-info">
     </span>
   </div>
 </form>
+<div class="alert alert-info alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  Look up customers by their <strong>@username</strong>, <strong>first name</strong>, or <strong>last name</strong>.
+</div>
+
 <% if params[:search] %>
   <p><%= link_to 'Show all tabs', @business %></p>
 <% end %>
