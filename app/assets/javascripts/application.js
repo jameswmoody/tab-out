@@ -35,6 +35,7 @@ $( document ).ready(function() {
       var totalInt = subtotalInt + tipAmountInt
 
     $('#total-price-checkout').text('$'+ totalInt);
+
     $('#open-tab').on('click', function() {
       navigator.geolocation.getCurrentPosition(storePosition)
       id = navigator.geolocation.watchPosition(success, error, options);
@@ -57,7 +58,7 @@ function storePosition(position) {
       latitude : position.coords.latitude,
       longitude: position.coords.longitude
     };
-    console.log(target)
+    alert(target)
 }
 
 function success(pos) {
