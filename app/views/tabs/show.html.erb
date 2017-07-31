@@ -1,3 +1,5 @@
+<%= link_to '', root_path, class: "glyphicon glyphicon-triangle-left" %>
+
 <% if session[:user_type] == 'Customer' %>
   <% if @tab.is_open? %>
     <div class="alert alert-info alert-dismissible" role="alert">
@@ -64,10 +66,12 @@
       <tr class='row-darker'>
         <td>-</td>
         <td>Subtotal</td>
-        <td>$<%= price_in_dollars(@tab.total_price) %></td
-        >
+        <td>$<%= price_in_dollars(@tab.total_price) %></td>
+        <% if session[:user_type] == 'Business' %>
+        <td><%= link_to 'Checkout', checkout_tab_path, class: "btn btn-success checkout-btn" %></td>
+        <% end %>
       </tr>
-      
+
       <% if !@tab.is_open? %>
       <tr>
         <td>-</td>

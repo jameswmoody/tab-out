@@ -27,15 +27,15 @@ $( document ).ready(function() {
 
 
   var subtotalStr = $('#total-price-checkout').text().substring(1);
-  var subtotalInt = parseInt(subtotalStr)
+  var subtotalInt = parseInt(subtotalStr);
   $("label.label-click").click(function() {
-      console.log(this);
       var tipPercentageStr = $(this).text();
       var tipPercentageInt = parseInt(tipPercentageStr);
       var tipAmountInt = subtotalInt * tipPercentageInt / 100;
-      var totalInt = subtotalInt + tipAmountInt
-
-    $('#total-price-checkout').text('$'+ totalInt);
+      var totalInt = subtotalInt + tipAmountInt;
+      $(this).siblings().removeClass('active')
+      $(this).addClass('active')
+    $('#total-price-checkout').text('$'+ totalInt.toFixed(2));
 
 
   })

@@ -188,7 +188,7 @@
     background-color: #F08080;
     border: none;
     color: white;
-    padding: 1% 10%;
+    padding: 4px 39px;
   }
 
   .submit-new-drink {
@@ -229,9 +229,28 @@
   }
 
   h1.business-title {
+    padding-top: 23px;
     margin: 3px;
   }
 
+  div.fix-width {
+    max-width: 400px;
+    margin: auto;
+  }
+
+  @media only screen and (max-width: 767px) {
+    /* For mobile phones: */
+    div.fix-width {
+      max-width: none;
+    }
+  }
+}
 #no-items-error {
   margin-bottom: 10px
 }
+
+.checkout-btn {
+  margin: 0px 0px;
+  padding: 4px 39px;
+}
+
