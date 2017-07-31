@@ -26,6 +26,8 @@
   .navbar, .navbar-default {
     border: 1px #292B2C solid;
     border-top: 14px #292B2C solid;
+    position: fixed;
+    z-index: 1000;
   }
 
   .navbar-default .navbar-collapse {
@@ -76,7 +78,7 @@
     height: 100%;
     width: 0;
     position: fixed;
-    z-index: 1;
+    z-index: 1000;
     top: 0;
     left: 0;
     background-color: #292B2C;
@@ -96,6 +98,10 @@
   .sidenav a:hover, .offcanvas a:focus {
     color: #fff;
     font-size: 18px;
+  }
+
+  .content {
+    padding-top: 70px;
   }
 
   .tabs-list {
@@ -182,7 +188,7 @@
     background-color: #F08080;
     border: none;
     color: white;
-    padding: 1% 10%;]
+    padding: 1% 10%;
   }
 
   .submit-new-drink {
@@ -225,3 +231,7 @@
   h1.business-title {
     margin: 3px;
   }
+
+#no-items-error {
+  margin-bottom: 10px
+}

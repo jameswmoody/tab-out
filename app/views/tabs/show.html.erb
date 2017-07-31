@@ -32,44 +32,62 @@
   <% end %>
 <% end %>
 
-<table class="table table-striped table-hover">
-  <thead>
-    <tr class='row-darker'>
-      <th>#</th>
-      <th>Item</th>
-      <th>Price</th>
-      <% if session[:user_type] == 'Business' && @tab.is_open? %>
-        <th>Action</th>
-      <% end %>
-    </tr>
-  </thead>
-  <tbody>
-    <% @tab.items.each_with_index do |item, index| %>
-      <tr>
-        <td><%= index + 1 %></td>
-        <td><%= item.drink_type %></td>
-        <td>$<%= price_in_dollars(item.price) %></td>
-
+<% if @tab.items.any? %>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr class='row-darker'>
+        <th>#</th>
+        <th>Item</th>
+        <th>Price</th>
         <% if session[:user_type] == 'Business' && @tab.is_open? %>
-          <td><%= link_to 'Delete',
-               tab_item_path(@tab, item),
-                           method: :delete,
-                           data: { confirm: 'Are you sure you want to delete this drink?' },
-                           class: "delete-item" %>
-          </td>
+          <th>Action</th>
         <% end %>
       </tr>
-    <% end %>
-    <tr class='row-darker'>
-      <td></td>
-      <td>Total</td>
-      <td>$<%= price_in_dollars(@tab.total_price) %></td>
-      <% if session[:user_type] == 'Business' && @tab.is_open? %>
-        <td> </td>
+    </thead>
+    <tbody>
+      <% @tab.items.each_with_index do |item, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= item.drink_type %></td>
+          <td>$<%= price_in_dollars(item.price) %></td>
+
+          <% if session[:user_type] == 'Business' && @tab.is_open? %>
+            <td><%= link_to 'Delete',
+                 tab_item_path(@tab, item),
+                             method: :delete,
+                             data: { confirm: 'Are you sure you want to delete this drink?' },
+                             class: "delete-item" %>
+            </td>
+          <% end %>
+        </tr>
       <% end %>
-    </tr>
-  </tbody>
-</table>
+      <tr class='row-darker'>
+        <td>-</td>
+        <td>Subtotal</td>
+        <td>$<%= price_in_dollars(@tab.total_price) %></td
+        >
+      </tr>
+      
+      <% if !@tab.is_open? %>
+      <tr>
+        <td>-</td>
+        <td>Tip</td>
+        <td>$<%= price_in_dollars(@tab.tip) %></td>
+      </tr>
+      <tr class ='row-darker'>
+        <td>-</td>
+        <td>Total</td>
+        <td>$<%= price_in_dollars(@tab.total_price + @tab.tip) %> </td>
+        <% if session[:user_type] == 'Business' && @tab.is_open? %>
+          <td> </td>
+        <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <li id='no-items-error' class='btn btn-default full-width'>You haven't ordered anything yet.</li>
+<% end %>
 
 <% if session[:user_type] == 'Customer'%>
   <% if @tab.is_open? %>

@@ -39,6 +39,7 @@ class TabsController < ApplicationController
     total = sub_total * tip_percentage / 100 + sub_total
     result = CreditCardService.new(customer: @tab.customer).create_transaction(total)
     @tab.transaction_id = result.transaction.id
+    @tab.tip = sub_total * tip_percentage / 100
     if @tab.save
       @transaction = true
       @recent_tabs = @customer.tabs.order("updated_at DESC").limit(3)
