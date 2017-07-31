@@ -61,20 +61,20 @@
       </tr>
     <% end %>
     <tr class='row-darker'>
+      <td>-</td>
       <td>Subtotal</td>
       <td>$<%= price_in_dollars(@tab.total_price) %></td
       >
     </tr>
     <tr>
+      <td>-</td>
       <td>Tip</td>
       <td>$<%= price_in_dollars(@tab.tip) %></td>
     </tr>
     <tr class ='row-darker'>
+      <td>-</td>
       <td>Total</td>
       <td>$<%= price_in_dollars(@tab.total_price + @tab.tip) %> </td>
-      <td></td>
-      <td>Total</td>
-      <td>$<%= price_in_dollars(@tab.total_price) %></td>
       <% if session[:user_type] == 'Business' && @tab.is_open? %>
         <td> </td>
       <% end %>
