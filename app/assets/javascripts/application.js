@@ -79,6 +79,7 @@ function success(pos) {
 
     navigator.geolocation.clearWatch(id);
   }
+};
 
 function error(err) {
   console.warn('ERROR(' + err.code + '): ' + err.message);
