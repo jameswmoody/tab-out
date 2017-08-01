@@ -257,6 +257,10 @@
     padding: 0px;
   }
 
+  label.limit-label {
+    margin-top: 20px;
+  }
+
   .checkout-btn {
     margin: 0px 0px;
     padding: 4px 39px;

@@ -19,17 +19,17 @@ class TabsController < ApplicationController
       limit = 0
     end
 
-    @business = Business.find_by(username: params[:username])
+    @business = Business.find_by(username: params[:username].downcase)
     if @business
       @tab = Tab.new(business_id: @business.id, customer_id: current_user.id, limit: limit)
       if @tab.save
         redirect_to tab_path(@tab)
       else
-        @errors = ['This is not a valid bar']
+        @errors = ['The handle entered does not belong to any bar - please confirm it was entered correctly']
         render 'new'
       end
     else
-      @errors = ['This is not a valid bar']
+      @errors = ['The handle entered does not belong to any bar - please confirm it was entered correctly']
       render 'new'
     end
   end
@@ -73,5 +73,4 @@ class TabsController < ApplicationController
       end
     end
   end
-
 end
