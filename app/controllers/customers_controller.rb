@@ -23,6 +23,15 @@ class CustomersController < ApplicationController
     end
   end
 
+  def edit
+    @customer = current_user
+    @client_token = CreditCardService.new(customer: current_user).generate_token(vault_id: current_user.vault_id)
+  end
+
+  def update
+    p params
+  end
+
   private
   def customer_params
     params.require(:customer).permit(:username, :password, :password_confirmation, :first_name, :last_name, :email, :phone)
