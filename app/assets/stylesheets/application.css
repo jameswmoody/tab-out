@@ -38,6 +38,7 @@
 
   .navbar-fill {
     background-color: #292B2C;
+    padding-right: 0px
   }
 
   .navbar {
@@ -55,6 +56,7 @@
     float: left;
     text-align: center;
     width: 100%;
+    padding-right: 0px
   }
 
   .brand {
@@ -74,6 +76,12 @@
   .nav-close {
     font-size: 25px !important;
     padding: 18px 8px 8px 18px !important;
+  }
+
+  .nav-form {
+    height: 30px;
+    display: inline;
+    margin-right: 1px;
   }
 
   .sidenav {
@@ -229,6 +237,18 @@
     background-color: #green;
   }
 
+  .btn-nav {
+    font-size: 1.4em;
+    padding: 6px;
+    color: white;
+    width: 30px;
+    float: right;
+    height: 30px;
+    border: none;
+    background-color: #00BFFF;
+    margin-top: 6px
+  }
+
   .btn-inactive, .btn-disabled {
     height: 60px;
     border: none;
@@ -379,3 +399,7 @@
     opacity: 0.7;
     z-index: 999;
   }
+
+.fa-glass {
+  float: left
+}
