@@ -11,17 +11,12 @@ class TabsController < ApplicationController
   end
 
   def create
-    if params[:limit_amount] != ''
-      limit = params[:limit_amount]
-    elsif params[:limit_cost] != ''
-      limit = params[:limit_cost]
-    else
-      limit = 0
-    end
+    limit_amount = params[:limit_amount]
+    limit_cost = params[:limit_cost]
 
     @business = Business.find_by(username: params[:username].downcase)
     if @business
-      @tab = Tab.new(business_id: @business.id, customer_id: current_user.id, limit: limit)
+      @tab = Tab.new(business_id: @business.id, customer_id: current_user.id, limit_amount: limit_amount, limit_cost: limit_cost)
       if @tab.save
         redirect_to tab_path(@tab)
       else
