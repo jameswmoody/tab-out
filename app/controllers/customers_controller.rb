@@ -23,12 +23,20 @@ class CustomersController < ApplicationController
   end
 
   def edit
-    @customer = current_user
+    @customer = Customer.find(params[:id])
     @client_token = CreditCardService.new(customer: current_user).generate_token(vault_id: current_user.vault_id)
   end
 
   def update
-    p params
+    @customer = Customer.find(params[:id])
+
+    if @customer.update_attributes(customer_params)
+      @updated = true
+      render 'edit'
+    else
+      @errors = @customer.errors.full_messages
+      render 'edit'
+    end
   end
 
   private
