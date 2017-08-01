@@ -20,4 +20,8 @@ class CardsController < ApplicationController
       render '/cards/new'
     end
   end
+
+  def edit
+    @client_token = CreditCardService.new(customer: current_user).generate_token(vault_id: current_user.vault_id)
+  end
 end
