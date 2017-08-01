@@ -276,6 +276,15 @@
     border-radius: 4px;
   }
 
+  .tab-content {
+    padding: 0px 10px;
+    padding-bottom: 3%;
+    background-color: white;
+    border-color: #dddddd;
+    border: 1px solid #dddddd;
+    border-top: none;
+  }
+
   .navigation {
     font-size: 30px;
     color: #009ed3;
