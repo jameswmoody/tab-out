@@ -161,7 +161,10 @@
 
   .faded {
     opacity: 0.5;
-    font-size: 0.8em;
+  }
+
+  .settings-username {
+    opacity: 0.5;
   }
 
   .tab-title {
