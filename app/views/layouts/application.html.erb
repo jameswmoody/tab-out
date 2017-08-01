@@ -13,9 +13,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/manifest.json">
-
-    <!-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> -->
-
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#3b3b3b">
     <meta name="theme-color" content="#292B2C">
     <!-- Fonts -->
@@ -30,8 +27,14 @@
         <%= render 'layouts/nav' %>
       </header>
 
-      <section class="container content">
+      <section id="hook" class="container content">
         <%= render 'layouts/errors' %>
+        <!-- <div class="spinner" style="display: none;"></div> -->
+        <div class="spinner" style="display: none;">
+          <div class="double-bounce1"></div>
+          <div class="double-bounce2"></div>
+        </div>
+        <div class="overlay" style="display: none;"></div>
         <%= yield %>
       </section>
 

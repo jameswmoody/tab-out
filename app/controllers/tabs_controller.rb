@@ -80,5 +80,4 @@ class TabsController < ApplicationController
       end
     end
   end
-
 end
