@@ -67,8 +67,8 @@
         <td>-</td>
         <td>Subtotal</td>
         <td>$<%= price_in_dollars(@tab.total_price) %></td>
-        <% if session[:user_type] == 'Business' %>
-        <td><%= link_to 'Checkout', checkout_tab_path, class: "btn btn-success checkout-btn" %></td>
+        <% if session[:user_type] == 'Business' && @tab.is_open? %>
+          <td><%= link_to 'Checkout', checkout_tab_path, class: "btn btn-success checkout-btn" %></td>
         <% end %>
       </tr>
 
