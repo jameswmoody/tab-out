@@ -8,10 +8,13 @@
       <a href="javascript:void(0)" class="nav-close">&times;</a>
       <% if logged_in? %>
         <%= link_to 'My Tabs', root_path %>
+        <% if current_user.class == Customer %>
         <%= link_to "Settings", edit_customer_path(current_user) %>
+        <% end %>
         <%= link_to 'History', tabs_path %>
         <%= link_to 'Logout', logout_path %>
       <% else %>
+        <%= link_to 'Sign Up', new_customer_path %>
         <%= link_to 'Login', login_path %>
       <% end %>
     </div>
