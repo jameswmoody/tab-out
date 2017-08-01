@@ -1,9 +1,9 @@
 class CustomersController < ApplicationController
 
   def show
-    @customer = Customer.find(params[:id])
-    @recent_tabs = @customer.closed_tabs.slice(0, 3)
-    @open_tabs = @customer.open_tabs
+      @customer = Customer.find(params[:id])
+      @recent_tabs = @customer.closed_tabs.slice(0, 3)
+      @open_tabs = @customer.open_tabs
   end
 
   def new

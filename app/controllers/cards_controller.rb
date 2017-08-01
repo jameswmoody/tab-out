@@ -1,5 +1,6 @@
 class CardsController < ApplicationController
   def new
+    redirect_to '/login' unless logged_in?
     @client_token = CreditCardService.new({customer: @customer}).generate_token()
   end
 
@@ -22,6 +23,7 @@ class CardsController < ApplicationController
   end
 
   def edit
+    redirect_to '/login' unless logged_in?
     @client_token = CreditCardService.new(customer: current_user).generate_token(vault_id: current_user.vault_id)
   end
 end
