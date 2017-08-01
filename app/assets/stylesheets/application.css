@@ -91,15 +91,15 @@
   .sidenav a {
     padding: 8px 8px 8px 18px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 20px;
     color: #fff;
     display: block;
     transition: 0.3s;
   }
 
   .sidenav a:hover, .offcanvas a:focus {
-    color: #fff;
-    font-size: 18px;
+    color: lightgray;
+    font-size: 20px;
   }
 
   .content {
@@ -115,6 +115,7 @@
   .center_div {
     margin: 0 auto;
   }
+
   /* Forms */
 
   .btn, .btn-primary {
@@ -182,6 +183,17 @@
     border: none;
     color: white;
     padding: 4px 39px;
+  }
+
+ .delete-tab {
+    text-decoration: none;
+    background-color: #F08080;
+    border: none;
+    color: white;
+    padding: 4px 39px;
+    width: 100%;
+    height: 60px;
+    font-size: 1.4em;
   }
 
   .submit-new-drink {

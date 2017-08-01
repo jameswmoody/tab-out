@@ -41,11 +41,11 @@
 
     <%= f.label :limit, "Limit" %>
     <div id="amount" class="tab-pane fade in active">
-      <%= f.select(:limit_amount, [['No limit', ''],['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6']], {}, { :class => 'form-control full-width limit-dropdown' }) %>
+      <%= f.select(:limit_amount, [['No limit', '0'],['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6']], {}, { :class => 'form-control full-width limit-dropdown' }) %>
     </div>
 
     <div id="cost" class="tab-pane fade in">
-        <%= f.select(:limit_cost, [['No limit', ''],['$10', '1000'], ['$20', '2000'], ['$30', '3000'], ['$40', '4000'], ['$50', '5000'], ['$60', '6000']], {}, { :class => 'form-control full-width limit-dropdown' }) %>
+        <%= f.select(:limit_cost, [['No limit', '0'],['$10', '1000'], ['$20', '2000'], ['$30', '3000'], ['$40', '4000'], ['$50', '5000'], ['$60', '6000']], {}, { :class => 'form-control full-width limit-dropdown' }) %>
     </div>
   </div>
 
