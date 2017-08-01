@@ -39,7 +39,7 @@
   </ul>
   <div class="tab-content">
 
-    <%= f.label :limit, "Limit" %>
+    <%= f.label :limit, "Limit", class: "limit-label" %>
     <div id="amount" class="tab-pane fade in active">
       <%= f.select(:limit_amount, [['No limit', '0'],['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6']], {}, { :class => 'form-control full-width limit-dropdown' }) %>
     </div>
@@ -48,6 +48,7 @@
         <%= f.select(:limit_cost, [['No limit', '0'],['$10', '1000'], ['$20', '2000'], ['$30', '3000'], ['$40', '4000'], ['$50', '5000'], ['$60', '6000']], {}, { :class => 'form-control full-width limit-dropdown' }) %>
     </div>
   </div>
+  <hr>
 
   <%= f.submit 'Save Settings', class: "btn btn-primary full-width" %><br />
 <% end %>

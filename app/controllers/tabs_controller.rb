@@ -55,6 +55,7 @@ class TabsController < ApplicationController
     @tab = Tab.find(params[:id])
     customer = Customer.find(@tab.customer_id)
     @tab.destroy!
+    flash[:notice] = "Your tab at #{@tab.business.dba} was deleted successfully!".html_safe
     redirect_to customer_path(customer)
   end
 

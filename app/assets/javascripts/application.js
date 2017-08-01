@@ -19,13 +19,15 @@ $( document ).ready(function() {
   $('#hook').hook();
 
   var options;
-  $('.nav-open').click(function() {
-    document.getElementById("navbar").style.width = "250px";
-  })
+    $('.nav-open').click(function() {
+      $('#overlay').fadeIn();
+      document.getElementById("navbar").style.width = "250px";
+    })
 
-  $('.nav-close').click(function() {
-    document.getElementById("navbar").style.width = "0";
-  })
+    $('.nav-close').click(function() {
+      $('#overlay').fadeOut();
+      document.getElementById("navbar").style.width = "0";
+    })
 
 
   var subtotalStr = $('#total-price-checkout').text().substring(1);
