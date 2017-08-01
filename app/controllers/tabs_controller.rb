@@ -3,7 +3,7 @@ class TabsController < ApplicationController
     if session[:user_type] == 'Business'
       @business = current_user
     end
-    @tabs = current_user.closed_tabs
+      @tabs = current_user.closed_tabs
   end
 
   def new
@@ -51,6 +51,13 @@ class TabsController < ApplicationController
     @tab = Tab.find(params[:id])
     @client_token = CreditCardService.new(customer: @tab.customer).generate_token(vault_id: @tab.customer.vault_id)
     render 'checkout'
+  end
+
+  def destroy
+    @tab = Tab.find(params[:id])
+    customer = Customer.find(@tab.customer_id)
+    @tab.destroy!
+    redirect_to customer_path(customer)
   end
 
   def close
