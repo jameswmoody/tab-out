@@ -15,8 +15,9 @@ class Tab < ApplicationRecord
 
   def customer_one_open_tab_at_bar
     business = self.business
-    open = business.open_tabs
-    if open.include(self)
+    match = business.tabs.find_by(business_id: self.business_id, customer_id: self.customer_id)
+    p match
+    if match && match.is_open?
       errors.add(:unique, "You already have an open tab with this bar")
     end
   end
