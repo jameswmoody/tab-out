@@ -1,6 +1,7 @@
 class CustomersController < ApplicationController
 
   def show
+    redirect_to root_path and return if session[:user_id] != params[:id] || session[:user_type] != 'Customer'
       @customer = Customer.find(params[:id])
       @recent_tabs = @customer.closed_tabs.slice(0, 3)
       @open_tabs = @customer.open_tabs
