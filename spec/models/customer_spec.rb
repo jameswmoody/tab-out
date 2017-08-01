@@ -8,7 +8,6 @@ RSpec.describe Customer, type: :model do
     Customer.destroy_all
   end
   let(:valid_customer) { Customer.first }
-  let(:invalid_customer) { Customer.new }
   describe "has" do
     it "a username" do
       expect(valid_customer.username).to eq 'tomtom'
@@ -27,6 +26,39 @@ RSpec.describe Customer, type: :model do
     end
     it "a password" do
       expect(valid_customer.authenticate('tomtom')).to be_truthy
+    end
+    it "an email" do
+      expect(valid_customer.email).to eq 'tom@tom.com'
+    end
+  end
+  describe "has validations" do
+    let(:customer_no_username) { Customer.new(password: 'tomtom', vault_id:'braintreesecret', first_name: 'tom', last_name:'tom', phone: '+13128675309', email:'tom@tom.com') }
+    let(:customer_no_phone) { Customer.new(username: 'tomtom', password: 'tomtom', vault_id:'braintreesecret', first_name: 'tom', last_name:'tom', email:'tom@tom.com') }
+    let(:customer_no_first_name) { Customer.new(username: 'tomtom', password: 'tomtom', vault_id:'braintreesecret', last_name:'tom', phone: '+13128675309', email:'tom@tom.com') }
+    let(:customer_no_last_name) { Customer.new(username: 'tomtom', password: 'tomtom', vault_id:'braintreesecret', first_name: 'tom', phone: '+13128675309', email:'tom@tom.com') }
+    let(:customer_no_email) { Customer.new(username: 'tomtom', password: 'tomtom', vault_id:'braintreesecret', first_name: 'tom', last_name:'tom', phone: '+13128675309') }
+    let(:customer_no_password) { Customer.new(username: 'tomtom', vault_id:'braintreesecret', first_name: 'tom', last_name:'tom', phone: '+13128675309', email:'tom@tom.com') }
+    let(:customer_not_unique) { Customer.new(username: 'tomtom', password: 'tomtom', vault_id:'braintreesecret', first_name: 'tom', last_name:'tom', phone: '+13128675309', email:'tom@tom.com') }
+    it "is invalid without a username" do
+      expect(customer_no_username).to_not be_valid
+    end
+    it "is invalid without a phone number" do
+      expect(customer_no_phone).to_not be_valid
+    end
+    it "is invalid without a first_name" do
+      expect(customer_no_first_name).to_not be_valid
+    end
+    it "is invalid without a last_name" do
+      expect(customer_no_last_name).to_not be_valid
+    end
+    it "is invalid without an email" do
+      expect(customer_no_email).to_not be_valid
+    end
+    it "is invalid without a password" do
+      expect(customer_no_password).to_not be_valid
+    end
+    it "is invalid with non unique information" do
+      expect(customer_not_unique).to_not be_valid
     end
   end
 end
