@@ -336,3 +336,15 @@
     opacity: 0.4;
     z-index: 1001;
   }
+
+  .tab-list-item:hover {
+    text-decoration: none;
+  }
+
+  .tab-time-stamp {
+    color: black;
+  }
+
+  input.search-tabs-button {
+    padding: 7px;
+  }
