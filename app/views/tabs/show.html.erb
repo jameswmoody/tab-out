@@ -96,8 +96,8 @@
 <% if session[:user_type] == 'Customer'%>
   <% if @tab.is_open? %>
     <% if @tab.items.empty? %>
-      <%= link_to 'Delete', tab_path(@tab), method: :delete,
-        data: { confirm: 'Are you sure you want to delete this tab?' }, class: "delete-tab" %>
+      <%= button_to 'Delete', tab_path(@tab), method: :delete,
+        data: { confirm: 'Are you sure you want to delete this tab?' }, class: "btn delete-tab" %>
     <% else %>
       <%= button_to "Checkout", checkout_tab_path, method: :get, class: "btn btn-primary full-width" %>
     <% end %>
