@@ -28,6 +28,7 @@
     border: 1px #292B2C solid;
     border-top: 14px #292B2C solid;
     position: fixed;
+    -webkit-backface-visibility: hidden;
     z-index: 1000;
   }
 
@@ -90,15 +91,15 @@
   .sidenav a {
     padding: 8px 8px 8px 18px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 20px;
     color: #fff;
     display: block;
     transition: 0.3s;
   }
 
   .sidenav a:hover, .offcanvas a:focus {
-    color: #fff;
-    font-size: 18px;
+    color: lightgray;
+    font-size: 20px;
   }
 
   .content {
@@ -115,14 +116,6 @@
     margin: 0 auto;
   }
 
-  @media screen and (max-height: 450px) {
-    .sidenav {
-      padding-top: 15px;
-    }
-    .sidenav a {
-      font-size: 18px;
-    }
-  }
   /* Forms */
 
   .btn, .btn-primary {
