@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
 
   body {
@@ -245,27 +246,89 @@
     }
   }
 
-#no-items-error {
-  margin-bottom: 10px
-}
+  #no-items-error {
+    margin-bottom: 10px
+  }
 
-select.limit-dropdown {
-  margin-bottom: 20px;
-}
+  select.limit-dropdown {
+    margin-bottom: 20px;
+  }
 
-li.limit-tabs {
-  padding: 0px;
-}
+  li.limit-tabs {
+    padding: 0px;
+  }
 
-.checkout-btn {
-  margin: 0px 0px;
-  padding: 4px 39px;
-}
+  label.limit-label {
+    margin-top: 20px;
+  }
 
-.navigation {
-  font-size: 1.6em;
-}
+  .checkout-btn {
+    margin: 0px 0px;
+    padding: 4px 39px;
+  }
 
-label.limit-label {
-  margin-top: 20px;
-}
+  .navigation {
+    font-size: 30px;
+    color: #009ed3;
+    font-size: 30px;
+  }
+
+  a {
+    color: #009ed3;
+    text-decoration: none;
+  }
+
+  a:active {
+    text-decoration: none;
+  }
+
+  .spinner {
+    width: 20px;
+    height: 20px;
+    background-color: #00BFFF;
+    position: fixed;
+    border-radius: 50%;
+    top: 35%;
+    left: 50%;
+    margin: 100px auto;
+    -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+    animation: sk-rotateplane 1.2s infinite ease-in-out;
+  }
+
+  @-webkit-keyframes sk-rotateplane {
+    0% {
+      -webkit-transform: perspective(120px)
+    }
+    50% {
+      -webkit-transform: perspective(120px) rotateY(180deg)
+    }
+    100% {
+      -webkit-transform: perspective(120px) rotateY(180deg) rotateX(180deg)
+    }
+  }
+
+  @keyframes sk-rotateplane {
+    0% {
+      transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+      -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+    }
+    50% {
+      transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+      -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+    }
+    100% {
+      transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+      -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    }
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    opacity: 0.4;
+    z-index: 1001;
+  }

@@ -9,8 +9,19 @@ class CardsController < ApplicationController
     payment_params = params[:card]
     result = CreditCardService.new({customer: @customer}).create_customer(payment_params)
 
-    @customer.vault_id = result.customer.id
-    @customer.save
-    redirect_to root_url
+    if result.success?
+      @customer.vault_id = result.customer.id
+      @customer.save
+      redirect_to root_url
+    else
+      p result
+      @errors = ["Card is not valid - please check that it was submitted correctly"]
+      @client_token = CreditCardService.new({customer: @customer}).generate_token()
+      render '/cards/new'
+    end
+  end
+
+  def edit
+    @client_token = CreditCardService.new(customer: current_user).generate_token(vault_id: current_user.vault_id)
   end
 end

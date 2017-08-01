@@ -16,7 +16,9 @@
 //= require_tree .
 
 $( document ).ready(function() {
-  var id, options;
+  $('#hook').hook();
+  
+  var options;
     $('.nav-open').click(function() {
       document.getElementById("navbar").style.width = "250px";
     })

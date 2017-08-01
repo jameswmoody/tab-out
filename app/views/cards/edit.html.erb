@@ -1,8 +1,10 @@
-<h2>Add a card</h2>
+<%= link_to '<i class="fa fa-angle-double-left" aria-hidden="true"></i>'.html_safe, edit_customer_path(current_user), class: 'navigation' %>
+
+<h2>Add a New Card</h2>
 
 <div id="dropin-container"></div>
 
-<%= form_for :card do |f| %>
+<%= form_for :card, url: cards_edit_path, method: :get do |f| %>
    <%= f.hidden_field :nonce %><br />
    <%= f.submit 'Add Card', class: 'btn btn-primary full-width' %><br />
  <% end %>
@@ -21,7 +23,6 @@
       instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
         var nonce = form.querySelector('input[name="card[nonce]"]')
         form.querySelector('input[name="card[nonce]"]').value = payload.nonce;
-        form.submit();
       });
     });
   });

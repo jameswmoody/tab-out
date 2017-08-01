@@ -22,8 +22,29 @@ class CustomersController < ApplicationController
     end
   end
 
+  def edit
+    if params[:id].to_i == current_user.id
+      @customer = current_user
+      @client_token = CreditCardService.new(customer: current_user).generate_token(vault_id: current_user.vault_id)
+    else
+      redirect_to root_path
+    end
+  end
+
+  def update
+    @customer = Customer.find(params[:id])
+
+    if @customer.update_attributes(customer_params)
+      @updated = true
+      render 'edit'
+    else
+      @errors = @customer.errors.full_messages
+      render 'edit'
+    end
+  end
+
   private
   def customer_params
-    params.require(:customer).permit(:username, :password, :password_confirmation, :first_name, :last_name, :email, :phone)
+    params.require(:customer).permit(:username, :password, :password_confirmation, :first_name, :last_name, :email, :phone, :limit_cost, :limit_amount)
   end
 end
