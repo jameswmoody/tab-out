@@ -35,7 +35,7 @@
                             // $('.spinner').fadeIn();
                             // $('.overlay').fadeIn();
                             // setTimeout(function() {
-                              // window.location.reload();
+                            //   window.location.reload();
                             // }, 2000);
                         }
                     }

@@ -16,8 +16,13 @@
 //= require_tree .
 
 $( document ).ready(function() {
+  PullToRefresh.init({
+    mainElement: 'body',
+    onRefresh: function(){ window.location.reload(); }
+  });
+
   $('#hook').hook();
-  
+
   var options;
     $('.nav-open').click(function() {
       document.getElementById("navbar").style.width = "250px";
