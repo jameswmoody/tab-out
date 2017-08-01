@@ -2,10 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Business, type: :model do
   before(:all) do
+    Customer.create(username: 'tomtom', password: 'tomtom', vault_id:'braintreesecret', first_name: 'tom', last_name:'tom', phone: '+13128675309', email:'tom@tom.com')
     Business.create(username: 'dugans_on_halsted', password:'dugans', sub_merchant_id:'braintreesecret', email:'dugans@dugans.com', doing_business_as:'Dugans')
   end
   after(:all) do
     Business.destroy_all
+    Customer.destroy_all
   end
   let(:business) { Business.first }
   describe "has" do

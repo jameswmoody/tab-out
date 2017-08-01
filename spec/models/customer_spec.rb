@@ -3,8 +3,10 @@ require 'rails_helper'
 RSpec.describe Customer, type: :model do
   before(:all) do
     Customer.create(username: 'tomtom', password: 'tomtom', vault_id:'braintreesecret', first_name: 'tom', last_name:'tom', phone: '+13128675309', email:'tom@tom.com')
+    Business.create(username: 'dugans_on_halsted', password:'dugans', sub_merchant_id:'braintreesecret', email:'dugans@dugans.com', doing_business_as:'Dugans')
   end
   after(:all) do
+    Business.destroy_all
     Customer.destroy_all
   end
   let(:valid_customer) { Customer.first }
@@ -39,6 +41,7 @@ RSpec.describe Customer, type: :model do
     let(:customer_no_email) { Customer.new(username: 'tomtom', password: 'tomtom', vault_id:'braintreesecret', first_name: 'tom', last_name:'tom', phone: '+13128675309') }
     let(:customer_no_password) { Customer.new(username: 'tomtom', vault_id:'braintreesecret', first_name: 'tom', last_name:'tom', phone: '+13128675309', email:'tom@tom.com') }
     let(:customer_not_unique) { Customer.new(username: 'tomtom', password: 'tomtom', vault_id:'braintreesecret', first_name: 'tom', last_name:'tom', phone: '+13128675309', email:'tom@tom.com') }
+    let(:customer_with_business_username) { Customer.new(username: 'dugans_on_halsted', password: 'tomtom', vault_id:'braintreesecret', first_name: 'tom', last_name:'tom', phone: '+13128675310', email:'tim@tom.com') }
     it "is invalid without a username" do
       expect(customer_no_username).to_not be_valid
     end
@@ -59,6 +62,9 @@ RSpec.describe Customer, type: :model do
     end
     it "is invalid with non unique information" do
       expect(customer_not_unique).to_not be_valid
+    end
+    it "is invalid with a business username" do
+      expect(customer_with_business_username).to_not be_valid
     end
   end
 end
