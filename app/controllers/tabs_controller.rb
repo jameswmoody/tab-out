@@ -22,13 +22,12 @@ class TabsController < ApplicationController
     @business = Business.find_by(username: params[:username].downcase)
     if @business
       open_tabs = @business.open_tabs
-      @tab = Tab.find_or_initialize_by(business_id: @business.id, customer_id: current_user.id, limit: limit)
-      p open_tabs.include?
+      @tab = Tab.find_or_initialize_by(business_id: @business.id, customer_id: current_user.id, transaction_id: nil)
       if open_tabs.include?(@tab)
         @errors = ['It looks like you already have an open tab with this bar. Please navigate to your open tabs to order a drink or close your previous tab']
         render 'new'
       else
-
+        @tab.limit = limit
         if @tab.save
           redirect_to tab_path(@tab)
         else
