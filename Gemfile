@@ -30,6 +30,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'twilio-ruby'
 gem "braintree", "~> 2.76.0"
 gem 'jquery-rails'
+gem 'bootstrap', '~> 4.0.0.alpha6'
+gem "font-awesome-rails"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
