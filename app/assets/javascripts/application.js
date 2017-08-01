@@ -17,13 +17,15 @@
 
 $( document ).ready(function() {
   $('#hook').hook();
-  
+
   var options;
     $('.nav-open').click(function() {
+      $('#overlay').fadeIn(120);
       document.getElementById("navbar").style.width = "250px";
     })
 
     $('.nav-close').click(function() {
+      $('#overlay').fadeOut();
       document.getElementById("navbar").style.width = "0";
     })
 

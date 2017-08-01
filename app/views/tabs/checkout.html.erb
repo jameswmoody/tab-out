@@ -1,4 +1,4 @@
-<%= link_to '<<', @tab, class: 'navigation' %>
+<%= link_to '<i class="fa fa-angle-double-left" aria-hidden="true"></i>'.html_safe, @tab, class: 'navigation' %>
 
 <h2>Checkout from:<br><strong><%= name(@tab.business) %></strong></h2>
 <hr>
@@ -16,7 +16,7 @@
     </tr>
   </tbody>
 </table>
-
+<hr>
 <h3>Choose your tip:</h3>
 <%= form_for :close, url: close_tab_path, class: "radio-buttons-checkout full-width container" do |f| %>
   <%= f.hidden_field :nonce %>

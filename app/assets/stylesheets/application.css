@@ -20,7 +20,7 @@
     background-color: #F7F7F7;
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
-    margin-bottom: 4%;
+    margin-bottom: 5%;
   }
   /* Nav Bar */
 
@@ -28,6 +28,7 @@
     border: 1px #292B2C solid;
     border-top: 14px #292B2C solid;
     position: fixed;
+    -webkit-backface-visibility: hidden;
     z-index: 1000;
   }
 
@@ -90,15 +91,15 @@
   .sidenav a {
     padding: 8px 8px 8px 18px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 20px;
     color: #fff;
     display: block;
     transition: 0.3s;
   }
 
   .sidenav a:hover, .offcanvas a:focus {
-    color: #fff;
-    font-size: 18px;
+    color: lightgray;
+    font-size: 20px;
   }
 
   .content {
@@ -115,14 +116,6 @@
     margin: 0 auto;
   }
 
-  @media screen and (max-height: 450px) {
-    .sidenav {
-      padding-top: 15px;
-    }
-    .sidenav a {
-      font-size: 18px;
-    }
-  }
   /* Forms */
 
   .btn, .btn-primary {
@@ -168,7 +161,10 @@
 
   .faded {
     opacity: 0.5;
-    font-size: 0.8em;
+  }
+
+  .settings-username {
+    opacity: 0.5;
   }
 
   .tab-title {
@@ -192,13 +188,18 @@
     padding: 4px 39px;
   }
 
-/*  .delete-tab {
+ .delete-tab {
     text-decoration: none;
     background-color: #F08080;
     border: none;
     color: white;
     padding: 4px 39px;
-  }*/
+    width: 100%;
+    height: 60px;
+    font-size: 1.4em;
+    line-height: 52px;
+  }
+
   .submit-new-drink {
     margin: 10px 0px;
   }
@@ -214,7 +215,7 @@
   .btn-primary {
     height: 60px;
     border: none;
-    border-radius: 0px;
+    border-radius: 4px;
     font-size: 1.4em;
     background-color: #00BFFF;
   }
@@ -254,7 +255,10 @@
   }
 
   #no-items-error {
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    padding: 5% 0%;
+    color: gray;
   }
 
   select.limit-dropdown {
@@ -272,6 +276,16 @@
   .checkout-btn {
     margin: 0px 0px;
     padding: 4px 39px;
+    border-radius: 4px;
+  }
+
+  .tab-content {
+    padding: 0px 10px;
+    padding-bottom: 3%;
+    background-color: white;
+    border-color: #dddddd;
+    border: 1px solid #dddddd;
+    border-top: none;
   }
 
   .navigation {
@@ -329,6 +343,7 @@
     }
   }
 
+  /*Loading overlay*/
   .overlay {
     position: fixed;
     top: 0;
@@ -338,4 +353,29 @@
     background-color: #fff;
     opacity: 0.4;
     z-index: 1001;
+  }
+
+
+  .tab-list-item:hover {
+    text-decoration: none;
+  }
+
+  .tab-time-stamp {
+    color: black;
+  }
+
+  input.search-tabs-button {
+    padding: 7px;
+  }
+
+  /*Navbar fadeout overlay*/
+  #overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: black;
+    opacity: 0.7;
+    z-index: 999;
   }

@@ -11,13 +11,8 @@ class TabsController < ApplicationController
   end
 
   def create
-    if params[:limit_amount] != ''
-      limit = params[:limit_amount]
-    elsif params[:limit_cost] != ''
-      limit = params[:limit_cost]
-    else
-      limit = 0
-    end
+    limit_amount = params[:limit_amount]
+    limit_cost = params[:limit_cost]
 
     @business = Business.find_by(username: params[:username].downcase)
     if @business
@@ -27,7 +22,10 @@ class TabsController < ApplicationController
         @errors = ['It looks like you already have an open tab with this bar. Please navigate to your open tabs to order a drink or close your previous tab']
         render 'new'
       else
-        @tab.limit = limit
+
+        @tab.limit_cost = params[:limit_cost]
+        @tab.limit_amount = params[:limit_amount]
+
         if @tab.save
           redirect_to tab_path(@tab)
         else
@@ -60,6 +58,7 @@ class TabsController < ApplicationController
     @tab = Tab.find(params[:id])
     customer = Customer.find(@tab.customer_id)
     @tab.destroy!
+    flash[:notice] = "Your tab at #{@tab.business.dba} was deleted successfully!".html_safe
     redirect_to customer_path(customer)
   end
 
