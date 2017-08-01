@@ -13,4 +13,8 @@ class CardsController < ApplicationController
     @customer.save
     redirect_to root_url
   end
+
+  def edit
+    @client_token = CreditCardService.new(customer: current_user).generate_token(vault_id: current_user.vault_id)
+  end
 end
