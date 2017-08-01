@@ -12,10 +12,10 @@ Rails.application.routes.draw do
 
   post '/twilio', to: 'twilio#text'
 
-  resources :customers
+  resources :customers, except: [:index]
 
   resources :tabs do
-    resources :items
+    resources :items, only: [:create, :destroy]
   end
 
   resources :businesses, only: [:show]

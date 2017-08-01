@@ -1,9 +1,10 @@
 class CustomersController < ApplicationController
 
   def show
-    @customer = Customer.find(params[:id])
-    @recent_tabs = @customer.closed_tabs.slice(0, 3)
-    @open_tabs = @customer.open_tabs
+    redirect_to root_path and return if session[:user_id] != params[:id].to_i || session[:user_type] != 'Customer'
+      @customer = Customer.find(params[:id])
+      @recent_tabs = @customer.closed_tabs.slice(0, 3)
+      @open_tabs = @customer.open_tabs
   end
 
   def new
@@ -23,12 +24,9 @@ class CustomersController < ApplicationController
   end
 
   def edit
-    if params[:id].to_i == current_user.id
+    redirect_to root_path and return if params[:id].to_i != session[:user_id]
       @customer = current_user
       @client_token = CreditCardService.new(customer: current_user).generate_token(vault_id: current_user.vault_id)
-    else
-      redirect_to root_path
-    end
   end
 
   def update
