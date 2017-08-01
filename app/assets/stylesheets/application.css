@@ -115,15 +115,6 @@
   .center_div {
     margin: 0 auto;
   }
-
-  @media screen and (max-height: 450px) {
-    .sidenav {
-      padding-top: 15px;
-    }
-    .sidenav a {
-      font-size: 18px;
-    }
-  }
   /* Forms */
 
   .btn, .btn-primary {
