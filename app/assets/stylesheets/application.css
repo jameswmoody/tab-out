@@ -263,7 +263,18 @@
   }
 
   .navigation {
-    font-size: 1.6em;
+    font-size: 30px;
+    color: #009ed3;
+    font-size: 30px;
+  }
+
+  a {
+    color: #009ed3;
+    text-decoration: none;
+  }
+
+  a:active {
+    text-decoration: none;
   }
 
   .spinner {

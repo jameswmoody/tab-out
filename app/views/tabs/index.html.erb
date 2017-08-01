@@ -1,4 +1,5 @@
-<%= link_to '<<', root_path, class: 'navigation' %>
+<%= link_to '<i class="fa fa-angle-double-left" aria-hidden="true"></i>'.html_safe, root_path, class: 'navigation' %>
+
 <% if session[:user_type] == 'Customer' %>
 <h2>Hi, <%= current_user.first_name %>!</h2>
 <hr>
