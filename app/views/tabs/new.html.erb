@@ -20,11 +20,11 @@
 
     <%= label :limit, "Limit", class: "limit-label" %>
     <div id="amount" class="tab-pane fade in active">
-      <%= select_tag(:limit_amount, options_for_select([['No limit', '0'],['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6']]), class: "form-control full-width limit-dropdown") %>
+      <%= select_tag(:limit_amount, options_for_select([['No limit', '0'],['1', '1'], ['2', '2'], ['3', '3'], ['4', '4'], ['5', '5'], ['6', '6']], current_user.limit_amount), class: "form-control full-width limit-dropdown") %>
     </div>
 
     <div id="cost" class="tab-pane fade in">
-        <%= select_tag(:limit_cost, options_for_select([['No limit', '0'],['$10', '1000'], ['$20', '2000'], ['$30', '3000'], ['$40', '4000'], ['$50', '5000'], ['$60', '6000']]), class: "form-control full-width limit-dropdown") %>
+        <%= select_tag(:limit_cost, options_for_select([['No limit', '0'],['$10', '1000'], ['$20', '2000'], ['$30', '3000'], ['$40', '4000'], ['$50', '5000'], ['$60', '6000']], current_user.limit_cost), class: "form-control full-width limit-dropdown") %>
     </div>
   </div>
 
