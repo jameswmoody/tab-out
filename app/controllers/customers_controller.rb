@@ -28,6 +28,7 @@ class CustomersController < ApplicationController
   end
 
   def update
+    p customer_params
     @customer = Customer.find(params[:id])
 
     if @customer.update_attributes(customer_params)
@@ -41,6 +42,6 @@ class CustomersController < ApplicationController
 
   private
   def customer_params
-    params.require(:customer).permit(:username, :password, :password_confirmation, :first_name, :last_name, :email, :phone)
+    params.require(:customer).permit(:username, :password, :password_confirmation, :first_name, :last_name, :email, :phone, :limit_cost, :limit_amount)
   end
 end
