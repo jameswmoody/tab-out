@@ -265,3 +265,7 @@ li.limit-tabs {
 .navigation {
   font-size: 1.6em;
 }
+
+label.limit-label {
+  margin-top: 20px;
+}
