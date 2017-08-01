@@ -16,12 +16,22 @@ class TabsController < ApplicationController
 
     @business = Business.find_by(username: params[:username].downcase)
     if @business
-      @tab = Tab.new(business_id: @business.id, customer_id: current_user.id, limit_amount: limit_amount, limit_cost: limit_cost)
-      if @tab.save
-        redirect_to tab_path(@tab)
-      else
-        @errors = ['The handle entered does not belong to any bar - please confirm it was entered correctly']
+      open_tabs = @business.open_tabs
+      @tab = Tab.find_or_initialize_by(business_id: @business.id, customer_id: current_user.id, transaction_id: nil)
+      if open_tabs.include?(@tab)
+        @errors = ['It looks like you already have an open tab with this bar. Please navigate to your open tabs to order a drink or close your previous tab']
         render 'new'
+      else
+
+        @tab.limit_cost = params[:limit_cost]
+        @tab.limit_amount = params[:limit_amount]
+
+        if @tab.save
+          redirect_to tab_path(@tab)
+        else
+          @errors = ['The handle entered does not belong to any bar - please confirm it was entered correctly']
+          render 'new'
+        end
       end
     else
       @errors = ['The handle entered does not belong to any bar - please confirm it was entered correctly']
