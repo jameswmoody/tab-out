@@ -1,5 +1,6 @@
 class TabsController < ApplicationController
   def index
+    redirect_to root_path and return if !logged_in?
     if session[:user_type] == 'Business'
       @business = current_user
     end
@@ -7,6 +8,7 @@ class TabsController < ApplicationController
   end
 
   def new
+    redirect_to root_path and return if !logged_in?
     @tab = Tab.new
   end
 
@@ -40,13 +42,17 @@ class TabsController < ApplicationController
   end
 
   def show
+    redirect_to root_path and return if !logged_in? || params[:id].to_i > Tab.last.id
     @tab = Tab.find(params[:id])
+    redirect_to root_path and return if session[:user_id] != @tab.customer_id && session[:user_id] != @tab.business_id
     @item = Item.new
     render 'show'
   end
 
   def checkout
+    redirect_to root_path and return if !logged_in? || params[:id].to_i > Tab.last.id
     @tab = Tab.find(params[:id])
+    redirect_to root_path and return if session[:user_id] != @tab.customer_id && session[:user_id] != @tab.business_id
     @client_token = CreditCardService.new(customer: @tab.customer).generate_token(vault_id: @tab.customer.vault_id)
     render 'checkout'
   end
@@ -54,9 +60,13 @@ class TabsController < ApplicationController
   def destroy
     @tab = Tab.find(params[:id])
     customer = Customer.find(@tab.customer_id)
-    @tab.destroy!
-    flash[:notice] = "Your tab at #{@tab.business.dba} was deleted successfully!".html_safe
-    redirect_to customer_path(customer)
+    if customer.id == current_user.id
+      @tab.destroy!
+      flash[:notice] = "Your tab at #{@tab.business.dba} was deleted successfully!".html_safe
+      redirect_to customer_path(customer)
+    else
+      redirect_to root_path
+    end
   end
 
   def close

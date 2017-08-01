@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   include TabsHelper
 
   def new
+    redirect_to root_path
     @item = Item.new
   end
 
