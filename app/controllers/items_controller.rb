@@ -45,7 +45,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find_by_id(params[:id])
+    @item = Item.find(params[:id])
     if @item
       @tab = @item.tab
       @item.destroy!

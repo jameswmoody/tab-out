@@ -32,6 +32,7 @@ gem "braintree", "~> 2.76.0"
 gem 'jquery-rails'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem "font-awesome-rails"
+gem 'simplecov', :require => false, :group => :test
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

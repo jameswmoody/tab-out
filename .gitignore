@@ -19,6 +19,7 @@
 .byebug_history
 .env
 .DS_Store
+coverage
 
 # twilio-password = dbcrockdovestapout
 # twilio-number = +13124719776
