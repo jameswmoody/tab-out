@@ -22,7 +22,7 @@ $(document).ready(function() {
   });
 
   setTimeout(function() {
-    $('.navbar').css('position', 'fixed');
+    // $('.navbar').css('position', 'fixed');
   }, 500);
 
   var options;
