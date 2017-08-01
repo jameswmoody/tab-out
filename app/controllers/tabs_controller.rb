@@ -43,12 +43,15 @@ class TabsController < ApplicationController
 
   def show
     @tab = Tab.find(params[:id])
+    redirect_to root_path and return if !logged_in? || (session[:user_id] != @tab.customer_id && session[:user_id] != @tab.business_id)
     @item = Item.new
     render 'show'
   end
 
   def checkout
     @tab = Tab.find(params[:id])
+    redirect_to root_path and return if !logged_in? || (session[:user_id] != @tab.customer_id && session[:user_id] != @tab.business_id)
+
     @client_token = CreditCardService.new(customer: @tab.customer).generate_token(vault_id: @tab.customer.vault_id)
     render 'checkout'
   end
