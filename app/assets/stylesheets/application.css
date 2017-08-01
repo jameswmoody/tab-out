@@ -17,15 +17,16 @@
 
   body {
     min-height: 97vh;
-    background-color: #F7F7F7;
-    font-family: 'Open Sans', sans-serif;
+    background-color: whitesmoke;
+    font-family: 'Roboto', sans-serif;
     font-weight: 100;
     margin-bottom: 5%;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Comfortaa', sans-serif;
-    font-weight: 600;
+    color: #404040;
+    /*font-family: 'Sanchez', sans-serif;*/
+    /*font-weight: 600;*/
   }
   /* Nav Bar */
 
@@ -35,6 +36,7 @@
     position: fixed;
     -webkit-backface-visibility: hidden;
     z-index: 1000;
+    text-align: center;
   }
 
   .navbar-default .navbar-collapse {
@@ -47,7 +49,6 @@
 
   .navbar {
     border-radius: 0;
-    font-family: 'Poppins', sans-serif;
     white-space: nowrap;
   }
 
@@ -91,6 +92,7 @@
     background-color: #292B2C;
     overflow-x: hidden;
     transition: 0.3s;
+    opacity: 0.98;
   }
 
   .sidenav a {
@@ -104,7 +106,6 @@
 
   .sidenav a:hover, .offcanvas a:focus {
     color: lightgray;
-    font-size: 20px;
   }
 
   .content {
@@ -174,6 +175,11 @@
 
   .tab-title {
     font-size: 1.3em;
+    color: #404040;
+  }
+
+  li.list-group-item:hover {
+    background-color: #F0F0F0;
   }
 
   #new_item {
@@ -190,7 +196,8 @@
     background-color: #F08080;
     border: none;
     color: white;
-    padding: 4px 39px;
+    padding: 4px 51px;
+    border-radius: 4px;
   }
 
  .delete-tab {
@@ -210,7 +217,7 @@
   }
 
   span.badge {
-    font-size: 1.1em;
+    font-size: 1em;
   }
 
   .radio-buttons-checkout {
@@ -262,7 +269,7 @@
   #no-items-error {
     margin-bottom: 10px;
     font-size: 1.2em;
-    padding: 5% 0%;
+    padding: 5% 5%;
     color: gray;
   }
 
@@ -360,6 +367,10 @@
     z-index: 1001;
   }
 
+  .nav-tabs>li>a {
+    margin-right: 0px;
+  }
+
 
   .tab-list-item:hover {
     text-decoration: none;
@@ -383,4 +394,34 @@
     background-color: black;
     opacity: 0.7;
     z-index: 999;
+  }
+
+  #tab-table {
+    max-width: 700px;
+    table-layout:fixed;
+    margin: auto;
+    float: right;
+  }
+
+  a.nav-username {
+    color: lightgray;
+    text-decoration: none;
+    font-size: 1.7em;
+  }
+
+  .nav-hr-sm {
+    margin: auto;
+    border-top: 1px solid #383636;
+    width: 25%;
+  }
+
+  .nav-hr-lg {
+    margin: auto;
+    border-top: 1px solid #383636;
+    width: 50%;
+  }
+
+  hr.hr-display {
+    margin: 10px 0px;
+    padding: 10px 0px;
   }
