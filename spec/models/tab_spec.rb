@@ -4,7 +4,7 @@ RSpec.describe Tab, type: :model do
   before(:all) do
     customer = Customer.create(username: 'tomtom', password: 'tomtom', vault_id:'braintreesecret', first_name: 'tom', last_name:'tom', phone: '+13128675309', email:'tom@tom.com')
     business = Business.create(username: 'dugans_on_halsted', password:'dugans', sub_merchant_id:'braintreesecret', email:'dugans@dugans.com', doing_business_as:'Dugans')
-    Tab.create(customer: customer, business: business, limit: 2)
+    Tab.create(customer: customer, business: business, limit_amount: 2)
   end
   after(:all) do
     Tab.destroy_all
@@ -26,8 +26,8 @@ RSpec.describe Tab, type: :model do
 
       expect(tab.items).to include item
     end
-    it "a limit" do
-      expect(tab.limit).to eq 2
+    it "a limit amount" do
+      expect(tab.limit_amount).to eq 2
     end
   end
   describe "#total_price" do
