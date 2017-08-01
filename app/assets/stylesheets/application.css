@@ -161,7 +161,10 @@
 
   .faded {
     opacity: 0.5;
-    font-size: 0.8em;
+  }
+
+  .settings-username {
+    opacity: 0.5;
   }
 
   .tab-title {
@@ -274,6 +277,15 @@
     margin: 0px 0px;
     padding: 4px 39px;
     border-radius: 4px;
+  }
+
+  .tab-content {
+    padding: 0px 10px;
+    padding-bottom: 3%;
+    background-color: white;
+    border-color: #dddddd;
+    border: 1px solid #dddddd;
+    border-top: none;
   }
 
   .navigation {

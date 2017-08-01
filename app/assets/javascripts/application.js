@@ -20,7 +20,7 @@ $( document ).ready(function() {
 
   var options;
     $('.nav-open').click(function() {
-      $('#overlay').fadeIn();
+      $('#overlay').fadeIn(120);
       document.getElementById("navbar").style.width = "250px";
     })
 
