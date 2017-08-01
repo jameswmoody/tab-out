@@ -4,7 +4,7 @@
 
 <%= form_for :card do |f| %>
    <%= f.hidden_field :nonce %><br />
-   <%= f.submit 'Add Card' %><br />
+   <%= f.submit 'Add Card', class: 'btn btn-primary full-width' %><br />
  <% end %>
 
 <script src="https://js.braintreegateway.com/web/dropin/1.4.0/js/dropin.min.js"></script>
