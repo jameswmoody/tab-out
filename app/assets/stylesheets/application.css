@@ -24,14 +24,15 @@
   }
   /* Nav Bar */
 
-  .navbar, .navbar-default {
+  .navbarr, .navbarr-default {
     border: 1px #292B2C solid;
     border-top: 14px #292B2C solid;
+    position: fixed;
     -webkit-backface-visibility: hidden;
     z-index: 1000;
   }
 
-  .navbar-default .navbar-collapse {
+  .navbarr-default .navbar-collapse {
     border: 1px #292B2C solid;
   }
 
@@ -39,13 +40,13 @@
     background-color: #292B2C;
   }
 
-  .navbar {
+  .navbarr {
     border-radius: 0;
     font-family: 'Poppins', sans-serif;
     white-space: nowrap;
   }
 
-  .navbar-default .brand, .navbar-default .brand:hover, .nav-links:hover {
+  .navbarr-default .brand, .navbarr-default .brand:hover, .nav-links:hover {
     color: #fff;
     text-shadow: none;
   }
