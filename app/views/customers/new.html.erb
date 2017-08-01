@@ -21,11 +21,10 @@
   <%= f.text_field :last_name, class: "full-width form-control", required: true %><br>
 
   <%= f.label :phone %><br>
-  <p>format [+1xxxxxxxxxx]</p>
-  <%= f.text_field :phone, class: "full-width form-control", required: true %><br>
+  <%= f.text_field :phone, class: "full-width form-control", placeholder: 'Ex: +13128675309', required: true %><br>
 
   <%= f.label :email %><br>
-  <%= f.email_field :email, class: "full-width form-control", required: true %>
+  <%= f.email_field :email, class: "full-width form-control", placeholder: 'Ex: email@email.com', required: true %>
   <br>
   <%= f.submit 'Sign Up', class: "form_submit_button btn btn-success full-width"%>
   <% end %>
