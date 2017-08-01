@@ -15,13 +15,15 @@
 //= require jquery_ujs
 //= require_tree .
 
-$( document ).ready(function() {
+$(document).ready(function() {
   PullToRefresh.init({
     mainElement: 'body',
     onRefresh: function(){ window.location.reload(); }
   });
 
-  $('#hook').hook();
+  setTimeout(function() {
+    $('.navbar').css('position', 'fixed');
+  }, 500);
 
   var options;
     $('.nav-open').click(function() {
