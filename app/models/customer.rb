@@ -1,3 +1,5 @@
+require_relative 'customer_business_validator'
+
 class Customer < ApplicationRecord
   has_secure_password
 
@@ -5,6 +7,7 @@ class Customer < ApplicationRecord
 
   validates :username, :phone, :first_name, :last_name, :email, presence: true
   validates :username, :phone, :email, uniqueness: true
+  validates_with CustomerBusinessValidator
 
   def open_tabs
     self.tabs.order("updated_at DESC").select{ |tab| tab.is_open? }
