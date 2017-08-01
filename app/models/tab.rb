@@ -11,4 +11,5 @@ class Tab < ApplicationRecord
   def is_open?
     self.transaction_id == nil
   end
+
 end
