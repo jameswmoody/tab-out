@@ -1,12 +1,27 @@
 class TabsController < ApplicationController
+  def index
+    if session[:user_type] == 'Business'
+      @business = current_user
+    end
+    @tabs = current_user.closed_tabs
+  end
+
   def new
     @tab = Tab.new
   end
 
   def create
+    if params[:limit_amount] != ''
+      limit = params[:limit_amount]
+    elsif params[:limit_cost] != ''
+      limit = params[:limit_cost]
+    else
+      limit = 0
+    end
+
     @business = Business.find_by(username: params[:username])
     if @business
-      @tab = Tab.new(business_id: @business.id, customer_id: current_user.id)
+      @tab = Tab.new(business_id: @business.id, customer_id: current_user.id, limit: limit)
       if @tab.save
         redirect_to tab_path(@tab)
       else

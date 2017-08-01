@@ -48,11 +48,11 @@ $( document ).ready(function() {
   }
 
 //geolocation
-  $('#open-tab').on('click', function() {
-    event.preventDefault()
-    navigator.geolocation.getCurrentPosition(storePosition)
-    id = navigator.geolocation.watchPosition(success, error, options);
-  });
+  // $('#open-tab').on('click', function() {
+  //   event.preventDefault()
+  //   navigator.geolocation.getCurrentPosition(storePosition)
+  //   id = navigator.geolocation.watchPosition(success, error, options);
+  // });
 });
 
 function storePosition(position) {

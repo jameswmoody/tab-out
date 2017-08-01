@@ -6,8 +6,8 @@
     </div>
     <div id="navbar" class="sidenav">
       <a href="javascript:void(0)" class="nav-close">&times;</a>
-        <%= link_to 'My Tabs', root_path %>
       <% if logged_in? %>
+        <%= link_to 'My Tabs', root_path %>
         <%= link_to 'Settings', "/customers/#{current_user.id}/edit" %>
         <%= link_to 'History', '/' %>
         <%= link_to 'Logout', logout_path %>

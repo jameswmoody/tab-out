@@ -1,0 +1,9 @@
+<%= link_to '<<', root_path, class: 'navigation' %>
+<% if session[:user_type] == 'Customer' %>
+<h2>Hi, <%= current_user.first_name %>!</h2>
+<hr>
+<% end %>
+<h3>History</h3>
+<ul class="list-group">
+  <%= render @tabs %>
+</ul>
