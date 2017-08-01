@@ -400,6 +400,6 @@
     z-index: 999;
   }
 
-i {
-  float: left;
+.fa-glass {
+  float: left
 }
