@@ -32,6 +32,8 @@
                         if (!settings.refresh) {
                             settings.callback();
                         } else {
+                            $('.spinner').fadeIn();
+                            $('.overlay').fadeIn();
                             $this.addClass("fadeIn");
                             window.location.reload();
                         }
