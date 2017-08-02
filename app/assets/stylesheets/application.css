@@ -200,7 +200,7 @@
   }
 
   #new_item {
-    margin-bottom: 15px;
+    margin-bottom: 0px;
     display: inline-block;
   }
 
@@ -229,8 +229,10 @@
     line-height: 52px;
   }
 
-  .submit-new-drink {
-    margin: 10px 0px;
+  input.submit-new-drink {
+    margin-top: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
   span.badge {
@@ -293,14 +295,32 @@
     div.fix-width {
       max-width: none;
     }
+
+    li#no-orders {
+      margin-top: 5px;
+      font-size: 1.2em;
+      padding: 5% 5%;
+      color: gray;
+      width: 100%;
+      float: none;
+    }
   }
 
   #no-items-error {
-    margin-bottom: 10px;
+    margin-top: 5px;
     font-size: 1.2em;
     padding: 5% 5%;
     color: gray;
     width: 100%;
+  }
+
+  #no-orders {
+    margin-top: 20px;
+    float: right;
+    font-size: 1.2em;
+    padding: 4% 5%;
+    color: gray;
+    width: 700px;
   }
 
   select.limit-dropdown {
@@ -431,6 +451,7 @@
     table-layout:fixed;
     margin: auto;
     float: right;
+    margin-top: 15px;
   }
 
   p.nav-username {
@@ -460,7 +481,7 @@
 
   hr.bad-hr {
     clear: both;
-    padding-top: 20px;
+    padding-top: 0px;
     border-bottom: 1px solid #eee;
+    border-top: 0px;
   }
-
