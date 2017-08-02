@@ -10,12 +10,16 @@ evan = Customer.create(username: 'ehickle', password: 'password', vault_id: '699
 nico = Customer.create(username: 'nicoglennon', password: 'password', vault_id: '649382071', first_name: 'Nico', last_name: 'Glennon', phone: '+17739309398', email: 'nicoglennon@icloud.com')
 josh = Customer.create(username: 'jmharvey0', password: 'password', vault_id: '601241421', first_name: 'Josh', last_name: 'Harvey', phone: '+13121234560', email: 'josh@josh.com')
 
+1000.times do
+  Customer.create(username: Faker::Internet.user_name, password: 'password', vault_id: '601241421', first_name: 'Josh', last_name: 'Harvey', phone: '+13121234561', email: Faker::Internet.safe_email)
+end
+
 dugans = Business.create(username: 'dugans_on_halsted', password: 'password', sub_merchant_id: 'braintreesecret0', email: 'dugans@dugans.com', doing_business_as: 'Dugans')
 sliperyslope = Business.create(username: 'sliperyslope', password: 'password', sub_merchant_id: 'braintreesecret1', email: 'slipery@slope.com', doing_business_as: 'Slippery Slope')
 emporium = Business.create(username: 'emporium', password: 'password', sub_merchant_id: 'braintreesecret2', email: 'emporium@emporium.com', doing_business_as: 'Emporium')
 mullens = Business.create(username: 'mullens_wheaton', password: 'password', sub_merchant_id: 'braintreesecret3', email: 'mullens@mullens.com', doing_business_as: 'Wheaton Mullens')
 
-customers = [james, evan, nico, josh]
+customers = Customer.all
 businesses = [dugans, sliperyslope, emporium, mullens]
 drink_types = ['Shot/Liqour', 'Beer', 'Wine', 'Cocktail']
 
