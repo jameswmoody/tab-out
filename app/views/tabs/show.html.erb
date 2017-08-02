@@ -7,5 +7,5 @@
 <% if session[:user_type] == 'Customer' %>
   <%= render partial: 'table_customers' %>
 <% elsif session[:user_type] == "Business" %>
-  <% render partial: 'table_businesses' %>
+  <%= render partial: 'table_businesses' %>
 <% end %>
