@@ -186,6 +186,10 @@
     color: #404040;
   }
 
+  li.list-group-item {
+    margin-top: -1px;
+  }
+
   li.list-group-item:hover {
     background-color: #F0F0F0;
   }
