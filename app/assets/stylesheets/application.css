@@ -291,6 +291,7 @@
     font-size: 1.2em;
     padding: 5% 5%;
     color: gray;
+    width: 100%;
   }
 
   select.limit-dropdown {
