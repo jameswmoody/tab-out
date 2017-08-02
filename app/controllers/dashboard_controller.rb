@@ -6,10 +6,12 @@ class DashboardController < ApplicationController
     @weekly_sales = weekly_sales
     @monthly_sales = monthly_sales
     @monthly_drink_by_type = monthly_drink_by_type
+    @monthly_average = monthly_average
+    @monthly_tips = monthly_tips
 
     @chart = Fusioncharts::Chart.new({
-      width: "800",
-      height: "400",
+      width: "100%",
+      height: "145%",
       type: "stackedcolumn2d",
       renderAt: "chartContainer",
       dataSource: {
@@ -19,7 +21,7 @@ class DashboardController < ApplicationController
           numberPrefix: "$",
           theme: "ocean",
           exportEnabled: "1",
-          bgColor: "#F5F5F5"
+          bgColor: "#ebebeb"
         },
         categories: [{
           category: [

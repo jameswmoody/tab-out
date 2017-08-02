@@ -457,3 +457,19 @@
     padding-top: 20px;
     border-bottom: 1px solid #eee;
   }
+
+  .revenue {
+    border-right: solid 1px #d6d6d6;
+  }
+
+  .revenue-cell {
+    padding: 10% 0;
+  }
+
+  .revenue-amount {
+    font-size: 2em;
+  }
+
+  .number-data {
+    font-size: 2em;
+  }

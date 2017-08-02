@@ -1,44 +1,62 @@
-  <div class="row">
-    <div class="col-md-4 text-center">
-      <h2>Revenue</h2>
+<div class="btn-group" role="group">
+  <button type="button" class="btn btn-default">Today</button>
+  <button type="button" class="btn btn-default">Week</button>
+  <button type="button" class="btn btn-default">Month</button>
+  <button type="button" class="btn btn-default">All</button>
+</div>
 
+<div class="row">
+  <div class="col-md-3 text-center revenue">
+    <h2>Revenue</h2>
+
+    <div class="revenue-cell">
       <h4>Total</h4>
-      <p>$1,252.00</p>
-
-      <h4>Average Tab</h4>
-      <p>$253.23</p>
-
-      <h4>Outstanding</h4>
-      <p>$59.32</p>
-
-      <h4>Tips</h4>
-      <p>$48.98</p>
+      <p class="revenue-amount text-success">$<%= price_in_dollars(@monthly_sales) %></p>
     </div>
-    <div class="col-md-8">
-      <h2 class="text-center">At a Glance</h2>
-      <div id="chartContainer"></div>
-      <h2 class="text-center">By the Numbers</h2>
-      <div class="row text-center">
-        <div class="col-md-3">
-          <h4>Total Tabs</h4>
-          <p>124</p>
-        </div>
-        <div class="col-md-3">
-          <h4>Unique Customers</h4>
-          <p>62</p>
-        </div>
-        <div class="col-md-3">
-          <h4>Returning Customers</h4>
-          <p>31</p>
-        </div>
-        <div class="col-md-3">
-          <h4>Total Drinks</h4>
-          <p>369</p>
-        </div>
+
+    <div class="revenue-cell">
+      <h4>Average Tab</h4>
+      <p class="revenue-amount text-success">$<%= price_in_dollars(@monthly_average) %></p>
+    </div>
+
+    <div class="revenue-cell">
+      <h4>Outstanding</h4>
+      <p class="revenue-amount text-danger">$59.32</p>
+    </div>
+
+    <div class="revenue-cell">
+      <h4>Tips</h4>
+      <p class="revenue-amount text-success">$<%= price_in_dollars(@monthly_tips) %></p>
+    </div>
+
+  </div>
+  <div class="col-md-9">
+    <h2 class="text-center">At a Glance</h2>
+    <div id="chartContainer"></div>
+    <%= @chart.render() %>
+
+    <h2 class="text-center">By the Numbers</h2>
+    <div class="row text-center">
+      <div class="col-md-3">
+        <h4>Total Tabs</h4>
+        <p class="number-data"><%= monthly_count %></p>
+      </div>
+      <div class="col-md-3">
+        <h4>Unique Customers</h4>
+        <p class="number-data">62</p>
+      </div>
+      <div class="col-md-3">
+        <h4>Returning&nbsp;Customers</h4>
+        <p class="number-data"><%= monthly_returning_customers.count %></p>
+      </div>
+      <div class="col-md-3">
+        <h4>Total Drinks</h4>
+        <p class="number-data"><%= total_drinks %></p>
       </div>
     </div>
   </div>
-<%= @chart.render() %>
+</div>
+
 
 <!-- <%= monthly_drink_by_type %>
 

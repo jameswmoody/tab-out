@@ -37,6 +37,32 @@ module StatsHelper
     sum
   end
 
+  def monthly_average
+    monthly_tabs = current_user.tabs.where("created_at >= ?", 1.month.ago.utc)
+
+    sum = 0
+    monthly_tabs.each do |tab|
+      sum+=tab.total_price
+    end
+    sum/monthly_tabs.count
+  end
+
+  def monthly_outstanding
+    monthly_tabs = current_user.tabs.where("created_at >= ?", 1.month.ago.utc)
+
+
+  end
+
+  def monthly_tips
+    monthly_tabs = current_user.tabs.where("created_at >= ?", 1.month.ago.utc)
+
+    tips = 0
+    monthly_tabs.each do |tab|
+      tips+=tab.tip
+    end
+    tips
+  end
+
   def daily_count
     current_user.tabs.where("created_at >= ?", Time.zone.now.beginning_of_day).count
   end
