@@ -4,7 +4,7 @@
 
 <div id="dropin-container"></div>
 
-<%= form_for :card do |f| %>
+<%= form_for :card html:{ id: 'new-card' }do |f| %>
    <%= f.hidden_field :nonce %><br />
    <%= f.submit 'Add Card', class: 'btn btn-primary full-width' %><br />
  <% end %>
@@ -12,7 +12,7 @@
 <script src="https://js.braintreegateway.com/web/dropin/1.4.0/js/dropin.min.js"></script>
 <script>
   var button = document.querySelector("input[type='submit']");
-  var form = document.querySelector('form');
+  var form = document.querySelector('form#new-card');
 
   braintree.dropin.create({
     authorization: '<%= @client_token %>',
