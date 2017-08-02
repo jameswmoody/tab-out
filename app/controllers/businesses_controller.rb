@@ -8,11 +8,4 @@ class BusinessesController < ApplicationController
       @tabs = @business.open_tabs
     end
   end
-
-  def stats
-    @total_sales = total_sales
-    @daily_sales = daily_sales
-    @weekly_sales = weekly_sales
-    @monthly_sales = monthly_sales
-  end
 end

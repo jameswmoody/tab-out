@@ -68,8 +68,6 @@ class DashboardController < ApplicationController
         ]
       }
     })
-    p "chart HHHHHHHHHHHHHHHHHHHHHH"
-    p @chart
   end
 
 end
