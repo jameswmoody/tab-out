@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
 
   resources :businesses, only: [:show]
-  get '/stats', to: 'businesses#stats'
+  get '/dashboard', to: 'dashboard#index'
 
   get '/tabs/:id/checkout', to: 'tabs#checkout', as: 'checkout_tab'
   post '/tabs/:id/close', to: 'tabs#close', as: 'close_tab'
