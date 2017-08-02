@@ -59,6 +59,11 @@ $( document ).ready(function() {
   //   navigator.geolocation.getCurrentPosition(storePosition)
   //   id = navigator.geolocation.watchPosition(success, error, options);
   // });
+
+  $('#signup-button').one('click', function() {
+    event.preventDefault();
+    $('#signup-extra-info').children().removeClass('hidden');
+  });
 });
 
 function storePosition(position) {
