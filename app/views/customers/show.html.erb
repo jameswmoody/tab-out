@@ -12,17 +12,17 @@
   </div>
 <% end %>
 
-<h2>Hi, <%= @customer.first_name %>!</h2>
+<h1>Hi, <%= @customer.first_name %>!</h1>
 <hr>
 <% if @open_tabs.any? %>
   <h3>Your open tabs:</h3>
   <%= render @open_tabs %>
 <% else %>
-  <h4>You have no open tabs.</h4>
+  <li class="btn btn-default" id="no-items-error">You have no open tabs.</li>
 <% end %>
 
-<hr>
 <% if @recent_tabs.any? %>
+  <hr>
   <h3>Recent Tabs</h3>
   <ul class="list-group">
     <%= render @recent_tabs %>
