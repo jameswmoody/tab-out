@@ -93,6 +93,8 @@
   <li id='no-items-error' class='btn btn-default'>No items have been ordered.</li>
 <% end %>
 
+<hr class='bad-hr'>
+
 <% if session[:user_type] == 'Customer'%>
   <% if @tab.is_open? %>
     <% if @tab.items.empty? %>
@@ -101,7 +103,7 @@
     <% else %>
       <%= button_to "Checkout", checkout_tab_path, method: :get, class: "btn btn-primary full-width" %>
     <% end %>
-<% else %>
-  <button class="btn btn-inactive full-width">Tab Closed</button>
+  <% else %>
+    <button class="btn btn-inactive full-width">Tab Closed</button>
   <% end %>
 <% end %>

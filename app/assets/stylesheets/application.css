@@ -103,7 +103,7 @@
     opacity: 0.98;
   }
 
-  .sidenav a {
+  .sidenav a, .sidenav p {
     padding: 8px 8px 8px 18px;
     text-decoration: none;
     font-size: 20px;
@@ -423,9 +423,8 @@
     float: right;
   }
 
-  a.nav-username {
+  p.nav-username {
     color: lightgray;
-    text-decoration: none;
     font-size: 1.7em;
   }
 
@@ -447,4 +446,10 @@
   }
   .fa-glass {
     float: left
+  }
+
+  hr.bad-hr {
+    clear: both;
+    padding-top: 20px;
+    border-bottom: 1px solid #eee;
   }

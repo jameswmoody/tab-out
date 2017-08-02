@@ -12,7 +12,7 @@
     <div id="navbar" class="sidenav">
       <a href="javascript:void(0)" class="nav-close">&times;</a>
       <% if logged_in? %>
-        <a href='#' class="nav-username"><strong>@<%= current_user.username %></strong></a>
+        <p href='#' class="nav-username"><strong>@<%= current_user.username %></strong></p>
         <hr class="nav-hr-lg">
         <%= link_to 'My Tabs', root_path %>
         <% if current_user.class == Customer %>
