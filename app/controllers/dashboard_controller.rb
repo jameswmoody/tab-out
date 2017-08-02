@@ -5,64 +5,69 @@ class DashboardController < ApplicationController
     @daily_sales = daily_sales
     @weekly_sales = weekly_sales
     @monthly_sales = monthly_sales
+    @monthly_drink_by_type = monthly_drink_by_type
 
     @chart = Fusioncharts::Chart.new({
-      width: "600",
+      width: "800",
       height: "400",
       type: "stackedcolumn2d",
       renderAt: "chartContainer",
       dataSource: {
         chart: {
-          caption: current_user.dba,
-          xAxisname: "Month",
+          xAxisname: "Week",
           yAxisName: "Amount ($)",
           numberPrefix: "$",
           theme: "ocean",
           exportEnabled: "1",
+          bgColor: "#F5F5F5"
         },
         categories: [{
           category: [
-            { label: "July" },
-            { label: "June" },
-            { label: "May" },
-            { label: "April" }
+            { label: "W1" },
+            { label: "W2" },
+            { label: "W3" },
+            { label: "W4" }
           ]
         }],
         dataset: [
           {
             seriesname: "Beer",
+            color: "#00698c",
             data: [
-              { value: "10000" },
-              { value: "11500" },
-              { value: "12500" },
-              { value: "15000" }
+              { value: @monthly_drink_by_type['W1']['Beer'] },
+              { value: @monthly_drink_by_type['W2']['Beer'] },
+              { value: @monthly_drink_by_type['W3']['Beer'] },
+              { value: @monthly_drink_by_type['W4']['Beer'] }
             ]
           },
           {
             seriesname: "Cocktail",
+            color: "#00BFFF",
             data: [
-              { value: "10000" },
-              { value: "11500" },
-              { value: "12500" },
-              { value: "15000" }
+              { value: @monthly_drink_by_type['W1']['Cocktail'] },
+              { value: @monthly_drink_by_type['W2']['Cocktail'] },
+              { value: @monthly_drink_by_type['W3']['Cocktail'] },
+              { value: @monthly_drink_by_type['W4']['Cocktail'] }
             ]
           },
           {
             seriesname: "Wine",
+            color: "#6bdaff",
             data: [
-              { value: "10000" },
-              { value: "11500" },
-              { value: "12500" },
-              { value: "15000" }
+              { value: @monthly_drink_by_type['W1']['Wine'] },
+              { value: @monthly_drink_by_type['W2']['Wine'] },
+              { value: @monthly_drink_by_type['W3']['Wine'] },
+              { value: @monthly_drink_by_type['W4']['Wine'] }
             ]
           },
           {
             seriesname: "Shot/Liquor",
+            color: "#adeaff",
             data: [
-              { value: "25400" },
-              { value: "29800" },
-              { value: "21800" },
-              { value: "26800" }
+              { value: @monthly_drink_by_type['W1']['Shot/Liquor'] },
+              { value: @monthly_drink_by_type['W2']['Shot/Liquor'] },
+              { value: @monthly_drink_by_type['W3']['Shot/Liquor'] },
+              { value: @monthly_drink_by_type['W4']['Shot/Liquor'] }
             ]
           }
         ]

@@ -81,11 +81,9 @@ module StatsHelper
     drinks
   end
 
-  def monthly_drink_by_type
-    drinks = {"Beer"=>0, "Wine"=>0, "Cocktail"=>0, "Shot/Liqour"=>0}
-    montly_tabs = current_user.tabs.where("created_at >= ?", 1.month.ago.utc)
-
-    montly_tabs.each do |tab|
+  def drinks_by_type_builder(tabs)
+    drinks = {"Beer"=>0, "Wine"=>0, "Cocktail"=>0, "Shot/Liquor"=>0}
+    tabs.each do |tab|
       tab.items.each do |item|
         if item.drink_type == 'Beer'
           drinks['Beer']+=1
@@ -94,11 +92,30 @@ module StatsHelper
         elsif item.drink_type == 'Cocktail'
           drinks['Cocktail']+=1
         else
-          drinks['Shot/Liqour']+=1
+          drinks['Shot/Liquor']+=1
         end
       end
     end
     drinks
+  end
+
+  def monthly_drink_by_type
+    week_one_tabs = current_user.tabs.where("created_at >= ?", 1.week.ago.utc)
+    week_two_tabs = current_user.tabs.where("created_at >= ?", 2.week.ago.utc)
+    week_three_tabs = current_user.tabs.where("created_at >= ?", 3.week.ago.utc)
+    week_four_tabs = current_user.tabs.where("created_at >= ?", 4.week.ago.utc)
+
+    week_one_drinks = drinks_by_type_builder(week_one_tabs)
+    week_two_drinks = drinks_by_type_builder(week_two_tabs)
+    week_three_drinks = drinks_by_type_builder(week_three_tabs)
+    week_four_drinks = drinks_by_type_builder(week_four_tabs)
+
+    drinks = {
+      'W1' => week_one_drinks,
+      'W2' => week_two_drinks,
+      'W3' => week_three_drinks,
+      'W4' => week_four_drinks
+    }
   end
 
   def weekly_drink_by_type

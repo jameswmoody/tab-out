@@ -17,7 +17,7 @@
 
   body {
     min-height: 97vh;
-    background-color: whitesmoke;
+    background-color: #F5F5F5;
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
     margin-bottom: 5%;
@@ -129,7 +129,6 @@
   .center_div {
     margin: 0 auto;
   }
-
   /* Forms */
 
   .btn, .btn-primary {
@@ -212,7 +211,7 @@
     border-radius: 4px;
   }
 
- .delete-tab {
+  .delete-tab {
     text-decoration: none;
     background-color: #F08080;
     border: none;
@@ -379,8 +378,8 @@
       -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
     }
   }
-
   /*Loading overlay*/
+
   .overlay {
     position: fixed;
     top: 0;
@@ -396,7 +395,6 @@
     margin-right: 0px;
   }
 
-
   .tab-list-item:hover {
     text-decoration: none;
   }
@@ -408,8 +406,8 @@
   input.search-tabs-button {
     padding: 7px;
   }
-
   /*Navbar fadeout overlay*/
+
   #overlay {
     position: fixed;
     top: 0;
@@ -423,7 +421,7 @@
 
   #tab-table {
     max-width: 700px;
-    table-layout:fixed;
+    table-layout: fixed;
     margin: auto;
     float: right;
   }
@@ -449,6 +447,7 @@
     margin: 10px 0px;
     padding: 10px 0px;
   }
+
   .fa-glass {
     float: left
   }

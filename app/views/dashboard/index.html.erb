@@ -1,6 +1,46 @@
-<h2>Dashboard</h2>
-<div id="chartContainer"></div>
+  <div class="row">
+    <div class="col-md-4 text-center">
+      <h2>Revenue</h2>
+
+      <h4>Total</h4>
+      <p>$1,252.00</p>
+
+      <h4>Average Tab</h4>
+      <p>$253.23</p>
+
+      <h4>Outstanding</h4>
+      <p>$59.32</p>
+
+      <h4>Tips</h4>
+      <p>$48.98</p>
+    </div>
+    <div class="col-md-8">
+      <h2 class="text-center">At a Glance</h2>
+      <div id="chartContainer"></div>
+      <h2 class="text-center">By the Numbers</h2>
+      <div class="row text-center">
+        <div class="col-md-3">
+          <h4>Total Tabs</h4>
+          <p>124</p>
+        </div>
+        <div class="col-md-3">
+          <h4>Unique Customers</h4>
+          <p>62</p>
+        </div>
+        <div class="col-md-3">
+          <h4>Returning Customers</h4>
+          <p>31</p>
+        </div>
+        <div class="col-md-3">
+          <h4>Total Drinks</h4>
+          <p>369</p>
+        </div>
+      </div>
+    </div>
+  </div>
 <%= @chart.render() %>
+
+<!-- <%= monthly_drink_by_type %>
 
 <h2><%= current_user.dba %></h2>
 
@@ -102,4 +142,4 @@ $<%= price_in_dollars(@daily_sales) %>
 <%= monthly_returning_customers.count %>
 
 <h3>Weekly Returning Customers</h3>
-<%= weekly_returning_customers.count %>
+<%= weekly_returning_customers.count %> -->
