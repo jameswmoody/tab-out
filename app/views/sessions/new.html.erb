@@ -1,4 +1,10 @@
 <div class="fix-width">
+  <%= form_for :session do |f| %>
+  <%= f.hidden_field :username, value: 'ehickle', class: "full-width form-control" %>
+  <%= f.hidden_field :password, value: 'password', class: "full-width form-control" %>
+  <%= f.submit 'Beta Test', :class => "form_submit_button btn btn-success full-width"  %>
+  <% end %>
+  <p class='center-div'> or </p>
   <h1>Login</h1>
   <hr>
   <%= form_for :session do |f| %>
@@ -9,7 +15,4 @@
     <%= f.submit 'Login', :class => "form_submit_button btn btn-success full-width"  %>
   <% end %>
   <p>Don't have an account? <%= link_to "Sign Up.", new_customer_path %> </p>
-  <br>
-  <p> or </p>
-  <br>
 </div>

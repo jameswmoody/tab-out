@@ -9,6 +9,7 @@ james = Customer.create(username: 'jameswmoody', password: 'password', vault_id:
 evan = Customer.create(username: 'ehickle', password: 'password', vault_id: '699547769', first_name: 'Evan', last_name: 'Hickle', phone: '+13121234568', email: 'evan@evan.com')
 nico = Customer.create(username: 'nicoglennon', password: 'password', vault_id: '649382071', first_name: 'Nico', last_name: 'Glennon', phone: '+17739309398', email: 'nicoglennon@icloud.com')
 josh = Customer.create(username: 'jmharvey0', password: 'password', vault_id: '601241421', first_name: 'Josh', last_name: 'Harvey', phone: '+13121234560', email: 'josh@josh.com')
+guest = Customer.create(username: 'guest', password: 'password', vault_id: '601241421', first_name: 'Guest', last_name: 'User', phone: '+10000000000', email: 'guest@guest.com')
 
 dugans = Business.create(username: 'dugans_on_halsted', password: 'password', sub_merchant_id: 'braintreesecret0', email: 'dugans@dugans.com', doing_business_as: 'Dugans')
 sliperyslope = Business.create(username: 'sliperyslope', password: 'password', sub_merchant_id: 'braintreesecret1', email: 'slipery@slope.com', doing_business_as: 'Slippery Slope')

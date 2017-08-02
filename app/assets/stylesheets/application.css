@@ -158,6 +158,11 @@
     margin-bottom: 20px;
   }
 
+  p.center-div {
+    text-align:center;
+    text-decoration: underline;
+  }
+
   p.tab-timestamp {
     margin-left: 5px;
     opacity: 0.5;
@@ -234,7 +239,7 @@
     border-radius: 0px;
     font-size: 1.1em;
     padding: 3% 42%;
-    background-color: #green;
+    background-color: #00BFFF;
   }
 
   .btn-nav {
