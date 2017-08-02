@@ -42,6 +42,8 @@ $( document ).ready(function() {
       $(this).siblings().removeClass('active')
       $(this).addClass('active')
     $('#total-price-checkout').text('$'+ totalInt.toFixed(2));
+    $('#tip-price-checkout').text('$'+ tipAmountInt.toFixed(2));
+
   })
 
 // When app is bookmarked, prevents links from opening new browser on mobile

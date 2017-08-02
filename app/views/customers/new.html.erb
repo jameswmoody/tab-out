@@ -1,14 +1,13 @@
-
 <div class="fix-width">
   <h2>Sign Up for TabOut!</h2>
   <hr>
   <%= form_for @customer do |f| %>
 
   <%= f.label :username %><br>
-  <%= f.text_field :username, class: "full-width form-control" %><br>
+  <%= f.text_field :username, class: "full-width form-control", required: true, autofocus: true %><br>
 
   <%= f.label :password %><br>
-  <%= f.password_field :password, class: "full-width form-control" %><br>
+  <%= f.password_field :password, class: "full-width form-control", required: true %><br>
 
   <%= f.label :password_confirmation, "Confirm Password" %><br>
   <%= f.password_field :password_confirmation, class: "full-width form-control" %><br>
@@ -16,16 +15,16 @@
   <hr>
 
   <%= f.label :first_name %><br>
-  <%= f.text_field :first_name, class: "full-width form-control" %><br>
+  <%= f.text_field :first_name, class: "full-width form-control", required: true %><br>
 
   <%= f.label :last_name %><br>
-  <%= f.text_field :last_name, class: "full-width form-control" %><br>
+  <%= f.text_field :last_name, class: "full-width form-control", required: true %><br>
 
   <%= f.label :phone %><br>
-  <%= f.text_field :phone, class: "full-width form-control" %><br>
+  <%= f.text_field :phone, class: "full-width form-control", placeholder: 'Ex: +13128675309', required: true %><br>
 
   <%= f.label :email %><br>
-  <%= f.text_field :email, class: "full-width form-control" %>
+  <%= f.email_field :email, class: "full-width form-control", placeholder: 'Ex: email@email.com', required: true %>
   <br>
   <%= f.submit 'Sign Up', class: "form_submit_button btn btn-success full-width"%>
   <% end %>

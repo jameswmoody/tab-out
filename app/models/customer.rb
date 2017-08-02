@@ -7,6 +7,8 @@ class Customer < ApplicationRecord
 
   validates :username, :phone, :first_name, :last_name, :email, presence: true
   validates :username, :email, uniqueness: true
+  # validates :phone, uniqueness: true
+  # validates :phone, format: {with: /[+][1]\d{10}/, message: "only allows the [+1xxxxxxxxxx] format"}
   validates_with CustomerBusinessValidator
 
   def open_tabs

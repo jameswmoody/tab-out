@@ -1,4 +1,4 @@
-<%= link_to '<i class="fa fa-angle-double-left" aria-hidden="true"></i>'.html_safe, root_path, class: 'navigation' %>
+<%= link_to '<i class="fa fa-angle-double-left" aria-hidden="true"></i>'.html_safe, :back, class: 'navigation' %>
 
 <% if session[:user_type] == 'Customer' %>
   <% if @tab.is_open? %>
@@ -35,7 +35,7 @@
 <% end %>
 
 <% if @tab.items.any? %>
-  <table class="table table-striped table-hover">
+  <table class="table table-striped table-hover" id="tab-table">
     <thead>
       <tr class='row-darker'>
         <th>#</th>
@@ -67,8 +67,8 @@
         <td>-</td>
         <td>Subtotal</td>
         <td>$<%= price_in_dollars(@tab.total_price) %></td>
-        <% if session[:user_type] == 'Business' %>
-        <td><%= link_to 'Checkout', checkout_tab_path, class: "btn btn-success checkout-btn" %></td>
+        <% if session[:user_type] == 'Business' && @tab.is_open? %>
+          <td><%= link_to 'Checkout', checkout_tab_path, class: "btn btn-success checkout-btn" %></td>
         <% end %>
       </tr>
 
@@ -90,10 +90,10 @@
     </tbody>
   </table>
 <% else %>
-  <li id='no-items-error' class='btn btn-default full-width'>No items have been ordered.</li>
+  <li id='no-items-error' class='btn btn-default'>No items have been ordered.</li>
 <% end %>
 
-<hr>
+<hr class='bad-hr'>
 
 <% if session[:user_type] == 'Customer'%>
   <% if @tab.is_open? %>
@@ -104,6 +104,6 @@
       <%= button_to "Checkout", checkout_tab_path, method: :get, class: "btn btn-primary full-width" %>
     <% end %>
   <% else %>
-  <button class="btn btn-inactive full-width">Tab Closed</button>
+    <button class="btn btn-inactive full-width">Tab Closed</button>
   <% end %>
 <% end %>

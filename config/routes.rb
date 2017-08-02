@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :customers, except: [:index]
 
   resources :tabs do
-    resources :items, only: [:create, :destroy]
+    resources :items, only: [:create, :show, :destroy]
   end
 
   resources :businesses, only: [:show]

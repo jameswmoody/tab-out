@@ -1,10 +1,11 @@
+<%= link_to '<i class="fa fa-angle-double-left" aria-hidden="true"></i>'.html_safe, :back, class: 'navigation' %>
 
 <h2>Where are you?</h2>
 <%= form_tag('/tabs', method:'post') do %>
   <%= label :username, "Bar" %>
   <div class="input-group" id="bar-lookup">
     <span class="input-group-addon" id="basic-addon2">@</span>
-    <%= text_field_tag(:username, nil, placeholder: '',  class: "form-control") %>
+    <%= text_field_tag(:username, nil, placeholder: '',  class: "form-control", autofocus: true) %>
   </div>
 
   <div class="alert alert-info alert-dismissible" role="alert">
@@ -13,8 +14,8 @@
   </div>
 
   <ul class="nav nav-tabs">
-    <li class="active col-xs-6 limit-tabs"><a data-toggle="tab" href="#amount">Amount</a></li>
-    <li class="col-xs-6 limit-tabs"><a data-toggle="tab" href="#cost">Cost</a></li>
+    <li class="active col-xs-6 limit-tabs"><a data-toggle="tab" href="#amount">Number of Drinks</a></li>
+    <li class="col-xs-6 limit-tabs"><a data-toggle="tab" href="#cost">Total Cost</a></li>
   </ul>
   <div class="tab-content">
 
