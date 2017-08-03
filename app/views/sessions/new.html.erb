@@ -3,10 +3,16 @@
   <hr>
   <%= form_for :session do |f| %>
     <%= f.label :username %><br>
-    <%= f.text_field :username, class: "full-width form-control", autofocus: true %><br>
+    <%= f.text_field :username, class: "full-width form-control" %><br>
     <%= f.label :password %><br>
     <%= f.password_field :password, class: "full-width form-control" %><br>
-    <%= f.submit 'Login', :class => "form_submit_button btn btn-success full-width"  %>
+    <%= f.submit 'Login', :class => "btn btn-success full-width"  %>
   <% end %>
   <p>Don't have an account? <%= link_to "Sign Up.", new_customer_path %> </p>
+  <p class='center-div'> or </p>
+  <%= form_for :session do |f| %>
+  <%= f.hidden_field :username, value: 'guest', class: "full-width form-control" %>
+  <%= f.hidden_field :password, value: 'password', class: "full-width form-control" %>
+  <%= f.submit 'Guest Login', :class => "btn btn-info full-width"  %>
+  <% end %>
 </div>
