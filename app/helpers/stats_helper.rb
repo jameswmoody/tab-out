@@ -35,7 +35,7 @@ module StatsHelper
     tabs.each do |tab|
       sum+=tab.total_price
     end
-    sum/monthly_tabs.count
+    sum/tabs.count
   end
 
   def tips(tabs)
@@ -108,7 +108,7 @@ module StatsHelper
   end
 
   def weekly_drink_by_type
-    day_one_tabs = current_user.tabs.where(created_at: 1.day.ago.utc..Date.today)
+    day_one_tabs = current_user.tabs.where(created_at: 1.day.ago.utc..Time.now)
     day_two_tabs = current_user.tabs.where(created_at: 2.days.ago.utc..1.day.ago.utc)
     day_three_tabs = current_user.tabs.where(created_at: 3.days.ago.utc..2.days.ago.utc)
     day_four_tabs = current_user.tabs.where(created_at: 4.days.ago.utc..3.days.ago.utc)

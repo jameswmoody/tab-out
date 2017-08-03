@@ -31,26 +31,22 @@ def rand_time(from, to=Time.now)
   Time.at(rand_in_range(from.to_f, to.to_f))
 end
 
-100.times do
-  Tab.create(customer: customers.sample, business: businesses.sample, created_at: rand_time(6.hours.ago))
+4.times do
+  Tab.create(customer: customers.sample, business: emporium, tip: 234, transaction_id: 'acb123', created_at: rand_time(12.hours.ago))
+end
+
+2.times do
+  Tab.create(customer: customers.sample, business: emporium, created_at: rand_time(12.hours.ago))
+end
+
+900.times do
+  Tab.create(customer: customers.sample, business: businesses.sample, tip: 234, transaction_id: 'acb123', created_at: rand_time(1.month.ago))
 end
 
 100.times do
-  Tab.create(customer: customers.sample, business: businesses.sample, created_at: rand_time(2.days.ago))
+  Tab.create(customer: customers.sample, business: businesses.sample, created_at: rand_time(1.month.ago))
 end
 
-100.times do
-  Tab.create(customer: customers.sample, business: businesses.sample, created_at: rand_time(5.days.ago))
-end
-
-100.times do
-  Tab.create(customer: customers.sample, business: businesses.sample, created_at: rand_time(30.days.ago))
-end
-
-200.times do
-  Tab.create(customer: customers.sample, business: businesses.sample, created_at: rand_time(3.months.ago))
-end
-
-1200.times do
-  Item.create(drink_type: drink_types.sample, price: rand(1..10)*100, tab: tabs.sample)
+3000.times do
+  Item.create(drink_type: drink_types.sample, price: rand(8..14)*100, tab: Tab.all.sample)
 end

@@ -5,7 +5,11 @@ class DashboardController < ApplicationController
     @weekly_tabs = weekly_tabs
     @monthly_tabs = monthly_tabs
 
+    p "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
+
     @daily_drink_by_type = daily_drink_by_type
+
+    p @daily_drink_by_type
     @weekly_drink_by_type = weekly_drink_by_type
     @monthly_drink_by_type = monthly_drink_by_type
 
@@ -17,8 +21,7 @@ class DashboardController < ApplicationController
       dataSource: {
         chart: {
           xAxisname: "Shift",
-          yAxisName: "Amount ($)",
-          numberPrefix: "$",
+          yAxisName: "Amount",
           theme: "ocean",
           exportEnabled: "1",
           bgColor: "#ffffff"
@@ -83,9 +86,8 @@ class DashboardController < ApplicationController
       renderAt: "week-chart",
       dataSource: {
         chart: {
-          xAxisname: "Shift",
-          yAxisName: "Amount ($)",
-          numberPrefix: "$",
+          xAxisname: "Day",
+          yAxisName: "Amount",
           theme: "ocean",
           exportEnabled: "1",
           bgColor: "#ffffff"
@@ -165,9 +167,8 @@ class DashboardController < ApplicationController
       renderAt: "month-chart",
       dataSource: {
         chart: {
-          xAxisname: "Shift",
-          yAxisName: "Amount ($)",
-          numberPrefix: "$",
+          xAxisname: "Week",
+          yAxisName: "Amount",
           theme: "ocean",
           exportEnabled: "1",
           bgColor: "#ffffff"
@@ -178,72 +179,6 @@ class DashboardController < ApplicationController
             { label: "W2" },
             { label: "W3" },
             { label: "W4" }
-          ]
-        }],
-        dataset: [
-          {
-            seriesname: "Beer",
-            color: "#00698c",
-            data: [
-              { value: @monthly_drink_by_type['W1']['Beer'] },
-              { value: @monthly_drink_by_type['W2']['Beer'] },
-              { value: @monthly_drink_by_type['W3']['Beer'] },
-              { value: @monthly_drink_by_type['W4']['Beer'] }
-            ]
-          },
-          {
-            seriesname: "Cocktail",
-            color: "#00BFFF",
-            data: [
-              { value: @monthly_drink_by_type['W1']['Cocktail'] },
-              { value: @monthly_drink_by_type['W2']['Cocktail'] },
-              { value: @monthly_drink_by_type['W3']['Cocktail'] },
-              { value: @monthly_drink_by_type['W4']['Cocktail'] }
-            ]
-          },
-          {
-            seriesname: "Wine",
-            color: "#6bdaff",
-            data: [
-              { value: @monthly_drink_by_type['W1']['Wine'] },
-              { value: @monthly_drink_by_type['W2']['Wine'] },
-              { value: @monthly_drink_by_type['W3']['Wine'] },
-              { value: @monthly_drink_by_type['W4']['Wine'] }
-            ]
-          },
-          {
-            seriesname: "Shot/Liquor",
-            color: "#adeaff",
-            data: [
-              { value: @monthly_drink_by_type['W1']['Shot/Liquor'] },
-              { value: @monthly_drink_by_type['W2']['Shot/Liquor'] },
-              { value: @monthly_drink_by_type['W3']['Shot/Liquor'] },
-              { value: @monthly_drink_by_type['W4']['Shot/Liquor'] }
-            ]
-          }
-        ]
-      }
-    })
-
-    @all_chart = Fusioncharts::Chart.new({
-      width: "100%",
-      height: "145%",
-      type: "stackedcolumn2d",
-      renderAt: "all-chart",
-      dataSource: {
-        chart: {
-          xAxisname: "Shift",
-          yAxisName: "Amount ($)",
-          numberPrefix: "$",
-          theme: "ocean",
-          exportEnabled: "1",
-          bgColor: "#ebebeb"
-        },
-        categories: [{
-          category: [
-            { label: "2015" },
-            { label: "2016" },
-            { label: "W017" }
           ]
         }],
         dataset: [
