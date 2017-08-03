@@ -11,21 +11,43 @@ nico = Customer.create(username: 'nicoglennon', password: 'password', vault_id: 
 josh = Customer.create(username: 'jmharvey0', password: 'password', vault_id: '601241421', first_name: 'Josh', last_name: 'Harvey', phone: '+13121234560', email: 'josh@josh.com')
 guest = Customer.create(username: 'guest', password: 'password', vault_id: '601241421', first_name: 'Guest', last_name: 'User', phone: '+10000000000', email: 'guest@guest.com')
 
+1000.times do
+  Customer.create(username: Faker::Internet.user_name, password: 'password', vault_id: '601241421', first_name: 'Josh', last_name: 'Harvey', phone: '+13121234561', email: Faker::Internet.safe_email)
+end
+
 dugans = Business.create(username: 'dugansonhalsted', password: 'password', sub_merchant_id: 'braintreesecret0', email: 'dugans@dugans.com', doing_business_as: 'Dugans')
 sliperyslope = Business.create(username: 'sliperyslope', password: 'password', sub_merchant_id: 'braintreesecret1', email: 'slipery@slope.com', doing_business_as: 'Slippery Slope')
 emporium = Business.create(username: 'emporium', password: 'password', sub_merchant_id: 'braintreesecret2', email: 'emporium@emporium.com', doing_business_as: 'Emporium')
 mullens = Business.create(username: 'mullenswheaton', password: 'password', sub_merchant_id: 'braintreesecret3', email: 'mullens@mullens.com', doing_business_as: 'Wheaton Mullens')
 
-# customers = [james, evan, nico, josh]
-# businesses = [dugans, sliperyslope, emporium, mullens]
-# drink_types = ['Shot/Liqour', 'Beer', 'Wine', 'Cocktail']
+customers = Customer.all
+businesses = [dugans, sliperyslope, emporium, mullens]
+drink_types = ['Shot/Liqour', 'Beer', 'Wine', 'Cocktail']
 
-# 20.times do
-#   Tab.create(customer: customers.sample, business: businesses.sample)
-# end
+def rand_in_range(from, to)
+  rand * (to - from) + from
+end
 
-# tabs = Tab.all
+def rand_time(from, to=Time.now)
+  Time.at(rand_in_range(from.to_f, to.to_f))
+end
 
-# 60.times do
-#   Item.create(drink_type: drink_types.sample, price: rand(1..10)*100, tab: tabs.sample)
-# end
+4.times do
+  Tab.create(customer: customers.sample, business: emporium, tip: 234, transaction_id: 'acb123', created_at: rand_time(12.hours.ago))
+end
+
+2.times do
+  Tab.create(customer: customers.sample, business: emporium, created_at: rand_time(12.hours.ago))
+end
+
+900.times do
+  Tab.create(customer: customers.sample, business: businesses.sample, tip: 234, transaction_id: 'acb123', created_at: rand_time(1.month.ago))
+end
+
+100.times do
+  Tab.create(customer: customers.sample, business: businesses.sample, created_at: rand_time(1.month.ago))
+end
+
+3000.times do
+  Item.create(drink_type: drink_types.sample, price: rand(8..14)*100, tab: Tab.all.sample)
+end

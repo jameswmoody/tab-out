@@ -1,0 +1,28 @@
+<h2><%= current_user.dba %></h2>
+
+<h3>Total Sales</h3>
+$<%= price_in_dollars(@total_sales) %>
+
+<h3>Sales This Month</h3>
+$<%= price_in_dollars(@monthly_sales) %>
+
+<h3>Sales This Week</h3>
+$<%= price_in_dollars(@weekly_sales) %>
+
+<h3>Sales Today</h3>
+$<%= price_in_dollars(@daily_sales) %>
+
+<h3>Total Customer Count</h3>
+<%= current_user.tabs.count %>
+
+<h3>Monthly Customer Count</h3>
+<%= monthly_count %>
+
+<h3>Weekly Customer Count</h3>
+<%= weekly_count %>
+
+<h3>Daily Customer Count</h3>
+<%= daily_count %>
+
+<h3>Total Drinks</h3>
+<%= total_drinks %>

@@ -10,13 +10,19 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require fusioncharts/fusioncharts
+//= require fusioncharts/fusioncharts.charts
+//= require fusioncharts/themes/fusioncharts.theme.fint
 //= require rails-ujs
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
 
 $( document ).ready(function() {
-  $('#hook').hook();
+  $('#myTab a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  })  
 
   var options;
     $('.nav-open').click(function() {
