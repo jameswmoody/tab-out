@@ -5,7 +5,7 @@ class TabsController < ApplicationController
     if session[:user_type] == 'Business'
       @business = current_user
     end
-      @tabs = current_user.closed_tabs
+    @tabs = current_user.closed_tabs
   end
 
   def new
@@ -51,9 +51,9 @@ class TabsController < ApplicationController
   end
 
   def checkout
-    redirect_to root_path and return if !logged_in? || params[:id].to_i > Tab.last.id
+    # redirect_to root_path and return if !logged_in? || params[:id].to_i > Tab.last.id
     @tab = Tab.find(params[:id])
-    redirect_to root_path and return if session[:user_id] != @tab.customer_id && session[:user_id] != @tab.business_id
+    # redirect_to root_path and return if session[:user_id] != @tab.customer_id && session[:user_id] != @tab.business_id
     @client_token = CreditCardService.new(customer: @tab.customer).generate_token(vault_id: @tab.customer.vault_id)
     render 'checkout'
   end

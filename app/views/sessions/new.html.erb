@@ -1,6 +1,11 @@
 <div class="fix-width">
-  <h1>Login</h1>
-  <hr>
+  <div class="logo-div">
+    <%= render partial: '/layouts/logo' %>
+  </div>
+  <div class="slogan">
+    <h4 id="main-slogan">Call the shots.</h4>
+  </div>
+  <hr class="small-hr">
   <%= form_for :session do |f| %>
     <%= f.label :username %><br>
     <%= f.text_field :username, class: "full-width form-control" %><br>
