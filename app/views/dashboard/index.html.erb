@@ -1,163 +1,173 @@
-<div class="btn-group" role="group">
-  <button type="button" class="btn btn-default">Today</button>
-  <button type="button" class="btn btn-default">Week</button>
-  <button type="button" class="btn btn-default">Month</button>
-  <button type="button" class="btn btn-default">All</button>
-</div>
+<ul class="nav nav-tabs dashboard-tabs" id="myTab">
+<li class="active"><a href="#today" data-toggle="tab">Today</a></li>
+<li><a href="#week" data-toggle="tab">Week</a></li>
+<li><a href="#month" data-toggle="tab">Month</a></li>
+</ul>
 
-<div class="row">
-  <div class="col-md-3 text-center revenue">
-    <h2>Revenue</h2>
+<div class="tab-content">
+<div class="tab-pane active" id="today">
+  <!-- Today -->
+  <div class="row">
+    <div class="col-md-3 text-center revenue">
+      <h2>Revenue</h2>
 
-    <div class="revenue-cell">
-      <h4>Total</h4>
-      <p class="revenue-amount text-success">$<%= price_in_dollars(@monthly_sales) %></p>
+      <div class="revenue-cell">
+        <h4>Total</h4>
+        <p class="revenue-amount text-success">$<%= price_in_dollars(total_sales(daily_tabs)) %></p>
+      </div>
+
+      <div class="revenue-cell">
+        <h4>Average Tab</h4>
+        <p class="revenue-amount text-success">$<%= price_in_dollars(average(daily_tabs)) %></p>
+      </div>
+
+      <div class="revenue-cell">
+        <h4>Outstanding</h4>
+        <p class="revenue-amount text-danger">$<%= price_in_dollars(outstanding(daily_tabs)) %></p>
+      </div>
+
+      <div class="revenue-cell">
+        <h4>Tips</h4>
+        <p class="revenue-amount text-success">$<%= price_in_dollars(tips(daily_tabs)) %></p>
+      </div>
+
     </div>
+    <div class="col-md-9">
+      <h2 class="text-center">At a Glance</h2>
+      <div id="today-chart"></div>
+      <%= @today_chart.render() %>
 
-    <div class="revenue-cell">
-      <h4>Average Tab</h4>
-      <p class="revenue-amount text-success">$<%= price_in_dollars(@monthly_average) %></p>
+      <h2 class="text-center">By the Numbers</h2>
+      <div class="row text-center">
+        <div class="col-md-3">
+          <h4>Total Tabs</h4>
+          <p class="number-data"><%= @daily_tabs.count %></p>
+        </div>
+        <div class="col-md-3">
+          <h4>Unique Customers</h4>
+          <p class="number-data"><%= unique_customers(@daily_tabs) %></p>
+        </div>
+        <div class="col-md-3">
+          <h4>Returning&nbsp;Customers</h4>
+          <p class="number-data"><%= returning_customers(@daily_tabs) %></p>
+        </div>
+        <div class="col-md-3">
+          <h4>Total Drinks</h4>
+          <p class="number-data"><%= total_drinks(@daily_tabs) %></p>
+        </div>
+      </div>
     </div>
-
-    <div class="revenue-cell">
-      <h4>Outstanding</h4>
-      <p class="revenue-amount text-danger">$59.32</p>
-    </div>
-
-    <div class="revenue-cell">
-      <h4>Tips</h4>
-      <p class="revenue-amount text-success">$<%= price_in_dollars(@monthly_tips) %></p>
-    </div>
-
   </div>
-  <div class="col-md-9">
-    <h2 class="text-center">At a Glance</h2>
-    <div id="chartContainer"></div>
-    <%= @chart.render() %>
+  <!-- Today -->
+</div>
+<div class="tab-pane" id="week">
+  <!-- Week -->
+  <div class="row">
+    <div class="col-md-3 text-center revenue">
+      <h2>Revenue</h2>
 
-    <h2 class="text-center">By the Numbers</h2>
-    <div class="row text-center">
-      <div class="col-md-3">
-        <h4>Total Tabs</h4>
-        <p class="number-data"><%= monthly_count %></p>
+      <div class="revenue-cell">
+        <h4>Total</h4>
+        <p class="revenue-amount text-success">$<%= price_in_dollars(total_sales(weekly_tabs)) %></p>
       </div>
-      <div class="col-md-3">
-        <h4>Unique Customers</h4>
-        <p class="number-data">62</p>
+
+      <div class="revenue-cell">
+        <h4>Average Tab</h4>
+        <p class="revenue-amount text-success">$<%= price_in_dollars(average(weekly_tabs)) %></p>
       </div>
-      <div class="col-md-3">
-        <h4>Returning&nbsp;Customers</h4>
-        <p class="number-data"><%= monthly_returning_customers.count %></p>
+
+      <div class="revenue-cell">
+        <h4>Outstanding</h4>
+        <p class="revenue-amount text-danger">$<%= price_in_dollars(outstanding(weekly_tabs)) %></p>
       </div>
-      <div class="col-md-3">
-        <h4>Total Drinks</h4>
-        <p class="number-data"><%= total_drinks %></p>
+
+      <div class="revenue-cell">
+        <h4>Tips</h4>
+        <p class="revenue-amount text-success">$<%= price_in_dollars(tips(weekly_tabs)) %></p>
+      </div>
+
+    </div>
+    <div class="col-md-9">
+      <h2 class="text-center">At a Glance</h2>
+      <div id="week-chart"></div>
+      <%= @week_chart.render() %>
+
+      <h2 class="text-center">By the Numbers</h2>
+      <div class="row text-center">
+        <div class="col-md-3">
+          <h4>Total Tabs</h4>
+          <p class="number-data"><%= @weekly_tabs.count %></p>
+        </div>
+        <div class="col-md-3">
+          <h4>Unique Customers</h4>
+          <p class="number-data"><%= unique_customers(@weekly_tabs) %></p>
+        </div>
+        <div class="col-md-3">
+          <h4>Returning&nbsp;Customers</h4>
+          <p class="number-data"><%= returning_customers(@weekly_tabs) %></p>
+        </div>
+        <div class="col-md-3">
+          <h4>Total Drinks</h4>
+          <p class="number-data"><%= total_drinks(@weekly_tabs) %></p>
+        </div>
       </div>
     </div>
   </div>
+  <!-- Week -->
 </div>
+<div class="tab-pane" id="month">
+  <!-- Month -->
+  <div class="row">
+    <div class="col-md-3 text-center revenue">
+      <h2>Revenue</h2>
 
+      <div class="revenue-cell">
+        <h4>Total</h4>
+        <p class="revenue-amount text-success">$<%= price_in_dollars(total_sales(monthly_tabs)) %></p>
+      </div>
 
-<!-- <%= monthly_drink_by_type %>
+      <div class="revenue-cell">
+        <h4>Average Tab</h4>
+        <p class="revenue-amount text-success">$<%= price_in_dollars(average(monthly_tabs)) %></p>
+      </div>
 
-<h2><%= current_user.dba %></h2>
+      <div class="revenue-cell">
+        <h4>Outstanding</h4>
+        <p class="revenue-amount text-danger">$<%= price_in_dollars(outstanding(monthly_tabs)) %></p>
+      </div>
 
-<h3>Total Sales</h3>
-$<%= price_in_dollars(@total_sales) %>
+      <div class="revenue-cell">
+        <h4>Tips</h4>
+        <p class="revenue-amount text-success">$<%= price_in_dollars(tips(monthly_tabs)) %></p>
+      </div>
 
-<h3>Sales This Month</h3>
-$<%= price_in_dollars(@monthly_sales) %>
+    </div>
+    <div class="col-md-9">
+      <h2 class="text-center">At a Glance</h2>
+      <div id="month-chart"></div>
+      <%= @month_chart.render() %>
 
-<h3>Sales This Week</h3>
-$<%= price_in_dollars(@weekly_sales) %>
-
-<h3>Sales Today</h3>
-$<%= price_in_dollars(@daily_sales) %>
-
-<h3>Total Customer Count</h3>
-<%= current_user.tabs.count %>
-
-<h3>Monthly Customer Count</h3>
-<%= monthly_count %>
-
-<h3>Weekly Customer Count</h3>
-<%= weekly_count %>
-
-<h3>Daily Customer Count</h3>
-<%= daily_count %>
-
-<h3>Total Drinks</h3>
-<%= total_drinks %>
-
-<h3>Drink by Type</h3>
-<table style="border: solid 1px black;">
-  <tr style="border: solid 1px black;">
-    <th style="border: solid 1px black;">Beer</th>
-    <th style="border: solid 1px black;">Cocktails</th>
-    <th style="border: solid 1px black;">Shots/Liquor</th>
-    <th style="border: solid 1px black;">Wine</th>
-  </tr>
-  <tr style="border: solid 1px black;">
-    <td style="border: solid 1px black;"><%= drink_by_type['Beer'] %></td>
-    <td style="border: solid 1px black;"><%= drink_by_type['Cocktail'] %></td>
-    <td style="border: solid 1px black;"><%= drink_by_type['Shot/Liqour'] %></td>
-    <td style="border: solid 1px black;"><%= drink_by_type['Wine'] %></td>
-  </tr>
-</table>
-
-<h3>Monthly Drink by Type</h3>
-<table style="border: solid 1px black;">
-  <tr style="border: solid 1px black;">
-    <th style="border: solid 1px black;">Beer</th>
-    <th style="border: solid 1px black;">Cocktails</th>
-    <th style="border: solid 1px black;">Shots/Liquor</th>
-    <th style="border: solid 1px black;">Wine</th>
-  </tr>
-  <tr style="border: solid 1px black;">
-    <td style="border: solid 1px black;"><%= monthly_drink_by_type['Beer'] %></td>
-    <td style="border: solid 1px black;"><%= monthly_drink_by_type['Cocktail'] %></td>
-    <td style="border: solid 1px black;"><%= monthly_drink_by_type['Shot/Liqour'] %></td>
-    <td style="border: solid 1px black;"><%= monthly_drink_by_type['Wine'] %></td>
-  </tr>
-</table>
-
-<h3>Weekly Drink by Type</h3>
-<table style="border: solid 1px black;">
-  <tr style="border: solid 1px black;">
-    <th style="border: solid 1px black;">Beer</th>
-    <th style="border: solid 1px black;">Cocktails</th>
-    <th style="border: solid 1px black;">Shots/Liquor</th>
-    <th style="border: solid 1px black;">Wine</th>
-  </tr>
-  <tr style="border: solid 1px black;">
-    <td style="border: solid 1px black;"><%= weekly_drink_by_type['Beer'] %></td>
-    <td style="border: solid 1px black;"><%= weekly_drink_by_type['Cocktail'] %></td>
-    <td style="border: solid 1px black;"><%= weekly_drink_by_type['Shot/Liqour'] %></td>
-    <td style="border: solid 1px black;"><%= weekly_drink_by_type['Wine'] %></td>
-  </tr>
-</table>
-
-<h3>Daily Drink by Type</h3>
-<table style="border: solid 1px black;">
-  <tr style="border: solid 1px black;">
-    <th style="border: solid 1px black;">Beer</th>
-    <th style="border: solid 1px black;">Cocktails</th>
-    <th style="border: solid 1px black;">Shots/Liquor</th>
-    <th style="border: solid 1px black;">Wine</th>
-  </tr>
-  <tr style="border: solid 1px black;">
-    <td style="border: solid 1px black;"><%= daily_drink_by_type['Beer'] %></td>
-    <td style="border: solid 1px black;"><%= daily_drink_by_type['Cocktail'] %></td>
-    <td style="border: solid 1px black;"><%= daily_drink_by_type['Shot/Liqour'] %></td>
-    <td style="border: solid 1px black;"><%= daily_drink_by_type['Wine'] %></td>
-  </tr>
-</table>
-
-<h3>Returning Customers</h3>
-<%= returning_customers.count %>
-
-<h3>Monthly Returning Customers</h3>
-<%= monthly_returning_customers.count %>
-
-<h3>Weekly Returning Customers</h3>
-<%= weekly_returning_customers.count %> -->
+      <h2 class="text-center">By the Numbers</h2>
+      <div class="row text-center">
+        <div class="col-md-3">
+          <h4>Total Tabs</h4>
+          <p class="number-data"><%= @monthly_tabs.count %></p>
+        </div>
+        <div class="col-md-3">
+          <h4>Unique Customers</h4>
+          <p class="number-data"><%= unique_customers(@monthly_tabs) %></p>
+        </div>
+        <div class="col-md-3">
+          <h4>Returning&nbsp;Customers</h4>
+          <p class="number-data"><%= returning_customers(@monthly_tabs) %></p>
+        </div>
+        <div class="col-md-3">
+          <h4>Total Drinks</h4>
+          <p class="number-data"><%= total_drinks(@monthly_tabs) %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Month -->
+</div>
+</div>

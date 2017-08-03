@@ -19,6 +19,10 @@
 //= require_tree .
 
 $( document ).ready(function() {
+  $('#myTab a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  })  
 
   var options;
     $('.nav-open').click(function() {
