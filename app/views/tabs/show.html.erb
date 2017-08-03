@@ -1,4 +1,8 @@
-<%= link_to '<i class="fa fa-angle-double-left" aria-hidden="true"></i>'.html_safe, :back, class: 'navigation' %>
+<% if @tab.is_open? %>
+<%= link_to '<i class="fa fa-angle-double-left" aria-hidden="true"></i>'.html_safe, root_path, class: 'navigation' %>
+<% else %>
+<%= link_to '<i class="fa fa-angle-double-left" aria-hidden="true"></i>'.html_safe, tabs_path, class: 'navigation' %>
+<% end %>
 
 <% if session[:user_type] == 'Customer' %>
   <% if @tab.is_open? %>
@@ -90,12 +94,15 @@
     </tbody>
   </table>
 <% else %>
-  <li id='no-items-error' class='btn btn-default'>No items have been ordered.</li>
+  <% if session[:user_type] == 'Customer' %>
+    <li id='no-items-error' class='btn btn-default'>No items have been ordered.</li>
+  <% else %>
+    <li id='no-orders' class='btn btn-default'>No items have been ordered.</li>
+  <% end %>
 <% end %>
 
-<hr class='bad-hr'>
-
 <% if session[:user_type] == 'Customer'%>
+  <hr class="bad-hr">
   <% if @tab.is_open? %>
     <% if @tab.items.empty? %>
       <%= link_to 'Delete Tab', tab_path(@tab), method: :delete,

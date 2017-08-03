@@ -8,7 +8,8 @@ Business.delete_all
 james = Customer.create(username: 'jameswmoody', password: 'password', vault_id: '203106301', first_name: 'James', last_name: 'Moody', phone: '+12482272481', email: 'james@james.com')
 evan = Customer.create(username: 'ehickle', password: 'password', vault_id: '699547769', first_name: 'Evan', last_name: 'Hickle', phone: '+12607979836', email: 'evan@evan.com')
 nico = Customer.create(username: 'nicoglennon', password: 'password', vault_id: '649382071', first_name: 'Nico', last_name: 'Glennon', phone: '+17739309398', email: 'nicoglennon@icloud.com')
-josh = Customer.create(username: 'jmharvey0', password: 'password', vault_id: '601241421', first_name: 'Josh', last_name: 'Harvey', phone: '+16308800232', email: 'josh@josh.com')
+josh = Customer.create(username: 'jmharvey0', password: 'password', vault_id: '601241421', first_name: 'Josh', last_name: 'Harvey', phone: '+13121234560', email: 'josh@josh.com')
+guest = Customer.create(username: 'guest', password: 'password', vault_id: '601241421', first_name: 'Guest', last_name: 'User', phone: '+10000000000', email: 'guest@guest.com')
 
 1000.times do
   Customer.create(username: Faker::Internet.user_name, password: 'password', vault_id: '601241421', first_name: 'Josh', last_name: 'Harvey', phone: '+13121234561', email: Faker::Internet.safe_email)
