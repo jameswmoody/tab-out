@@ -538,3 +538,7 @@
   .alert-success {
     margin-bottom: 0px;
   }
+
+  .hidden-button {
+    visibility: hidden;
+  }
