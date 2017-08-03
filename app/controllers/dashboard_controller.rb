@@ -5,11 +5,7 @@ class DashboardController < ApplicationController
     @weekly_tabs = weekly_tabs
     @monthly_tabs = monthly_tabs
 
-    p "HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH"
-
     @daily_drink_by_type = daily_drink_by_type
-
-    p @daily_drink_by_type
     @weekly_drink_by_type = weekly_drink_by_type
     @monthly_drink_by_type = monthly_drink_by_type
 
