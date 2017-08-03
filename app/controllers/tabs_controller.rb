@@ -1,12 +1,15 @@
 class TabsController < ApplicationController
+  include TabsHelper
   def index
+    redirect_to root_path and return if !logged_in?
     if session[:user_type] == 'Business'
       @business = current_user
     end
-      @tabs = current_user.closed_tabs
+    @tabs = current_user.closed_tabs
   end
 
   def new
+    redirect_to root_path and return if !logged_in?
     @tab = Tab.new
   end
 
@@ -40,13 +43,17 @@ class TabsController < ApplicationController
   end
 
   def show
+    redirect_to root_path and return if !logged_in? || params[:id].to_i > Tab.last.id
     @tab = Tab.find(params[:id])
+    redirect_to root_path and return if session[:user_id] != @tab.customer_id && session[:user_id] != @tab.business_id
     @item = Item.new
     render 'show'
   end
 
   def checkout
+    # redirect_to root_path and return if !logged_in? || params[:id].to_i > Tab.last.id
     @tab = Tab.find(params[:id])
+    # redirect_to root_path and return if session[:user_id] != @tab.customer_id && session[:user_id] != @tab.business_id
     @client_token = CreditCardService.new(customer: @tab.customer).generate_token(vault_id: @tab.customer.vault_id)
     render 'checkout'
   end
@@ -54,8 +61,13 @@ class TabsController < ApplicationController
   def destroy
     @tab = Tab.find(params[:id])
     customer = Customer.find(@tab.customer_id)
-    @tab.destroy!
-    redirect_to customer_path(customer)
+    if customer.id == current_user.id
+      @tab.destroy!
+      flash[:notice] = "Your tab at #{@tab.business.dba} was deleted successfully!".html_safe
+      redirect_to customer_path(customer)
+    else
+      redirect_to root_path
+    end
   end
 
   def close
@@ -63,10 +75,11 @@ class TabsController < ApplicationController
     @customer = @tab.customer
     sub_total = @tab.total_price
     tip_percentage = params[:close][:tip].to_i
-    total = sub_total * tip_percentage / 100 + sub_total
+    tip = sub_total * tip_percentage / 100
+    total =  tip + sub_total
     result = CreditCardService.new(customer: @tab.customer).create_transaction(total)
     @tab.transaction_id = result.transaction.id
-    @tab.tip = sub_total * tip_percentage / 100
+    @tab.tip = tip
     if @tab.save
       if session[:user_type] == 'Customer'
         @transaction = true
@@ -74,6 +87,8 @@ class TabsController < ApplicationController
         @open_tabs = @customer.tabs.where(transaction_id: nil)
         render '/customers/show'
       else
+        business_name = @tab.business.dba
+        TextMessageService.new({text_number: @tab.customer.phone, text_body: "Notice:\n#{business_name} closed your tab.\nSubtotal: $#{price_in_dollars(sub_total)}\nTip: $#{price_in_dollars(tip)}\nTotal: $#{price_in_dollars(total)}"}).send_text
         redirect_to @tab.business
       end
     else

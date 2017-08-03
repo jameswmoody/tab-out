@@ -12,13 +12,14 @@ Rails.application.routes.draw do
 
   post '/twilio', to: 'twilio#text'
 
-  resources :customers
+  resources :customers, except: [:index]
 
   resources :tabs do
-    resources :items
+    resources :items, only: [:create, :show, :destroy]
   end
 
   resources :businesses, only: [:show]
+  get '/dashboard', to: 'dashboard#index'
 
   get '/tabs/:id/checkout', to: 'tabs#checkout', as: 'checkout_tab'
   post '/tabs/:id/close', to: 'tabs#close', as: 'close_tab'

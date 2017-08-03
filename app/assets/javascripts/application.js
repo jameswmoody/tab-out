@@ -10,6 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require fusioncharts/fusioncharts
+//= require fusioncharts/fusioncharts.charts
+//= require fusioncharts/themes/fusioncharts.theme.fint
 //= require rails-ujs
 //= require jquery
 //= require jquery_ujs
@@ -21,16 +24,14 @@ $(document).ready(function() {
     onRefresh: function(){ window.location.reload(); }
   });
 
-  setTimeout(function() {
-    // $('.navbar').css('position', 'fixed');
-  }, 500);
-
   var options;
     $('.nav-open').click(function() {
+      $('#overlay').fadeIn(120);
       document.getElementById("navbar").style.width = "250px";
     })
 
     $('.nav-close').click(function() {
+      $('#overlay').fadeOut();
       document.getElementById("navbar").style.width = "0";
     })
 
@@ -45,6 +46,8 @@ $(document).ready(function() {
       $(this).siblings().removeClass('active')
       $(this).addClass('active')
     $('#total-price-checkout').text('$'+ totalInt.toFixed(2));
+    $('#tip-price-checkout').text('$'+ tipAmountInt.toFixed(2));
+
   })
 
 // When app is bookmarked, prevents links from opening new browser on mobile
@@ -62,6 +65,11 @@ $(document).ready(function() {
   //   navigator.geolocation.getCurrentPosition(storePosition)
   //   id = navigator.geolocation.watchPosition(success, error, options);
   // });
+
+  $('#signup-button').one('click', function() {
+    event.preventDefault();
+    $('#signup-extra-info').children().removeClass('hidden');
+  });
 });
 
 function storePosition(position) {

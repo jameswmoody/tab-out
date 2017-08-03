@@ -1,10 +1,11 @@
 class CardsController < ApplicationController
   def new
-    @client_token = CreditCardService.new({customer: @customer}).generate_token()
+    redirect_to root_path and return unless logged_in?
+    @client_token = CreditCardService.new().generate_token()
   end
 
   def create
-    @customer = Customer.last
+    @customer = current_user
 
     payment_params = params[:card]
     result = CreditCardService.new({customer: @customer}).create_customer(payment_params)
@@ -14,14 +15,14 @@ class CardsController < ApplicationController
       @customer.save
       redirect_to root_url
     else
-      p result
       @errors = ["Card is not valid - please check that it was submitted correctly"]
-      @client_token = CreditCardService.new({customer: @customer}).generate_token()
+      @client_token = CreditCardService.new().generate_token()
       render '/cards/new'
     end
   end
 
   def edit
+    redirect_to root_path and return unless logged_in?
     @client_token = CreditCardService.new(customer: current_user).generate_token(vault_id: current_user.vault_id)
   end
 end

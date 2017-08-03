@@ -1,4 +1,4 @@
-<%= link_to '<i class="fa fa-angle-double-left" aria-hidden="true"></i>', @tab, class: 'navigation' %>
+<%= link_to '<i class="fa fa-angle-double-left" aria-hidden="true"></i>'.html_safe, @tab, class: 'navigation' %>
 
 <h2>Checkout from:<br><strong><%= name(@tab.business) %></strong></h2>
 <hr>
@@ -10,15 +10,19 @@
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td>Tip</td>
+      <td id="tip-price-checkout">$0.00</td>
+    </tr>
     <tr class='row-darker'>
       <th>Total</th>
       <th id="total-price-checkout">$<%= price_in_dollars(@tab.total_price) %></th>
     </tr>
   </tbody>
 </table>
-
+<hr>
 <h3>Choose your tip:</h3>
-<%= form_for :close, url: close_tab_path, class: "radio-buttons-checkout full-width container" do |f| %>
+<%= form_for :close, url: close_tab_path, html: { class: "radio-buttons-checkout full-width container", id: 'close-tab' } do |f| %>
   <%= f.hidden_field :nonce %>
   <%= f.radio_button :tip, '0', style: 'display:none' %>
   <%= f.radio_button :tip, '10', style: 'display:none' %>
@@ -39,7 +43,7 @@
 <script src="https://js.braintreegateway.com/web/dropin/1.4.0/js/dropin.min.js"></script>
 <script>
   var button = document.querySelector("input[type='submit']");
-  var form = document.querySelector('form');
+  var form = document.querySelector('form#close-tab');
 
   braintree.dropin.create({
     authorization: '<%= @client_token %>',
@@ -48,8 +52,8 @@
     button.addEventListener('click', function (event) {
       event.preventDefault();
       instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
-        var nonce = form.querySelector('input[name="close[nonce]"]')
-        form.querySelector('input[name="close[nonce]"]').value = payload.nonce;
+        var nonce = form.querySelector('#close_nonce')
+        nonce.value = payload.nonce;
         form.submit();
       });
     });

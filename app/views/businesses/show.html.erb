@@ -1,12 +1,10 @@
-
 <h1 class="business-title"><%= name(current_user) %></h1>
-
 <hr>
 <form action='' role="search" id="customer-lookup">
   <div class="input-group">
     <input type='search' class="form-control" name='search' placeholder='username, first name, or last name'>
     <span class="input-group-btn">
-      <input type='submit' value='Search' class="btn btn-info">
+      <input type='submit' value='Search' class="btn btn-info search-tabs-button">
     </span>
   </div>
 </form>
@@ -15,13 +13,15 @@
   Look up customers by their <strong>@username</strong>, <strong>first name</strong>, or <strong>last name</strong>.
 </div>
 <hr>
-<h3>Open Tabs:</h3>
 <% if params[:search] %>
   <li class="list-group-item justify-content-between"><%= link_to 'Show all tabs', @business %></li>
 <% end %>
 <% if params[:search] && @tabs.empty? %>
   <li class="list-group-item justify-content-between">No open tabs under '<%= params[:search] %>'.</li>
-<% else %>
+<% elsif !@tabs.empty? %>
+  <h3>Open Tabs:</h3>
   <%= render @tabs %>
+<% else %>
+  <li class="btn btn-default" id="no-items-error">There are no open tabs at the time.</li>
 <% end %>
 </ul>

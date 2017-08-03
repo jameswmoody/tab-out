@@ -17,19 +17,26 @@
 
   body {
     min-height: 97vh;
-    background-color: #F7F7F7;
+    background-color: #F5F5F5;
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
-    margin-bottom: 4%;
+    padding-bottom: 5%;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #404040;
+    /*font-family: 'Sanchez', sans-serif;*/
+    /*font-weight: 600;*/
   }
   /* Nav Bar */
 
   .navbarr, .navbarr-default {
     border: 1px #292B2C solid;
-    border-top: 14px #292B2C solid;
+    border-top: 18px #292B2C solid;
     position: fixed;
     -webkit-backface-visibility: hidden;
     z-index: 1000;
+    text-align: center;
   }
 
   .navbarr-default .navbar-collapse {
@@ -38,11 +45,11 @@
 
   .navbar-fill {
     background-color: #292B2C;
+    padding-right: 0px
   }
 
   .navbarr {
     border-radius: 0;
-    font-family: 'Poppins', sans-serif;
     white-space: nowrap;
   }
 
@@ -55,6 +62,7 @@
     float: left;
     text-align: center;
     width: 100%;
+    padding-right: 0px
   }
 
   .brand {
@@ -76,6 +84,12 @@
     padding: 18px 8px 8px 18px !important;
   }
 
+  .nav-form {
+    height: 30px;
+    display: inline;
+    margin-right: 1px;
+  }
+
   .sidenav {
     height: 100%;
     width: 0;
@@ -86,9 +100,10 @@
     background-color: #292B2C;
     overflow-x: hidden;
     transition: 0.3s;
+    opacity: 0.98;
   }
 
-  .sidenav a {
+  .sidenav a, .sidenav p {
     padding: 8px 8px 8px 18px;
     text-decoration: none;
     font-size: 20px;
@@ -99,7 +114,6 @@
 
   .sidenav a:hover, .offcanvas a:focus {
     color: lightgray;
-    font-size: 20px;
   }
 
   .content {
@@ -149,6 +163,11 @@
     margin-bottom: 20px;
   }
 
+  p.center-div {
+    text-align: center;
+    text-decoration: underline;
+  }
+
   p.tab-timestamp {
     margin-left: 5px;
     opacity: 0.5;
@@ -160,15 +179,27 @@
 
   .faded {
     opacity: 0.5;
-    font-size: 0.8em;
+  }
+
+  .settings-username {
+    opacity: 0.5;
   }
 
   .tab-title {
     font-size: 1.3em;
+    color: #404040;
+  }
+
+  li.list-group-item {
+    margin-top: -1px;
+  }
+
+  li.list-group-item:hover {
+    background-color: #F0F0F0;
   }
 
   #new_item {
-    margin-bottom: 15px;
+    margin-bottom: 0px;
     display: inline-block;
   }
 
@@ -181,7 +212,8 @@
     background-color: #F08080;
     border: none;
     color: white;
-    padding: 4px 39px;
+    padding: 4px 51px;
+    border-radius: 4px;
   }
 
   .delete-tab {
@@ -193,14 +225,17 @@
     width: 100%;
     height: 60px;
     font-size: 1.4em;
+    line-height: 52px;
   }
 
-  .submit-new-drink {
-    margin: 10px 0px;
+  input.submit-new-drink {
+    margin-top: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
   span.badge {
-    font-size: 1.1em;
+    font-size: 1em;
   }
 
   .radio-buttons-checkout {
@@ -210,7 +245,7 @@
   .btn-primary {
     height: 60px;
     border: none;
-    border-radius: 0px;
+    border-radius: 4px;
     font-size: 1.4em;
     background-color: #00BFFF;
   }
@@ -218,16 +253,28 @@
   .btn-success {
     margin: 10px 0px;
     border: none;
-    border-radius: 0px;
+    border-radius: 4px;
     font-size: 1.1em;
     padding: 3% 42%;
     background-color: #green;
   }
 
+  .btn-nav {
+    font-size: 1.4em;
+    padding: 6px;
+    color: white;
+    width: 30px;
+    float: right;
+    height: 30px;
+    border: none;
+    background-color: #00BFFF;
+    margin-top: 6px
+  }
+
   .btn-inactive, .btn-disabled {
     height: 60px;
     border: none;
-    border-radius: 0px;
+    border-radius: 4px;
     font-size: 1.4em;
     background-color: lightgray;
   }
@@ -247,10 +294,31 @@
     div.fix-width {
       max-width: none;
     }
+    li#no-orders {
+      margin-top: 5px;
+      font-size: 1.2em;
+      padding: 5% 5%;
+      color: gray;
+      width: 100%;
+      float: none;
+    }
   }
 
   #no-items-error {
-    margin-bottom: 10px
+    margin-top: 5px;
+    font-size: 1.2em;
+    padding: 5% 5%;
+    color: gray;
+    width: 100%;
+  }
+
+  #no-orders {
+    margin-top: 20px;
+    float: right;
+    font-size: 1.2em;
+    padding: 4% 5%;
+    color: gray;
+    width: 700px;
   }
 
   select.limit-dropdown {
@@ -268,6 +336,16 @@
   .checkout-btn {
     margin: 0px 0px;
     padding: 4px 39px;
+    border-radius: 4px;
+  }
+
+  .tab-content {
+    padding: 0px 10px;
+    padding-bottom: 3%;
+    background-color: white;
+    border-color: #dddddd;
+    border: 1px solid #dddddd;
+    border-top: none;
   }
 
   .navigation {
@@ -324,6 +402,7 @@
       -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
     }
   }
+  /*Loading overlay*/
 
   .overlay {
     position: fixed;
@@ -334,4 +413,98 @@
     background-color: #fff;
     opacity: 0.4;
     z-index: 1001;
+  }
+
+  .alert {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .nav-tabs>li>a {
+    margin-right: 0px;
+  }
+
+  .tab-list-item:hover {
+    text-decoration: none;
+  }
+
+  .tab-time-stamp {
+    color: black;
+  }
+
+  input.search-tabs-button {
+    padding: 7px;
+  }
+  /*Navbar fadeout overlay*/
+
+  #overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: black;
+    opacity: 0.7;
+    z-index: 999;
+  }
+
+  #tab-table {
+    max-width: 700px;
+    table-layout: fixed;
+    margin: auto;
+    float: right;
+    margin-top: 15px;
+  }
+
+  p.nav-username {
+    color: lightgray;
+    font-size: 1.7em;
+  }
+
+  .nav-hr-sm {
+    margin: auto;
+    border-top: 1px solid #383636;
+    width: 25%;
+  }
+
+  .nav-hr-lg {
+    margin: auto;
+    border-top: 1px solid #383636;
+    width: 50%;
+  }
+
+  hr.hr-display {
+    margin: 10px 0px;
+    padding: 10px 0px;
+  }
+
+  .fa-glass {
+    float: left
+  }
+
+  .fa-angle-double-left {
+    margin-bottom: 10px;
+  }
+
+  hr.bad-hr {
+    clear: both;
+    padding-top: 0px;
+    border-bottom: 1px solid #eee;
+    border-top: 0px;
+  }
+
+  .revenue {
+    border-right: solid 1px #d6d6d6;
+  }
+
+  .revenue-cell {
+    padding: 10% 0;
+  }
+
+  .revenue-amount {
+    font-size: 2em;
+  }
+
+  .number-data {
+    font-size: 2em;
   }
