@@ -136,7 +136,12 @@
     border: none;
   }
   /* Braintree Drop-In*/
-
+  .btn-primary:active, .btn-primary:hover {
+    background-color: #00808f !important;
+  }
+  .btn-info:active, .btn-into:hover {
+    background-color: #00808f !important;
+  }
   .braintree-show-methods [data-braintree-id=methods-label] {
     visibility: hidden;
   }
