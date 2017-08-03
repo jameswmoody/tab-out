@@ -555,3 +555,7 @@
   .number-data {
     font-size: 2em;
   }
+
+  .dashboard-pane {
+    padding-top: 30px;
+  }
