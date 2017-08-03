@@ -28,13 +28,9 @@
         <%= render 'layouts/nav' %>
       </header>
 
-      <section id="hook" class="container content">
+      <section class="container content">
         <%= render 'layouts/errors' %>
-        <!-- <div class="spinner" style="display: none;"></div> -->
-        <div class="spinner" style="display: none;">
-          <div class="double-bounce1"></div>
-          <div class="double-bounce2"></div>
-        </div>
+
         <div class="overlay" style="display: none;"></div>
         <div id="overlay" style="display: none;"></div>
         <%= yield %>

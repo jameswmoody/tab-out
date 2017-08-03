@@ -13,24 +13,27 @@
     </div>
     <div id="navbar" class="sidenav">
       <a href="javascript:void(0)" class="nav-close">&times;</a>
-      <% if logged_in? %>
+    <% if logged_in? %>
         <p href='#' class="nav-username"><strong>@<%= current_user.username %></strong></p>
         <hr class="nav-hr-lg">
         <%= link_to 'My Tabs', root_path %>
-        <% if current_user.class == Customer %>
+      <% if current_user.class == Customer %>
         <hr class="nav-hr-sm">
         <%= link_to "Settings", edit_customer_path(current_user) %>
-        <% end %>
+      <% else %>
+          <hr class="nav-hr-sm">
+          <%= link_to 'Dashboard', dashboard_path %>
+      <% end %>
         <hr class="nav-hr-sm">
         <%= link_to 'History', tabs_path %>
         <hr class="nav-hr-sm">
         <%= link_to 'Logout', logout_path %>
-      <% else %>
+    <% else %>
         <hr class="nav-hr-sm">
         <%= link_to 'Sign Up', new_customer_path %>
         <hr class="nav-hr-sm">
         <%= link_to 'Login', login_path %>
-      <% end %>
+    <% end %>
     </div>
   </div>
 </nav>

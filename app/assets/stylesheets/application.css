@@ -17,10 +17,10 @@
 
   body {
     min-height: 97vh;
-    background-color: whitesmoke;
+    background-color: #F5F5F5;
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
-    margin-bottom: 5%;
+    padding-bottom: 5%;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -132,7 +132,6 @@
   .center_div {
     margin: 0 auto;
   }
-
   /* Forms */
 
   .btn, .btn-primary {
@@ -168,7 +167,7 @@
   }
 
   p.center-div {
-    text-align:center;
+    text-align: center;
     text-decoration: underline;
   }
 
@@ -221,7 +220,7 @@
     border-radius: 4px;
   }
 
- .delete-tab {
+  .delete-tab {
     text-decoration: none;
     background-color: #F08080;
     border: none;
@@ -299,7 +298,6 @@
     div.fix-width {
       max-width: none;
     }
-
     li#no-orders {
       margin-top: 5px;
       font-size: 1.2em;
@@ -408,8 +406,8 @@
       -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
     }
   }
-
   /*Loading overlay*/
+
   .overlay {
     position: fixed;
     top: 0;
@@ -430,7 +428,6 @@
     margin-right: 0px;
   }
 
-
   .tab-list-item:hover {
     text-decoration: none;
   }
@@ -442,8 +439,8 @@
   input.search-tabs-button {
     padding: 7px;
   }
-
   /*Navbar fadeout overlay*/
+
   #overlay {
     position: fixed;
     top: 0;
@@ -457,7 +454,7 @@
 
   #tab-table {
     max-width: 700px;
-    table-layout:fixed;
+    table-layout: fixed;
     margin: auto;
     float: right;
     margin-top: 15px;
@@ -541,4 +538,20 @@
 
   .hidden-button {
     visibility: hidden;
+  }
+
+  .revenue {
+    border-right: solid 1px #d6d6d6;
+  }
+
+  .revenue-cell {
+    padding: 10% 0;
+  }
+
+  .revenue-amount {
+    font-size: 2em;
+  }
+
+  .number-data {
+    font-size: 2em;
   }

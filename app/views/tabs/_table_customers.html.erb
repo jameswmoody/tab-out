@@ -1,0 +1,64 @@
+<% if @tab.is_open? %>
+  <div class="alert alert-info alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Use <strong>@<%= @tab.customer.username %></strong> at the bar to add items to your tab.
+  </div>
+<% end %>
+  <h1><%= name(@tab.business) %></h1>
+
+<% if @tab.is_open? %>
+  <p class="tab-timestamp">Opened <%= time_ago_in_words(@tab.created_at) %> ago</p>
+<% else %>
+  <p class="tab-timestamp">Closed <%= time_ago_in_words(@tab.updated_at) %> ago</p>
+<% end %>
+<hr>
+<% if @tab.items.any? %>
+  <table class="table table-striped table-hover" id="tab-table">
+    <thead>
+      <tr class='row-darker'>
+        <th>#</th>
+        <th>Item</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tab.items.each_with_index do |item, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= item.drink_type %></td>
+          <td>$<%= price_in_dollars(item.price) %></td>
+      <% end %>
+        </tr>
+      <tr class='row-darker'>
+        <td>-</td>
+        <td>Subtotal</td>
+        <td>$<%= price_in_dollars(@tab.total_price) %></td>
+      </tr>
+
+    <% if !@tab.is_open? %>
+      <tr>
+        <td>-</td>
+        <td>Tip</td>
+        <td>$<%= price_in_dollars(@tab.tip) %></td>
+      </tr>
+      <tr class ='row-darker'>
+        <td>-</td>
+        <td>Total</td>
+        <td>$<%= price_in_dollars(@tab.total_price + @tab.tip) %> </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+   <hr class="bad-hr">
+<% else %>
+    <li id='no-items-error' class='btn btn-default'>No items have been ordered.</li>
+    <hr class="bad-hr">
+<% end %>
+
+<% if @tab.is_open? && @tab.items.empty? %>
+    <%= link_to 'Delete Tab', tab_path(@tab), method: :delete,
+      data: { confirm: 'Are you sure you want to delete this tab?' }, class: "btn delete-tab" %>
+<% elsif @tab.is_open? %>
+    <%= button_to "Checkout", checkout_tab_path, method: :get, class: "btn btn-primary full-width" %>
+<% else %>
+    <button class="btn btn-inactive full-width">Tab Closed</button>
+<% end %>
