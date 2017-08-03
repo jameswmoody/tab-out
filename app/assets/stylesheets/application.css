@@ -24,6 +24,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
+    margin-top: 5px;
     color: #404040;
     font-family: 'Source Sans Pro', sans-serif;
     /*font-weight: 600;*/
@@ -71,7 +72,7 @@
     font-size: 1.8em;
     font-weight: 900;
     float: none;
-    
+
 
   }
 
@@ -189,6 +190,7 @@
   }
 
   .tab-title {
+    font-weight: 800;
     font-size: 1.3em;
     color: #404040;
   }
@@ -529,8 +531,8 @@
     margin-top: 0px;
   }
 
-  .welcome-customer {
-    margin-top: 60px;
+  .top-margin-title {
+    margin-top: 50px;
   }
 
   .alert-success {
