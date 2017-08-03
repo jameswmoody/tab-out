@@ -7,6 +7,8 @@
         <%= form_tag(new_tab_path, method:'get', class: 'nav-form') do %>
           <%= button_tag "<i class='fa fa-glass' aria-hidden='true'></i>".html_safe, class: 'btn btn-nav'%>
         <% end %>
+      <% else %>
+        <%= button_tag "<i class='fa fa-glass' aria-hidden='true'></i>".html_safe, class: 'btn btn-nav hidden-button'%>  
       <% end %>
     </div>
     <div id="navbar" class="sidenav">
