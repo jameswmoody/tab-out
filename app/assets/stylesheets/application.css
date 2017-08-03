@@ -24,15 +24,16 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
+    margin-top: 5px;
     color: #404040;
-    /*font-family: 'Sanchez', sans-serif;*/
+    font-family: 'Source Sans Pro', sans-serif;
     /*font-weight: 600;*/
   }
   /* Nav Bar */
 
   .navbar, .navbar-default {
     border: 1px #292B2C solid;
-    border-top: 18px #292B2C solid;
+    border-top: 20px #292B2C solid;
     position: fixed;
     -webkit-backface-visibility: hidden;
     z-index: 1000;
@@ -71,6 +72,8 @@
     font-size: 1.8em;
     font-weight: 900;
     float: none;
+
+
   }
 
   .nav-open {
@@ -186,6 +189,7 @@
   }
 
   .tab-title {
+    font-weight: 800;
     font-size: 1.3em;
     color: #404040;
   }
@@ -493,6 +497,49 @@
     border-top: 0px;
   }
 
+  .slogan {
+    text-align: center;
+    margin-top: 15px;
+  }
+
+  #main-slogan {
+    font-size: 2.5em;
+    color: #292B2C;
+    font-family: 'Source Sans Pro';
+  }
+
+  .logo-div {
+    margin: auto;
+    max-width: 177px;
+    max-height: 190px;
+  }
+
+  #cocktails {
+    max-height: 230px;
+    max-width: 99%;
+    text-align: right;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    opacity: 0.9;
+  }
+
+  .small-hr {
+    margin-top: 0px;
+  }
+
+  .top-margin-title {
+    margin-top: 50px;
+  }
+
+  .alert-success {
+    margin-bottom: 0px;
+  }
+
+  .hidden-button {
+    visibility: hidden;
+  }
+
   .revenue {
     border-right: solid 1px #d6d6d6;
   }
@@ -507,4 +554,8 @@
 
   .number-data {
     font-size: 2em;
+  }
+
+  .dashboard-pane {
+    padding-top: 30px;
   }

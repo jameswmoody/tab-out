@@ -11,7 +11,7 @@ class DashboardController < ApplicationController
 
     @today_chart = Fusioncharts::Chart.new({
       width: "100%",
-      height: "145%",
+      height: "170%",
       type: "stackedcolumn2d",
       renderAt: "today-chart",
       dataSource: {
