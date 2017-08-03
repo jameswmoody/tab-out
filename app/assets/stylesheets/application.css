@@ -20,7 +20,7 @@
     background-color: #F5F5F5;
     font-family: 'Roboto', sans-serif;
     font-weight: 100;
-    /*margin-bottom: 5%;*/
+    padding-bottom: 5%;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -164,7 +164,7 @@
   }
 
   p.center-div {
-    text-align:center;
+    text-align: center;
     text-decoration: underline;
   }
 
@@ -294,7 +294,6 @@
     div.fix-width {
       max-width: none;
     }
-
     li#no-orders {
       margin-top: 5px;
       font-size: 1.2em;
