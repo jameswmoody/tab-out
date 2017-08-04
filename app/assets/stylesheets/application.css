@@ -31,7 +31,7 @@
   }
   /* Nav Bar */
 
-  .navbar, .navbar-default {
+  .navbarr, .navbarr-default {
     border: 1px #292B2C solid;
     border-top: 20px #292B2C solid;
     position: fixed;
@@ -40,7 +40,7 @@
     text-align: center;
   }
 
-  .navbar-default .navbar-collapse {
+  .navbarr-default .navbar-collapse {
     border: 1px #292B2C solid;
   }
 
@@ -49,12 +49,12 @@
     padding-right: 0px
   }
 
-  .navbar {
+  .navbarr {
     border-radius: 0;
     white-space: nowrap;
   }
 
-  .navbar-default .brand, .navbar-default .brand:hover, .nav-links:hover {
+  .navbarr-default .brand, .navbarr-default .brand:hover, .nav-links:hover {
     color: #fff;
     text-shadow: none;
   }

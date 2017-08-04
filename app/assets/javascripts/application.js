@@ -18,11 +18,11 @@
 //= require jquery_ujs
 //= require_tree .
 
-$( document ).ready(function() {
-  $('#myTab a').click(function (e) {
-    e.preventDefault()
-    $(this).tab('show')
-  })  
+$(document).ready(function() {
+  PullToRefresh.init({
+    mainElement: 'body',
+    onRefresh: function(){ window.location.reload(); }
+  });
 
   var options;
     $('.nav-open').click(function() {
